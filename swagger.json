@@ -1,0 +1,768 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Seu objetico é gerenciar o relógio de ponto de uma empresa, sendo capaz de efetuar o cadastro de funcionários e suas entradas/saídas",
+    "version": "1.0.0",
+    "title": "API - Relógio de ponto",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "ranieri.ferreira@opus-software.com.br"
+    }
+  },
+  "host": "relogioD.swagger.io",
+  "basePath": "/v1",
+  "tags": [
+    {
+      "name": "Funcionário",
+      "description": "CRUD - Funcionários"
+    },
+    {
+      "name": "Projeto",
+      "description": "CRUD - Projeto da empresa"
+    },
+    {
+      "name": "Registro",
+      "description": "Registro de horas"
+    }
+  ],
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "paths": {
+    "/funcionarios": {
+      "post": {
+        "tags": [
+          "Funcionário"
+        ],
+        "summary": "Adiciona funcionário",
+        "description": "Efetua o cadastro de um novo funcionário",
+        "operationId": "adicionaFuncionario",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Objeto funcionário que precisa ser adicionado ao banco",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Funcionario"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Funcionário criado com sucesso."
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Funcionário"
+        ],
+        "summary": "Lista funcionários",
+        "description": "Efetua alistagem de todos os funcionários do sistema",
+        "operationId": "listaFuncionarios",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Listagem de usuários realizada com sucesso.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Funcionario"
+              }
+            }
+          },
+          "404": {
+            "description": "Nenhum funcionário foi encontrado"
+          }
+        }
+      }
+    },
+    "/funcionario/{cpf}": {
+      "get": {
+        "tags": [
+          "Funcionário"
+        ],
+        "summary": "Encontra um funcionario pelo CPF",
+        "description": "Retorna um único funcionário",
+        "operationId": "buscaFuncionario",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "cpf",
+            "in": "path",
+            "description": "CPF do funcionário que será retornado",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operação efetuada com sucesso.",
+            "schema": {
+              "$ref": "#/definitions/Funcionario"
+            }
+          },
+          "400": {
+            "description": "CPF inválido."
+          },
+          "404": {
+            "description": "Funcionário não encontrado."
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Funcionário"
+        ],
+        "summary": "Atualiza o funcionário com os dados do formulário",
+        "description": "",
+        "operationId": "atualizaFuncionarioComForumlario",
+        "consumes": [
+          "application/xml",
+          "application/json"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "cpf",
+            "in": "path",
+            "description": "CPF do funcionário que precisa ser atualizado",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "nome",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dados do funcionário atualizados com sucesso."
+          },
+          "405": {
+            "description": "Entrada inválida"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Funcionário"
+        ],
+        "summary": "Deleta um funcionário pelo CPF",
+        "description": "",
+        "operationId": "deletaFuncionario",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "cpf",
+            "in": "path",
+            "description": "CPF do funcionário que deseja deletar",
+            "required": true,
+            "maxLength": 11,
+            "minLength": 11,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "CPF inválido"
+          },
+          "404": {
+            "description": "Funcionário não encontrado"
+          }
+        }
+      }
+    },
+    "/projetos": {
+      "post": {
+        "tags": [
+          "Projeto"
+        ],
+        "summary": "Adiciona um novo projeto",
+        "description": "Inserir uma descrição",
+        "operationId": "adicionaProjeto",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Objeto projeto que precisa ser adicionado ao banco",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Projeto"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Projeto criado com sucesso."
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Projeto"
+        ],
+        "summary": "Lista projetos",
+        "description": "",
+        "operationId": "listaProjetos",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Listagem de projetos realizada com sucesso.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Projeto"
+              }
+            }
+          },
+          "404": {
+            "description": "Nenhum projeto foi encontrado"
+          }
+        }
+      }
+    },
+    "/projeto/{id}": {
+      "get": {
+        "tags": [
+          "Projeto"
+        ],
+        "summary": "Encontra um projeto pelo ID",
+        "description": "Retorna apenas um projeto",
+        "operationId": "buscaProjeto",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do do projeto que será retornado",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operação efetuada com sucesso.",
+            "schema": {
+              "$ref": "#/definitions/Projeto"
+            }
+          },
+          "400": {
+            "description": "ID inválido."
+          },
+          "404": {
+            "description": "Projeto não encontrado."
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Projeto"
+        ],
+        "summary": "Atualiza o projeto com os dados do formulário",
+        "description": "",
+        "operationId": "atualizaProjetoComForumlario",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do projeto que precisa ser atualizado",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "nome",
+            "in": "formData",
+            "description": "Nome do projeto que precisa ser atualizado",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "detalhe",
+            "in": "formData",
+            "description": "Detalhe do projeto que precisa ser atualizado",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "in": "formData",
+            "description": "Nome do projeto que recisa ser atualizado",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Entrada inválida"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Projeto"
+        ],
+        "summary": "Deleta um projeto pelo ID",
+        "description": "",
+        "operationId": "deletaProjeto",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do projeto que deseja deletar",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "ID inválido"
+          },
+          "404": {
+            "description": "Projeto não encontrado"
+          }
+        }
+      }
+    },
+    "/projeto/buscaPorStatus": {
+      "get": {
+        "tags": [
+          "Projeto"
+        ],
+        "summary": "Encontra projetos pelo status",
+        "description": "Multiplos status podem ser passados utilizando a vígula para separar as strings",
+        "operationId": "encontraProjetosPeloStatus",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "status",
+            "in": "query",
+            "description": "Valores de status que precisam ser considerados pelo filtro",
+            "required": true,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "ativo",
+                "finalizado"
+              ],
+              "default": "available"
+            },
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Cosulta efetuada com sucesso.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Projeto"
+              }
+            }
+          },
+          "400": {
+            "description": "Valor de status inválido."
+          }
+        }
+      }
+    },
+    "/registros": {
+      "post": {
+        "tags": [
+          "Registro"
+        ],
+        "summary": "Adiciona projeto",
+        "description": "Inserir uma descrição",
+        "operationId": "adicionaRegistro",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Objeto registro que precisa ser adicionado ao banco",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Registro"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Registro criado com sucesso."
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Registro"
+        ],
+        "summary": "Lista registros",
+        "description": "",
+        "operationId": "listaRegistros",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Listagem de registros realizada com sucesso.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Registro"
+              }
+            }
+          },
+          "404": {
+            "description": "Nenhum registro foi encontrado"
+          }
+        }
+      }
+    },
+    "/registro/{id}": {
+      "get": {
+        "tags": [
+          "Registro"
+        ],
+        "summary": "Encontra um projeto pelo ID",
+        "description": "Retorna apenas um projeto",
+        "operationId": "buscaRegistro",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do do projeto que será retornado",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operação efetuada com sucesso.",
+            "schema": {
+              "$ref": "#/definitions/Registro"
+            }
+          },
+          "400": {
+            "description": "ID inválido."
+          },
+          "404": {
+            "description": "Registro não encontrado."
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Registro"
+        ],
+        "summary": "Atualiza o projeto com os dados do formulário",
+        "description": "",
+        "operationId": "atualizaRegistroComForumlario",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do projeto que precisa ser atualizado",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "nome",
+            "in": "formData",
+            "description": "Nome do projeto que precisa ser atualizado",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "detalhe",
+            "in": "formData",
+            "description": "Detalhe do projeto que precisa ser atualizado",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "in": "formData",
+            "description": "Nome do projeto que recisa ser atualizado",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Entrada inválida"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Registro"
+        ],
+        "summary": "Deleta um projeto pelo ID",
+        "description": "",
+        "operationId": "deletaRegistro",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do projeto que deseja deletar",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "ID inválido"
+          },
+          "404": {
+            "description": "Projeto não encontrado"
+          }
+        }
+      }
+    },
+    "/registro/buscaPorStatus": {
+      "get": {
+        "tags": [
+          "Registro"
+        ],
+        "summary": "Encontra projetos pelo status",
+        "description": "Multiplos status podem ser passados utilizando a vígula para separar as strings",
+        "operationId": "encontraRegistroPeloStatus",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "status",
+            "in": "query",
+            "description": "Valores de status que precisam ser considerados pelo filtro",
+            "required": true,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "ativo",
+                "finalizado"
+              ],
+              "default": "available"
+            },
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Cosulta efetuada com sucesso.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Projeto"
+              }
+            }
+          },
+          "400": {
+            "description": "Valor de status inválido."
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "petstore_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "http://petstore.swagger.io/oauth/dialog",
+      "flow": "implicit",
+      "scopes": {
+        "write:pets": "modify pets in your account",
+        "read:pets": "read your pets"
+      }
+    },
+    "api_key": {
+      "type": "apiKey",
+      "name": "api_key",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "Funcionario": {
+      "type": "object",
+      "required": [
+        "nome",
+        "cpf"
+      ],
+      "properties": {
+        "nome": {
+          "type": "string",
+          "example": "João"
+        },
+        "cpf": {
+          "type": "integer",
+          "format": "int64",
+          "minLength": 11,
+          "maxLength": 11,
+          "example": "01234567890"
+        }
+      },
+      "xml": {
+        "name": "Funcionario"
+      }
+    },
+    "Registro": {
+      "type": "object",
+      "required": [
+        "entrada",
+        "cpfFuncionario",
+        "idProjeto"
+      ],
+      "properties": {
+        "entrada": {
+          "type": "string",
+          "format": "date",
+          "example": "2019-05-23T09:30:10"
+        },
+        "saida": {
+          "type": "string",
+          "example": "2019-05-23T18:30:26"
+        },
+        "cpfFuncionario": {
+          "type": "integer",
+          "format": "int64",
+          "minLength": 11,
+          "maxLength": 11,
+          "example": "01234567890"
+        },
+        "idProjeto": {
+          "type": "integer",
+          "format": "int64",
+          "example": 245
+        },
+        "status": {
+          "type": "string",
+          "example": "fechado"
+        }
+      },
+      "xml": {
+        "name": "Funcionario"
+      }
+    },
+    "Projeto": {
+      "type": "object",
+      "required": [
+        "id",
+        "nome",
+        "status"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "example": 245
+        },
+        "nome": {
+          "type": "string",
+          "example": "Banco virtual"
+        },
+        "status": {
+          "type": "string",
+          "example": "ativo"
+        },
+        "detalhe": {
+          "type": "string",
+          "format": "int64",
+          "example": "Esse é um projeto para um banco totalmente on-line"
+        }
+      },
+      "xml": {
+        "name": "Projeto"
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}
