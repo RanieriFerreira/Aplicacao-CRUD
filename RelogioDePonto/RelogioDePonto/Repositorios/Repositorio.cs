@@ -41,9 +41,9 @@ namespace RelogioDePonto.Repositories
         }
 
         // Grupo para salvar
-        public void Save(T entity)
+        public void Save()
         {
-            throw new NotImplementedException();
+            Context.SaveChanges();
         }
 
         //public void Dispose()

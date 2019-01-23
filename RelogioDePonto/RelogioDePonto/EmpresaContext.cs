@@ -14,5 +14,6 @@ namespace RelogioDePonto
         }
 
         public virtual DbSet<Funcionario> Funcionarios { get; set; }
+        public virtual DbSet<Projeto> Projetos { get; set; }
     }
 }

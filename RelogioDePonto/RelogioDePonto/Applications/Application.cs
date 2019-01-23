@@ -16,29 +16,32 @@ namespace RelogioDePonto.Applications
             _context = context;
         }
 
-        //public string BuscaTodos()
-        //{
-        //    var resposta =  new FuncionarioRepositorio(_context);
-        //    return resposta.BuscaMock();
-        //}
-
-        public IEnumerable<Funcionario> GetFuncionarioOrdenados()
+        // Funções do Funcionario
+        public IEnumerable<Funcionario> GetFuncionarios()
         {
+            var funcionario = new FuncionarioRepositorio(_context);
+            return funcionario.Get();
+        }
+        public Funcionario GetFuncionarioByCpf(int cpf)
+        {
+            var funcionario = new FuncionarioRepositorio(_context);
+            return funcionario.Get(cpf);
+        }
+        public void AddFuncionario(Funcionario funcionario)
+        {
+            var funcionarioTeste = new Funcionario(01324567980, "Novo Funcionario");
             var func = new FuncionarioRepositorio(_context);
-            return func.PegaFuncionariosOrdenados();
+            func.Add(funcionarioTeste);
+            func.Save();
+        }
+        public void RemoveFuncionario(Funcionario funcionario)
+        {
+            var funcionarioTeste = new Funcionario(01324567980, "Novo Funcionario");
+            var func = new FuncionarioRepositorio(_context);
+            func.Remove(funcionarioTeste);
         }
 
-        public void Add()
-        {
-            var funcionario = new Funcionario(01324567980, "Novo Funcionario");
-            var func = new FuncionarioRepositorio(_context);
-            func.Add(funcionario);
-        }
-
-        public IEnumerable<Funcionario> Get()
-        {
-            var func = new FuncionarioRepositorio(_context);
-            return func.Get();
-        }
+        // Funções da Empresa
+            // TODO 
     }
 }

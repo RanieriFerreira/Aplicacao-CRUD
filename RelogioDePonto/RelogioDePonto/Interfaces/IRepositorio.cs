@@ -17,7 +17,7 @@ namespace RelogioDePonto.Interfaces
         void Add(T entity);
 
         // Grupo para salvar
-        void Save(T entity);
+        void Save();
 
         // Grupo para deletar
         void Remove(T entity);

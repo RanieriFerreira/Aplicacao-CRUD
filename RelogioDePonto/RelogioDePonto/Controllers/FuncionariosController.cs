@@ -27,49 +27,40 @@ namespace RelogioDePonto.Controllers
         public IEnumerable<Funcionario> GetFuncionarios()
         {
             var app = new Application(_context);
-            return app.Get();
-            //var app = new Application(_context);
-            //return app.BuscaTodos();
-            ////var funcionarios = new List<Funcionario>();
-            ////var funcionario = new Funcionario();
-            ////funcionario.Nome = "Funcionario 1";
-            ////funcionario.Cpf = 01234657890;
-            ////funcionarios.Add(funcionario);
-            ////return funcionarios;
-
-            ////return _context.Funcionarios;
+            return app.GetFuncionarios();
         }
 
         // GET: api/Funcionarios/5
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetFuncionario([FromRoute] int id)
+        [HttpGet("{cpf}")]
+        public ActionResult<Funcionario> GetFuncionario([FromRoute] int cpf)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
 
-            var funcionario = await _context.Funcionarios.FindAsync(id);
+            //var funcionario = await _context.Funcionarios.FindAsync(id);
 
-            if (funcionario == null)
-            {
-                return NotFound();
-            }
+            //if (funcionario == null)
+            //{
+            //    return NotFound();
+            //}
 
-            return Ok(funcionario);
-
+            //return Ok(funcionario);
+            var app = new Application(_context);
+            return app.GetFuncionarioByCpf(cpf);
         }
 
         // PUT: api/Funcionarios/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutFuncionario([FromRoute] int id, [FromBody] Funcionario funcionario)
+        [HttpPut("{cpf}")]
+        public async Task<IActionResult> PutFuncionario([FromRoute] int cpf, [FromBody] Funcionario funcionario)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != funcionario.Cpf)
+            if (cpf != funcionario.Cpf)
             {
                 return BadRequest();
             }
@@ -82,7 +73,7 @@ namespace RelogioDePonto.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!FuncionarioExists(id))
+                if (!FuncionarioExists(cpf))
                 {
                     return NotFound();
                 }
@@ -110,7 +101,7 @@ namespace RelogioDePonto.Controllers
             //return CreatedAtAction("GetFuncionario", new { id = funcionario.Cpf }, funcionario);
 
             var app = new Application(_context);
-            app.Add();
+            app.AddFuncionario(funcionario);
         }
         //public async Task<IActionResult> PostFuncionario([FromBody] Funcionario funcionario)
         //{
@@ -129,15 +120,15 @@ namespace RelogioDePonto.Controllers
         //}
 
         // DELETE: api/Funcionarios/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteFuncionario([FromRoute] int id)
+        [HttpDelete("{cpf}")]
+        public async Task<IActionResult> DeleteFuncionario([FromRoute] int cpf)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var funcionario = await _context.Funcionarios.FindAsync(id);
+            var funcionario = await _context.Funcionarios.FindAsync(cpf);
             if (funcionario == null)
             {
                 return NotFound();
@@ -149,9 +140,9 @@ namespace RelogioDePonto.Controllers
             return Ok(funcionario);
         }
 
-        private bool FuncionarioExists(int id)
+        private bool FuncionarioExists(int cpf)
         {
-            return _context.Funcionarios.Any(e => e.Cpf == id);
+            return _context.Funcionarios.Any(e => e.Cpf == cpf);
         }
     }
 }

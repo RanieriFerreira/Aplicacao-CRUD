@@ -1,4 +1,4 @@
-﻿using RelogioDePonto.Interfaces;
+﻿using Microsoft.EntityFrameworkCore;
 using RelogioDePonto.Modelos;
 using RelogioDePonto.Repositories;
 using System;
@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace RelogioDePonto.Repositorios
 {
-    public class FuncionarioRepositorio : Repositorio<Funcionario>
+    public class ProjetoRepositorio : Repositorio<Projeto>
     {
-        public FuncionarioRepositorio (EmpresaContext context) : base(context)
+        public ProjetoRepositorio(EmpresaContext context) : base(context)
         {
         }
     }
