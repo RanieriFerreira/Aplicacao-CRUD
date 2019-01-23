@@ -24,10 +24,20 @@ namespace RelogioDePonto.Controllers
 
         // GET: api/Funcionarios
         [HttpGet]
-        public string GetFuncionarios()
+        public IEnumerable<Funcionario> GetFuncionarios()
         {
-            var app = new Application();
-            return app.BuscaTodos();
+            var app = new Application(_context);
+            return app.Get();
+            //var app = new Application(_context);
+            //return app.BuscaTodos();
+            ////var funcionarios = new List<Funcionario>();
+            ////var funcionario = new Funcionario();
+            ////funcionario.Nome = "Funcionario 1";
+            ////funcionario.Cpf = 01234657890;
+            ////funcionarios.Add(funcionario);
+            ////return funcionarios;
+
+            ////return _context.Funcionarios;
         }
 
         // GET: api/Funcionarios/5
@@ -47,6 +57,7 @@ namespace RelogioDePonto.Controllers
             }
 
             return Ok(funcionario);
+
         }
 
         // PUT: api/Funcionarios/5
@@ -86,18 +97,36 @@ namespace RelogioDePonto.Controllers
 
         // POST: api/Funcionarios
         [HttpPost]
-        public async Task<IActionResult> PostFuncionario([FromBody] Funcionario funcionario)
+        public void PostFuncionario([FromBody] Funcionario funcionario)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
 
-            _context.Funcionarios.Add(funcionario);
-            await _context.SaveChangesAsync();
+            //_context.Funcionarios.Add(funcionario);
+            //await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetFuncionario", new { id = funcionario.Cpf }, funcionario);
+            //return CreatedAtAction("GetFuncionario", new { id = funcionario.Cpf }, funcionario);
+
+            var app = new Application(_context);
+            app.Add();
         }
+        //public async Task<IActionResult> PostFuncionario([FromBody] Funcionario funcionario)
+        //{
+        //    //if (!ModelState.IsValid)
+        //    //{
+        //    //    return BadRequest(ModelState);
+        //    //}
+
+        //    //_context.Funcionarios.Add(funcionario);
+        //    //await _context.SaveChangesAsync();
+
+        //    //return CreatedAtAction("GetFuncionario", new { id = funcionario.Cpf }, funcionario);
+
+        //    var app = new Application(_context);
+        //    return app.Add();
+        //}
 
         // DELETE: api/Funcionarios/5
         [HttpDelete("{id}")]

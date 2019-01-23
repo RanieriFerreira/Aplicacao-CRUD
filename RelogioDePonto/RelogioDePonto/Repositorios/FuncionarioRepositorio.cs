@@ -10,13 +10,20 @@ namespace RelogioDePonto.Repositorios
 {
     public class FuncionarioRepositorio : Repositorio<Funcionario>
     {
-        //public FuncionarioRepositorio (EmpresaContext context) : base(context)
-        //{
-        //}
-
-        public string BuscaMock()
+        public FuncionarioRepositorio (EmpresaContext context) : base(context)
         {
-            return "Mock1";
+        }
+
+        public IEnumerable<Funcionario> PegaFuncionariosOrdenados()
+        {
+            var funcionarios = new List<Funcionario>();
+            funcionarios.Add(new Funcionario(01234567980, "Funcionario 1"));
+            funcionarios.Add(new Funcionario(01234567980, "Funcionario 2"));
+            funcionarios.Add(new Funcionario(01234567980, "Funcionario 3"));
+            funcionarios.Add(new Funcionario(01234567980, "Funcionario 4"));
+            funcionarios.Add(new Funcionario(01234567980, "Funcionario 5"));
+            return funcionarios;
+            //return EmpresaContext.Funcionarios.OrderByDescending(c => c.Nome).Take(5).ToList();
         }
 
         public EmpresaContext EmpresaContext

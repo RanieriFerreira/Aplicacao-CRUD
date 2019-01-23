@@ -13,10 +13,10 @@ namespace RelogioDePonto.Repositories
     {
         protected DbContext Context;
 
-        //public Repositorio(DbContext context)
-        //{
-        //    Context = context;
-        //}
+        public Repositorio(DbContext context)
+        {
+            Context = context;
+        }
 
         // Grupo para recuperar dados
         public T Get(int id)
