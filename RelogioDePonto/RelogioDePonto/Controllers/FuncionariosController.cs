@@ -15,134 +15,45 @@ namespace RelogioDePonto.Controllers
     [ApiController]
     public class FuncionariosController : ControllerBase
     {
-        private readonly EmpresaContext _context;
+        private ApplicationFuncionario _applicationFuncionario;
 
         public FuncionariosController(EmpresaContext context)
         {
-            _context = context;
+            _applicationFuncionario = new ApplicationFuncionario(context);
         }
 
         // GET: api/Funcionarios
         [HttpGet]
-        public IEnumerable<Funcionario> GetFuncionarios()
+        public IEnumerable<Funcionario> Get()
         {
-            var app = new Application(_context);
-            return app.GetFuncionarios();
+            return _applicationFuncionario.Get();
         }
 
         // GET: api/Funcionarios/5
         [HttpGet("{cpf}")]
-        public ActionResult<Funcionario> GetFuncionario([FromRoute] int cpf)
+        public Funcionario Get([FromRoute] int cpf)
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    return BadRequest(ModelState);
-            //}
-
-            //var funcionario = await _context.Funcionarios.FindAsync(id);
-
-            //if (funcionario == null)
-            //{
-            //    return NotFound();
-            //}
-
-            //return Ok(funcionario);
-            var app = new Application(_context);
-            return app.GetFuncionarioByCpf(cpf);
-        }
-
-        // PUT: api/Funcionarios/5
-        [HttpPut("{cpf}")]
-        public async Task<IActionResult> PutFuncionario([FromRoute] int cpf, [FromBody] Funcionario funcionario)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (cpf != funcionario.Cpf)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(funcionario).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!FuncionarioExists(cpf))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            return _applicationFuncionario.Get(cpf);
         }
 
         // POST: api/Funcionarios
         [HttpPost]
-        public void PostFuncionario([FromBody] Funcionario funcionario)
+        public void Post([FromBody] Funcionario entity)
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    return BadRequest(ModelState);
-            //}
-
-            //_context.Funcionarios.Add(funcionario);
-            //await _context.SaveChangesAsync();
-
-            //return CreatedAtAction("GetFuncionario", new { id = funcionario.Cpf }, funcionario);
-
-            var app = new Application(_context);
-            app.AddFuncionario(funcionario);
+            _applicationFuncionario.Add(entity);
         }
-        //public async Task<IActionResult> PostFuncionario([FromBody] Funcionario funcionario)
-        //{
-        //    //if (!ModelState.IsValid)
-        //    //{
-        //    //    return BadRequest(ModelState);
-        //    //}
 
-        //    //_context.Funcionarios.Add(funcionario);
-        //    //await _context.SaveChangesAsync();
-
-        //    //return CreatedAtAction("GetFuncionario", new { id = funcionario.Cpf }, funcionario);
-
-        //    var app = new Application(_context);
-        //    return app.Add();
-        //}
+        // PUT: api/Funcionarios/5
+        [HttpPut("{cpf}")]
+        public void Put([FromRoute] int cpf, [FromBody] Funcionario entity)
+        {
+        }
 
         // DELETE: api/Funcionarios/5
         [HttpDelete("{cpf}")]
-        public async Task<IActionResult> DeleteFuncionario([FromRoute] int cpf)
+        public void Delete([FromRoute] int cpf, [FromBody] Funcionario entity)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var funcionario = await _context.Funcionarios.FindAsync(cpf);
-            if (funcionario == null)
-            {
-                return NotFound();
-            }
-
-            _context.Funcionarios.Remove(funcionario);
-            await _context.SaveChangesAsync();
-
-            return Ok(funcionario);
-        }
-
-        private bool FuncionarioExists(int cpf)
-        {
-            return _context.Funcionarios.Any(e => e.Cpf == cpf);
+            _applicationFuncionario.Remove(entity);
         }
     }
 }

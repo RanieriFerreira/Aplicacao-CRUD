@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <Folder Include="Contextos\" />
+    <Folder Include="Testes\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
