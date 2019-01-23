@@ -26,10 +26,10 @@ namespace Tests
 
             // To query our database we need to implement IQueryable 
             var mockSet = new Mock<DbSet<Funcionario>>();
-            //mockSet.As<IQueryable<Funcionario>>().Setup(m => m.Provider).Returns(funcionarios.Provider);
-            //mockSet.As<IQueryable<Funcionario>>().Setup(m => m.Expression).Returns(funcionarios.Expression);
-            //mockSet.As<IQueryable<Funcionario>>().Setup(m => m.ElementType).Returns(funcionarios.ElementType);
-            //mockSet.As<IQueryable<Funcionario>>().Setup(m => m.GetEnumerator()).Returns(funcionarios.GetEnumerator());
+            mockSet.As<IQueryable<Funcionario>>().Setup(m => m.Provider).Returns(funcionarios.Provider);
+            mockSet.As<IQueryable<Funcionario>>().Setup(m => m.Expression).Returns(funcionarios.Expression);
+            mockSet.As<IQueryable<Funcionario>>().Setup(m => m.ElementType).Returns(funcionarios.ElementType);
+            mockSet.As<IQueryable<Funcionario>>().Setup(m => m.GetEnumerator()).Returns(funcionarios.GetEnumerator());
 
             var mockContext = new Mock<EmpresaContext>();
             mockContext.Setup(c => c.Funcionarios).Returns(mockSet.Object);
@@ -41,7 +41,7 @@ namespace Tests
             // Asset
             // Ensure that 2 books are returned and
             // the first one's title is "Hamlet"
-            Assert.Equal(2, 2);
+            Assert.Equal(2, actual.Count());
             Assert.Equal("Funcionario 1", actual.First().Nome);
         }
 

@@ -32,12 +32,14 @@ namespace RelogioDePonto.Repositories
         public void Add(T entity)
         {
             Context.Set<T>().Add(entity);
+            Save();
         }
 
         // Grupo para deletar
         public void Remove(T entity)
         {
             Context.Set<T>().Remove(entity);
+            Save();
         }
 
         // Grupo para salvar
