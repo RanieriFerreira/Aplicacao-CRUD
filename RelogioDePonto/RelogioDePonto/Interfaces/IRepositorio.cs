@@ -9,7 +9,7 @@ namespace RelogioDePonto.Interfaces
     public interface IRepositorio<T> where T : class
     {
         // Grupo para buscar
-        T Get(int id);
+        T Get(double id);
         IEnumerable<T> Get();
         //IQueryable<T> Query(Expression<Func<T, bool>> filter);
 

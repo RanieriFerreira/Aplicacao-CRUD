@@ -8,6 +8,5 @@ namespace RelogioDePonto.Interfaces
 {
     public interface IFuncionarioRepositorio : IRepositorio<Funcionario>
     {
-
     }
 }

@@ -14,7 +14,7 @@ namespace RelogioDePonto.Modelos
         //    Nome = nome;
         //}
         [Key]
-        public int Cpf { get; set; }
+        public double Cpf { get; set; }
         public string Nome { get; set; }
     }
 }

@@ -19,7 +19,7 @@ namespace RelogioDePonto.Repositories
         }
 
         // Grupo para recuperar dados
-        public T Get(int id)
+        public T Get(double id)
         {
             return Context.Set<T>().Find(id);
         }
@@ -47,19 +47,5 @@ namespace RelogioDePonto.Repositories
         {
             Context.SaveChanges();
         }
-
-        //public void Dispose()
-        //{
-        //    if (_context != null)
-        //    {
-        //        _context.Dispose();
-        //    }
-        //    GC.SuppressFinalize(this);
-        //}
-
-        //public IQueryable<FuncionarioRepositorio> Query(Expression<Func<FuncionarioRepositorio, bool>> filter)
-        //{
-        //    throw new NotImplementedException();
-        //}
     }
 }

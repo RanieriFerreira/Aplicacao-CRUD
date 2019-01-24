@@ -1,4 +1,6 @@
-﻿using RelogioDePonto.Interfaces;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using RelogioDePonto.Interfaces;
 using RelogioDePonto.Modelos;
 using RelogioDePonto.Repositories;
 using System;
@@ -10,8 +12,10 @@ namespace RelogioDePonto.Repositorios
 {
     public class FuncionarioRepositorio : Repositorio<Funcionario>, IFuncionarioRepositorio
     {
+        private DbContext _context;
         public FuncionarioRepositorio (EmpresaContext context) : base(context)
         {
+            _context = context;
         }
     }
 }
