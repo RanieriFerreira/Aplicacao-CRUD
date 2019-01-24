@@ -83,5 +83,8 @@ namespace Tests
                 Equals(1, context.Funcionarios.Count());
             }
         }
+
+        // TODO - Testar deleção de usuário
+        // TODO - Testar get por Cpf
     }
 }

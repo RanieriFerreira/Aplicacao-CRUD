@@ -1052,6 +1052,27 @@
           "build/netcoreapp1.0/_._": {}
         }
       },
+      "PagedList/1.17.0": {
+        "type": "package",
+        "compile": {
+          "lib/net40/PagedList.dll": {}
+        },
+        "runtime": {
+          "lib/net40/PagedList.dll": {}
+        }
+      },
+      "PagedList.Mvc/4.5.0": {
+        "type": "package",
+        "dependencies": {
+          "PagedList": "1.17.0"
+        },
+        "compile": {
+          "lib/net40/PagedList.Mvc.dll": {}
+        },
+        "runtime": {
+          "lib/net40/PagedList.Mvc.dll": {}
+        }
+      },
       "Remotion.Linq/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -2936,6 +2957,7 @@
           "Moq": "4.10.1",
           "NUnit": "3.11.0",
           "NUnit3TestAdapter": "3.12.0",
+          "PagedList.Mvc": "4.5.0",
           "System.Interactive.Async": "3.2.0",
           "TestToolsToXunitProxy": "0.0.4"
         },
@@ -4497,6 +4519,33 @@
         "build/netcoreapp1.0/nunit.engine.netstandard.dll",
         "nunit3testadapter.3.12.0.nupkg.sha512",
         "nunit3testadapter.nuspec"
+      ]
+    },
+    "PagedList/1.17.0": {
+      "sha512": "S31yV7g+pBRF8b/DViSQ6/T4Edij9XwatsBrGSUtYc0/nL/xe9sOJfCSq6jHA4DGcaEVYaFpbqmQhbjoaGNKTw==",
+      "type": "package",
+      "path": "pagedlist/1.17.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/PagedList.dll",
+        "lib/net40/PagedList.xml",
+        "pagedlist.1.17.0.nupkg.sha512",
+        "pagedlist.nuspec"
+      ]
+    },
+    "PagedList.Mvc/4.5.0": {
+      "sha512": "xGTT268/6/vS+mTk39MNL9Z20410eATJvZ/UVE0bFIje17ab4cMWHokK43NoY7PLQlG9l572GA8H4JsJ9c/lMA==",
+      "type": "package",
+      "path": "pagedlist.mvc/4.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Content/Content/PagedList.css",
+        "lib/net40/PagedList.Mvc.XML",
+        "lib/net40/PagedList.Mvc.dll",
+        "pagedlist.mvc.4.5.0.nupkg.sha512",
+        "pagedlist.mvc.nuspec"
       ]
     },
     "Remotion.Linq/2.2.0": {
@@ -9179,6 +9228,7 @@
       "Microsoft.EntityFrameworkCore.InMemory >= 2.1.4",
       "Microsoft.NET.Test.Sdk >= 15.9.0",
       "Microsoft.NETCore.App >= 2.1.0",
+      "PagedList.Mvc >= 4.5.0",
       "RelogioDePonto >= 1.0.0",
       "System.Interactive.Async >= 3.2.0",
       "TestToolsToXunitProxy >= 0.0.4",
@@ -9244,6 +9294,10 @@
             "version": "[2.1.0, )",
             "autoReferenced": true
           },
+          "PagedList.Mvc": {
+            "target": "Package",
+            "version": "[4.5.0, )"
+          },
           "System.Interactive.Async": {
             "target": "Package",
             "version": "[3.2.0, )"
@@ -9268,5 +9322,27 @@
         "warn": true
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'PagedList 1.17.0' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.1'. This package may not be fully compatible with your project.",
+      "libraryId": "PagedList",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v2.1"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'PagedList.Mvc 4.5.0' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.1'. This package may not be fully compatible with your project.",
+      "libraryId": "PagedList.Mvc",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v2.1"
+      ]
+    }
+  ]
 }

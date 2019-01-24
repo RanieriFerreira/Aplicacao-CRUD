@@ -16,5 +16,6 @@ namespace RelogioDePonto.Modelos
         [Key]
         public double Cpf { get; set; }
         public string Nome { get; set; }
+        public int Status { get; set; }
     }
 }

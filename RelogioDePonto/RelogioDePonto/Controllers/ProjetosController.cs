@@ -20,28 +20,28 @@ namespace RelogioDePonto.Controllers
             _applicationProjeto = new ApplicationProjeto(context);
         }
 
-        // GET: api/Projeto
+        // GET: api/Projetos
         [HttpGet]
         public IEnumerable<Projeto> Get()
         {
             return _applicationProjeto.Get();
         }
 
-        // GET: api/Projeto/5
+        // GET: api/Projetos/5
         [HttpGet("{id}")]
         public Projeto Get([FromRoute]int id)
         {
             return _applicationProjeto.Get(id);
         }
 
-        // POST: api/Projeto
+        // POST: api/Projetos
         [HttpPost]
         public void Post([FromBody] Projeto entity)
         {
             _applicationProjeto.Add(entity);
         }
 
-        // PUT: api/Projeto/5
+        // PUT: api/Projetos/5
         [HttpPut("{id}")]
         public void Put([FromRoute] int id, [FromBody] Projeto entity)
         {

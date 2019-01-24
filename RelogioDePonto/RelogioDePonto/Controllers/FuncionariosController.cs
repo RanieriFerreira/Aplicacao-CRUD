@@ -36,6 +36,13 @@ namespace RelogioDePonto.Controllers
             return _applicationFuncionario.Get(cpf);
         }
 
+        // GET: api/Funcionarios/Nome/5/1
+        [HttpGet("/pag/{order}/{number}/{size}")]
+        public IEnumerable<Funcionario> GetPagedAndOrdered([FromRoute]string order, int size, int number)
+        {
+            return _applicationFuncionario.GetOrderBy(order, size, number);
+        }
+
         // POST: api/Funcionarios
         [HttpPost]
         public void Post([FromBody] Funcionario entity)

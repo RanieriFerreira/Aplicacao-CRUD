@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "62771cf347bd705b0ff3fa9ac3a6b8a2ebbce3a5"
+    "signature": "2d2cd25358bd89f1e4e9cd01fc4dd71f3a98c3ae"
   },
   "compilationOptions": {
     "defines": [
@@ -32,6 +32,7 @@
           "Moq": "4.10.1",
           "NUnit": "3.11.0",
           "NUnit3TestAdapter": "3.12.0",
+          "PagedList.Mvc": "4.5.0",
           "System.Interactive.Async": "3.2.0",
           "TestToolsToXunitProxy": "0.0.4"
         },
@@ -526,6 +527,31 @@
           "System.Threading.Thread": "4.3.0",
           "System.Xml.XPath.XmlDocument": "4.3.0",
           "System.Xml.XmlDocument": "4.3.0"
+        }
+      },
+      "PagedList/1.17.0": {
+        "runtime": {
+          "lib/net40/PagedList.dll": {
+            "assemblyVersion": "1.17.0.0",
+            "fileVersion": "1.17.0.0"
+          }
+        },
+        "compile": {
+          "lib/net40/PagedList.dll": {}
+        }
+      },
+      "PagedList.Mvc/4.5.0": {
+        "dependencies": {
+          "PagedList": "1.17.0"
+        },
+        "runtime": {
+          "lib/net40/PagedList.Mvc.dll": {
+            "assemblyVersion": "4.5.0.0",
+            "fileVersion": "4.5.0.0"
+          }
+        },
+        "compile": {
+          "lib/net40/PagedList.Mvc.dll": {}
         }
       },
       "Remotion.Linq/2.2.0": {
@@ -4001,6 +4027,20 @@
       "sha512": "sha512-H1zF3uzN+nheWW3wfx1xyottGjLJxi8E3ll8XV9ga7lEClLCoILvnsWgIZRD8WGFVuEnodA47OpCqu7y/yCDsQ==",
       "path": "nunit3testadapter/3.12.0",
       "hashPath": "nunit3testadapter.3.12.0.nupkg.sha512"
+    },
+    "PagedList/1.17.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-S31yV7g+pBRF8b/DViSQ6/T4Edij9XwatsBrGSUtYc0/nL/xe9sOJfCSq6jHA4DGcaEVYaFpbqmQhbjoaGNKTw==",
+      "path": "pagedlist/1.17.0",
+      "hashPath": "pagedlist.1.17.0.nupkg.sha512"
+    },
+    "PagedList.Mvc/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-xGTT268/6/vS+mTk39MNL9Z20410eATJvZ/UVE0bFIje17ab4cMWHokK43NoY7PLQlG9l572GA8H4JsJ9c/lMA==",
+      "path": "pagedlist.mvc/4.5.0",
+      "hashPath": "pagedlist.mvc.4.5.0.nupkg.sha512"
     },
     "Remotion.Linq/2.2.0": {
       "type": "package",
