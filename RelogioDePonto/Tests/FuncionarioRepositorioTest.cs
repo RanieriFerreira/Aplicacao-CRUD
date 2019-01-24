@@ -78,7 +78,10 @@ namespace Tests
             }
 
             // Use a separate instance of the context to verify correct data was saved to database
-            
+            using (var context = new EmpresaContext(options))
+            {
+                Assert.AreEqual(1, context.Funcionarios.Count());
+            }
         }
 
         [TestMethod]
