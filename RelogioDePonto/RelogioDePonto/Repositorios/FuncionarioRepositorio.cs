@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RelogioDePonto.Repositorios
 {
-    public class FuncionarioRepositorio : Repositorio<Funcionario>
+    public class FuncionarioRepositorio : Repositorio<Funcionario>, IFuncionarioRepositorio
     {
         public FuncionarioRepositorio (EmpresaContext context) : base(context)
         {

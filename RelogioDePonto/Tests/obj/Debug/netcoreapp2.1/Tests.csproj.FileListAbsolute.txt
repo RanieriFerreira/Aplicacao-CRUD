@@ -15,5 +15,3 @@ C:\Users\ranieri.ferreira\Desktop\Aplicacao-CRUD\RelogioDePonto\Tests\bin\Debug\
 C:\Users\ranieri.ferreira\Desktop\Aplicacao-CRUD\RelogioDePonto\Tests\obj\Debug\netcoreapp2.1\Tests.csproj.CopyComplete
 C:\Users\ranieri.ferreira\Desktop\Aplicacao-CRUD\RelogioDePonto\Tests\obj\Debug\netcoreapp2.1\Tests.dll
 C:\Users\ranieri.ferreira\Desktop\Aplicacao-CRUD\RelogioDePonto\Tests\obj\Debug\netcoreapp2.1\Tests.pdb
-C:\Users\ranieri.ferreira\Desktop\Aplicacao-CRUD\RelogioDePonto\Tests\bin\Debug\netcoreapp2.1\Microsoft.EntityFrameworkCore.dll
-C:\Users\ranieri.ferreira\Desktop\Aplicacao-CRUD\RelogioDePonto\Tests\bin\Debug\netcoreapp2.1\Microsoft.EntityFrameworkCore.xml

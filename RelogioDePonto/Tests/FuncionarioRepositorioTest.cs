@@ -1,70 +1,86 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using Moq;
 using RelogioDePonto;
 using RelogioDePonto.Modelos;
 using RelogioDePonto.Repositorios;
-using Xunit;
+using TestToolsToXunitProxy;
 
 namespace Tests
 {
+    [TestClass]
     public class FuncionarioRepositorioTest
     {
-        [Fact]
+        [TestMethod]
         public void TesteDeBuscaDeUsuario()
         {
-            // Arrange - We're mocking our dbSet & dbContext
-            // in-memory data
-            IQueryable<Funcionario> funcionarios = new List<Funcionario>
+            var options = new DbContextOptionsBuilder<EmpresaContext>()
+                .UseInMemoryDatabase(databaseName: "Get_funcionarios")
+                .Options;
+
+            // Insert seed data into the database using one instance of the context
+            using (var context = new EmpresaContext(options))
             {
-                new Funcionario(00000000000,"Funcionario 1"),
-                new Funcionario(1111111111,"Funcionario 2")
-            }.AsQueryable();
+                context.Funcionarios.Add(new Funcionario { Cpf = 111111111, Nome = "Funcionario 1" });
+                context.Funcionarios.Add(new Funcionario { Cpf = 222222222, Nome = "Funcionario 2" });
+                context.Funcionarios.Add(new Funcionario { Cpf = 333333333, Nome = "Funcionario 3" });
+                context.SaveChanges();
+            }
 
-            // To query our database we need to implement IQueryable 
-            var mockSet = new Mock<DbSet<Funcionario>>();
-            mockSet.As<IQueryable<Funcionario>>().Setup(m => m.Provider).Returns(funcionarios.Provider);
-            mockSet.As<IQueryable<Funcionario>>().Setup(m => m.Expression).Returns(funcionarios.Expression);
-            mockSet.As<IQueryable<Funcionario>>().Setup(m => m.ElementType).Returns(funcionarios.ElementType);
-            mockSet.As<IQueryable<Funcionario>>().Setup(m => m.GetEnumerator()).Returns(funcionarios.GetEnumerator());
-
-            var mockContext = new Mock<EmpresaContext>();
-            mockContext.Setup(c => c.Funcionarios).Returns(mockSet.Object);
-
-            // Act - fetch books
-            var repository = new FuncionarioRepositorio(mockContext.Object);
-            var actual = repository.Get();
-
-            // Asset
-            // Ensure that 2 books are returned and
-            // the first one's title is "Hamlet"
-            Assert.Equal(2, actual.Count());
-            Assert.Equal("Funcionario 1", actual.First().Nome);
+            // Use a clean instance of the context to run the test
+            using (var context = new EmpresaContext(options))
+            {
+                var service = new FuncionarioRepositorio(context);
+                var result = service.Get();
+                Equals(3, result.Count());
+            }
         }
 
-        [Fact]
+        [TestMethod]
         public void TesteDeCriacaoDeUsuario()
         {
-            // Arrange - We're mocking our dbSet & dbContext
-            // in-memory implementations of you context and sets
-            var mockSet = new Mock<DbSet<Funcionario>>();
+            var options = new DbContextOptionsBuilder<EmpresaContext>()
+               .UseInMemoryDatabase(databaseName: "Add_funcionario")
+               .Options;
 
-            var mockContext = new Mock<EmpresaContext>();
-            mockContext.Setup(m => m.Funcionarios).Returns(mockSet.Object);
+            // Run the test against one instance of the context
+            using (var context = new EmpresaContext(options))
+            {
+                var service = new FuncionarioRepositorio(context);
+                var funcionario = new Funcionario { Cpf = 1111, Nome = "Novo Funcionario" };
+                service.Add(funcionario);
+            }
 
-            // Act - Add the book
-            var repository = new FuncionarioRepositorio(mockContext.Object);
-            var funcionario = new Funcionario(33333333, "Funcionario 3");
-            repository.Add(funcionario);
+            // Use a separate instance of the context to verify correct data was saved to database
+            using (var context = new EmpresaContext(options))
+            {
+                Equals(1, context.Funcionarios.Count());
+                Equals("Novo Funcionario", context.Funcionarios.Single().Nome);
+                Equals(1111, context.Funcionarios.Single().Cpf);
+            }
+        }
 
-            // Assert
-            // These two lines of code verifies that a book was added once and
-            // we saved our changes once.
-            mockSet.Verify(m => m.Add(It.IsAny<Funcionario>()), Times.Once);
-            mockContext.Verify(m => m.SaveChanges(), Times.Once);
+        [TestMethod]
+        public void TesteAddFuncionariosIguais()
+        {
+            var options = new DbContextOptionsBuilder<EmpresaContext>()
+               .UseInMemoryDatabase(databaseName: "Add_funcionarios_iguais")
+               .Options;
+
+            // Run the test against one instance of the context
+            using (var context = new EmpresaContext(options))
+            {
+                var service = new FuncionarioRepositorio(context);
+                var funcionario1 = new Funcionario { Cpf = 1111, Nome = "Novo Funcionario" };
+                var funcionario2 = new Funcionario { Cpf = 1111, Nome = "Novo Funcionario" };
+                service.Add(funcionario1);
+                service.Add(funcionario2);
+            }
+
+            // Use a separate instance of the context to verify correct data was saved to database
+            using (var context = new EmpresaContext(options))
+            {
+                Equals(2, context.Funcionarios.Count());
+            }
         }
     }
 }

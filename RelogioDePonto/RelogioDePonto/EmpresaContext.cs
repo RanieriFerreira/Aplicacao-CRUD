@@ -9,6 +9,10 @@ namespace RelogioDePonto
 {
     public class EmpresaContext : DbContext 
     {
+        public EmpresaContext()
+        {
+        }
+
         public EmpresaContext(DbContextOptions<EmpresaContext> options) : base(options)
         {
         }
