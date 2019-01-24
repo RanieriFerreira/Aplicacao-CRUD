@@ -100,7 +100,6 @@ namespace RelogioDePonto.Applications
         {
             if (!Exists(funcionario.Cpf))
             {
-                // Verificar se o Projeto existe
                 _funcionarioRepositorio.Remove(funcionario);
                 return funcionario.Cpf.ToString();
             }
