@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace RelogioDePonto.Interfaces
 {
-    public interface IFuncionarioRepositorio : IRepositorio<Funcionario>
-    { 
+    public interface IProjetoRepositorio : IRepositorio<Projeto>
+    {
+        IEnumerable<Projeto> Get(string nome);
     }
 }
