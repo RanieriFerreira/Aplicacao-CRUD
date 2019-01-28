@@ -25,7 +25,25 @@ namespace RelogioDePonto.Controllers
         }
 
         // POST api/values
+        /// <summary>
+        /// Creates a TodoItem.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     POST /Todo
+        ///     {
+        ///        "value": string
+        ///     }
+        ///
+        /// </remarks>
+        /// <param name="value"></param>
+        /// <returns>A newly created TodoItem</returns>
+        /// <response code="201">Returns the newly created item</response>
+        /// <response code="400">If the item is null</response>            
         [HttpPost]
+        [ProducesResponseType(201)]
+        [ProducesResponseType(400)]
         public void Post([FromBody] string value)
         {
         }
