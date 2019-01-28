@@ -18,11 +18,11 @@ namespace RelogioDePonto.Applications
             _funcionarioRepositorio = new FuncionarioRepositorio(context);
         }
 
-        public Funcionario Get(int cpf)
+        public Funcionario Get(int Cpf)
         {
-            if (Exists(cpf))
+            if (Exists(Cpf))
             {
-                return _funcionarioRepositorio.Get(cpf);
+                return _funcionarioRepositorio.Get(Cpf);
             }
             else
             {
@@ -81,7 +81,7 @@ namespace RelogioDePonto.Applications
 
         public bool Exists(double cpf)
         {
-            if (_funcionarioRepositorio.Get(cpf) != null)
+            if (_funcionarioRepositorio.Get(cpf) == null)
             {
                 return false;
             }

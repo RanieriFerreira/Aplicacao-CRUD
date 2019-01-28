@@ -36,6 +36,10 @@ namespace RelogioDePonto.Controllers
         {
         }
 
+        /// <summary>
+        /// Deletes a specific TodoItem.
+        /// </summary>
+        /// <param name="id"></param>   
         // DELETE api/values/5
         [HttpDelete("{id}")]
         public void Delete(int id)

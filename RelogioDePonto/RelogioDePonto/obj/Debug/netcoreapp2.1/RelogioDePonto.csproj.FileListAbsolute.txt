@@ -15,3 +15,5 @@ C:\Users\ranieri.ferreira\Desktop\Aplicacao-CRUD\RelogioDePonto\RelogioDePonto\o
 C:\Users\ranieri.ferreira\Desktop\Aplicacao-CRUD\RelogioDePonto\RelogioDePonto\bin\Debug\netcoreapp2.1\NUnit3.TestAdapter.dll
 C:\Users\ranieri.ferreira\Desktop\Aplicacao-CRUD\RelogioDePonto\RelogioDePonto\bin\Debug\netcoreapp2.1\NUnit3.TestAdapter.pdb
 C:\Users\ranieri.ferreira\Desktop\Aplicacao-CRUD\RelogioDePonto\RelogioDePonto\bin\Debug\netcoreapp2.1\nunit.engine.netstandard.dll
+C:\Users\ranieri.ferreira\Desktop\Aplicacao-CRUD\RelogioDePonto\RelogioDePonto\bin\Debug\netcoreapp2.1\RelogioDePonto.xml
+C:\Users\ranieri.ferreira\Desktop\Aplicacao-CRUD\RelogioDePonto\RelogioDePonto\obj\Debug\netcoreapp2.1\RelogioDePonto.xml

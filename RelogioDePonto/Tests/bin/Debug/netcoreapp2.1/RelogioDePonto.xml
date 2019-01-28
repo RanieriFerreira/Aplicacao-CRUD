@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RelogioDePonto</name>
+    </assembly>
+    <members>
+        <member name="M:RelogioDePonto.Controllers.ValuesController.Delete(System.Int32)">
+            <summary>
+            Deletes a specific TodoItem.
+            </summary>
+            <param name="id"></param>   
+        </member>
+    </members>
+</doc>

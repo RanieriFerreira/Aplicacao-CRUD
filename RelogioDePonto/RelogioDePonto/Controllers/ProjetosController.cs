@@ -27,6 +27,13 @@ namespace RelogioDePonto.Controllers
             return _applicationProjeto.Get();
         }
 
+        // GET: api/Projetos/<nome projeto>
+        [HttpGet("{nome}")]
+        public IEnumerable<Projeto> Get([FromRoute]string nome)
+        {
+            return _applicationProjeto.Get(nome);
+        }
+
         // GET: api/Projetos/5
         [HttpGet("{id}")]
         public Projeto Get([FromRoute]int id)
