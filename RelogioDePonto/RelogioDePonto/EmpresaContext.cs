@@ -19,6 +19,7 @@ namespace RelogioDePonto
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+          // optionsBuilder.UseSqlServer(@"Server=.\SQLEXPRESS;Database=EmpresaDB;Trusted_Connection=True;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
