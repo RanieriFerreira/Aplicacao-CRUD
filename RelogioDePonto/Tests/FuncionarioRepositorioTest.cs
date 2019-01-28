@@ -112,8 +112,6 @@ namespace Tests
             {
                 var service = new ApplicationFuncionario(context);
                 var result = service.GetOrderBy("Nome", 1, 4);
-                Assert.AreEqual("Novo Funcionario", context.Funcionarios.Single().Nome);
-                Assert.AreEqual(1111111111, context.Funcionarios.Single().Cpf);
                 Assert.AreEqual(4, result.Count());
             }
         }

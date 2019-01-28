@@ -17,6 +17,15 @@ namespace RelogioDePonto
         {
         }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+        }
+
+        // Entidades
         public virtual DbSet<Funcionario> Funcionarios { get; set; }
         public virtual DbSet<Projeto> Projetos { get; set; }
     }
