@@ -22,9 +22,9 @@ namespace RelogioDePonto.Repositorios
             return Context.Set<Projeto>().Find(id);
         }
 
-        public IEnumerable<Projeto> Get(string nome)
+        public IEnumerable<Projeto> Search(string nome)
         {
-            return _context.Set<Projeto>().FromSql("EXECUTE GetProjetos @p0", nome).ToList();
+            return _context.Set<Projeto>().FromSql("GetProjetos @p0", nome).ToList();
         }
     }
 }

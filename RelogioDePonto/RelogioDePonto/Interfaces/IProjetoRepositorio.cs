@@ -8,6 +8,6 @@ namespace RelogioDePonto.Interfaces
 {
     public interface IProjetoRepositorio : IRepositorio<Projeto>
     {
-        IEnumerable<Projeto> Get(string nome);
+        IEnumerable<Projeto> Search(string nome);
     }
 }

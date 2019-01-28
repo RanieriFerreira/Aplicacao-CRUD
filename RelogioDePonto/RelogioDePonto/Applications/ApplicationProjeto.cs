@@ -27,9 +27,9 @@ namespace RelogioDePonto.Applications
             return _projetoRepositorio.Get();
         }
 
-        public IEnumerable<Projeto> Get(string nome)
+        public IEnumerable<Projeto> Search(string nome)
         {
-            return _projetoRepositorio.Get(nome);
+            return _projetoRepositorio.Search(nome);
         }
 
         public void Add(Projeto entity)
