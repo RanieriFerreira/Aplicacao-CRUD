@@ -17,13 +17,9 @@ namespace RelogioDePonto.Repositorios
             _context = context;
         }
 
-        public Projeto Get(double id)
+        public Projeto Get(int id)
         {
             return Context.Set<Projeto>().Find(id);
-        }
-        public IEnumerable<Projeto> Get()
-        {
-            return Context.Set<Projeto>().ToList();
         }
 
         public IEnumerable<Projeto> Get(string nome)
