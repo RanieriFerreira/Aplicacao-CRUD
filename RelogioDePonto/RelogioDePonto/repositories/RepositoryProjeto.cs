@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RelogioDePonto.Interfaces;
-using RelogioDePonto.Modelos;
+using RelogioDePonto.Models;
 using RelogioDePonto.Repositories;
 using System;
 using System.Collections.Generic;

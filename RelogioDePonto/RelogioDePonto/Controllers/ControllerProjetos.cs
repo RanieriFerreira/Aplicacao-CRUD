@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RelogioDePonto.Applications;
-using RelogioDePonto.Modelos;
+using RelogioDePonto.Models;
 using RelogioDePonto.ModelsInput;
 
 namespace RelogioDePonto.Controllers
@@ -40,7 +40,7 @@ namespace RelogioDePonto.Controllers
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(500)]
-        public void Post([FromBody] Projeto projeto)
+        public void Post([FromBody] InputProjeto projeto)
         {
             _applicationProjeto.Add(projeto);
         }

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RelogioDePonto.Interfaces;
-using RelogioDePonto.Modelos;
+using RelogioDePonto.Models;
 using RelogioDePonto.ModelsInput;
 using RelogioDePonto.Repositorios;
 using System;
@@ -36,9 +36,9 @@ namespace RelogioDePonto.Applications
             return _projetoRepositorio.Search(nome);
         }
 
-        public void Add(Projeto projeto)
+        public void Add(InputProjeto projeto)
         {
-            _projetoRepositorio.Add(projeto);
+            _projetoRepositorio.Add(ToProjeto(projeto));
         }
 
         public bool Exists(double id)

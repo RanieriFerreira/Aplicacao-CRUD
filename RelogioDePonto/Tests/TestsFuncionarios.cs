@@ -2,14 +2,14 @@
 using Microsoft.EntityFrameworkCore;
 using RelogioDePonto;
 using RelogioDePonto.Applications;
-using RelogioDePonto.Modelos;
+using RelogioDePonto.Models;
 using RelogioDePonto.Repositorios;
 using TestToolsToXunitProxy;
 
-namespace Tests
+namespace Tests.RelogioDePonto
 {
     [TestClass]
-    public class Tests
+    public class TestsFuncionarios
     {
         [TestMethod]
         public void Get_BuscaTodosOsFuncionarios_True()

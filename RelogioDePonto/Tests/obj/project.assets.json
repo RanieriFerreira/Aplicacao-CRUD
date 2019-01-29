@@ -10680,9 +10680,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ranieri.ferreira\\Desktop\\Aplicacao-CRUD\\RelogioDePonto\\Tests\\RelogioDePonto.Tests.csproj",
-      "projectName": "RelogioDePonto.Tests",
-      "projectPath": "C:\\Users\\ranieri.ferreira\\Desktop\\Aplicacao-CRUD\\RelogioDePonto\\Tests\\RelogioDePonto.Tests.csproj",
+      "projectUniqueName": "C:\\Users\\ranieri.ferreira\\Desktop\\Aplicacao-CRUD\\RelogioDePonto\\Tests\\Tests.RelogioDePonto.csproj",
+      "projectName": "Tests.RelogioDePonto",
+      "projectPath": "C:\\Users\\ranieri.ferreira\\Desktop\\Aplicacao-CRUD\\RelogioDePonto\\Tests\\Tests.RelogioDePonto.csproj",
       "packagesPath": "C:\\Users\\ranieri.ferreira\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\ranieri.ferreira\\Desktop\\Aplicacao-CRUD\\RelogioDePonto\\Tests\\obj\\",
       "projectStyle": "PackageReference",

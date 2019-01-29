@@ -4,7 +4,7 @@
         <name>RelogioDePonto</name>
     </assembly>
     <members>
-        <member name="M:RelogioDePonto.Controllers.ControllerFuncionarios.Post(RelogioDePonto.Modelos.Funcionario)">
+        <member name="M:RelogioDePonto.Controllers.ControllerFuncionarios.Post(RelogioDePonto.Models.Funcionario)">
             <summary>
                 Cria projeto.
             </summary>
@@ -57,7 +57,7 @@
             <response code="400">Parametros inválidos</response>
             <response code="500">Problema de acesso ao servidor</response>  
         </member>
-        <member name="M:RelogioDePonto.Controllers.ControllerFuncionarios.Delete(System.Int32,RelogioDePonto.Modelos.Funcionario)">
+        <member name="M:RelogioDePonto.Controllers.ControllerFuncionarios.Delete(System.Int32,RelogioDePonto.Models.Funcionario)">
             <summary>
                 Deleta o projeto com o mesmo Id que foi passado.
             </summary>
@@ -66,7 +66,7 @@
             <response code="200">Se a operação foi feita com sucesso</response>
             <response code="500">Problema de acesso ao servidor</response>  
         </member>
-        <member name="M:RelogioDePonto.Controllers.ControllerProjetos.Post(RelogioDePonto.Modelos.Projeto)">
+        <member name="M:RelogioDePonto.Controllers.ControllerProjetos.Post(RelogioDePonto.ModelsInput.InputProjeto)">
             <summary>
                 Cria projeto.
             </summary>
@@ -112,7 +112,7 @@
             <response code="200">Se a operação foi feita com sucesso</response>
             <response code="500">Problema de acesso ao servidor</response>  
         </member>
-        <member name="M:RelogioDePonto.Controllers.ControllerProjetos.Delete(System.Int32,RelogioDePonto.Modelos.Projeto)">
+        <member name="M:RelogioDePonto.Controllers.ControllerProjetos.Delete(System.Int32,RelogioDePonto.Models.Projeto)">
             <summary>
                 Deleta o projeto com o mesmo Id que foi passado.
             </summary>

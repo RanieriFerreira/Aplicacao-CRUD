@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace RelogioDePonto.Modelos
+namespace RelogioDePonto.Models
 {
     public class Projeto
     {

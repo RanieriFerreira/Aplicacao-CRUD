@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RelogioDePonto;
 using RelogioDePonto.Applications;
-using RelogioDePonto.Modelos;
+using RelogioDePonto.Models;
 
 namespace RelogioDePonto.Controllers
 {

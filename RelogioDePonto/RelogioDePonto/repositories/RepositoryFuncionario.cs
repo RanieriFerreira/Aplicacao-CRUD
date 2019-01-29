@@ -2,7 +2,7 @@
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using RelogioDePonto.Interfaces;
-using RelogioDePonto.Modelos;
+using RelogioDePonto.Models;
 using RelogioDePonto.Repositories;
 
 namespace RelogioDePonto.Repositorios
