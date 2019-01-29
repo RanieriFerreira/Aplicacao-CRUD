@@ -7,10 +7,10 @@ using RelogioDePonto.Repositories;
 
 namespace RelogioDePonto.Repositorios
 {
-    public class FuncionarioRepositorio : Repositorio<Funcionario>, IFuncionarioRepositorio
+    public class RepositoryFuncionario : Repository<Funcionario>, IFuncionarioRepositorio
     {
         private DbContext _context;
-        public FuncionarioRepositorio (EmpresaContext context) : base(context)
+        public RepositoryFuncionario (ContextEmpresa context) : base(context)
         {
             _context = context;
         }
@@ -30,6 +30,24 @@ namespace RelogioDePonto.Repositorios
                 default:
                     return _context.Set<Funcionario>().OrderBy(s => s.Status).Skip(skip).Take(pageSize);
             }
+        }
+
+        public void Put(Funcionario funcionario)
+        {
+            //var target = Get(funcionario.Cpf);
+
+            //if (target != null)
+            //{
+                //target.Nome = funcionario.Nome;
+                //target.Status = funcionario.Status;
+
+                //_context.Update(target);
+                //Save();
+            //}
+            //else
+            //{
+                Add(funcionario);
+            //}
         }
     }
 }

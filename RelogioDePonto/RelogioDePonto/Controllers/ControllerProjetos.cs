@@ -6,16 +6,17 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RelogioDePonto.Applications;
 using RelogioDePonto.Modelos;
+using RelogioDePonto.ModelsInput;
 
 namespace RelogioDePonto.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProjetosController : ControllerBase
+    public class ControllerProjetos : ControllerBase
     {
         private ApplicationProjeto _applicationProjeto;
 
-        public ProjetosController(EmpresaContext context)
+        public ControllerProjetos(ContextEmpresa context)
         {
             _applicationProjeto = new ApplicationProjeto(context);
         }
@@ -98,7 +99,7 @@ namespace RelogioDePonto.Controllers
 
         // PUT: api/Projetos/5
         [HttpPut]
-        public void Put([FromBody] Projeto projeto)
+        public void Put([FromBody] InputProjeto projeto)
         {
             _applicationProjeto.Put(projeto);
         }

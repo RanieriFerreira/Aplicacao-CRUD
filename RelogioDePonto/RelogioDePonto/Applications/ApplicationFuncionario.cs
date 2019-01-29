@@ -10,12 +10,12 @@ namespace RelogioDePonto.Applications
 {
     public class ApplicationFuncionario
     {
-        private FuncionarioRepositorio _funcionarioRepositorio;
+        private RepositoryFuncionario _funcionarioRepositorio;
         private DbContext _context;
 
-        public ApplicationFuncionario(EmpresaContext context)
+        public ApplicationFuncionario(ContextEmpresa context)
         {
-            _funcionarioRepositorio = new FuncionarioRepositorio(context);
+            _funcionarioRepositorio = new RepositoryFuncionario(context);
             _context = context;
         }
 
@@ -42,7 +42,6 @@ namespace RelogioDePonto.Applications
             if (!Exists(funcionario.Cpf))
             {
                 _funcionarioRepositorio.Add(funcionario);
-                Save();
                 return funcionario.Cpf.ToString();
             }
             else
@@ -69,11 +68,6 @@ namespace RelogioDePonto.Applications
             }
         }
 
-        public void Save()
-        {
-            _funcionarioRepositorio.Save();
-        }
-
         public string Remove(Funcionario funcionario)
         {
             if (!Exists(funcionario.Cpf))
@@ -90,25 +84,7 @@ namespace RelogioDePonto.Applications
 
         public void Put(Funcionario funcionario)
         {
-            var entity = Get(funcionario.Cpf);
-
-            // Validate entity is not null
-            if (entity != null)
-            {
-                // Answer for question #2
-
-                // Make changes on entity
-                entity.Nome = funcionario.Nome;
-                entity.Status = funcionario.Status;
-
-                // Update entity in DbSet
-                _context.Update(entity);
-            }
-            else
-            {
-                Add(funcionario);
-            }
-            Save();
+            _funcionarioRepositorio.Put(funcionario);
         }
             
     }

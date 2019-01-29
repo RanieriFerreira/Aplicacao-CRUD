@@ -9,5 +9,6 @@ namespace RelogioDePonto.Interfaces
     public interface IFuncionarioRepositorio : IRepositorio<Funcionario>
     {
         IQueryable<Funcionario> PagedAndOrdered(string order, int page, int pageSize);
+        void Put(Funcionario funcionario);
     }
 }

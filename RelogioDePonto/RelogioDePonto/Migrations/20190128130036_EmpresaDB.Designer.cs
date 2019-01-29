@@ -8,7 +8,7 @@ using RelogioDePonto;
 
 namespace RelogioDePonto.Migrations
 {
-    [DbContext(typeof(EmpresaContext))]
+    [DbContext(typeof(ContextEmpresa))]
     [Migration("20190128130036_EmpresaDB")]
     partial class EmpresaDB
     {

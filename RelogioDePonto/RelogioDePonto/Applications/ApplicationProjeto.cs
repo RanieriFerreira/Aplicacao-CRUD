@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RelogioDePonto.Interfaces;
 using RelogioDePonto.Modelos;
+using RelogioDePonto.ModelsInput;
 using RelogioDePonto.Repositorios;
 using System;
 using System.Collections.Generic;
@@ -11,12 +12,12 @@ namespace RelogioDePonto.Applications
 {
     public class ApplicationProjeto
     {
-        private ProjetoRepositorio _projetoRepositorio;
+        private RepositoryProjeto _projetoRepositorio;
         private DbContext _context;
 
-        public ApplicationProjeto(EmpresaContext context)
+        public ApplicationProjeto(ContextEmpresa context)
         {
-            _projetoRepositorio = new ProjetoRepositorio(context);
+            _projetoRepositorio = new RepositoryProjeto(context);
             _context = context;
         }
 
@@ -52,28 +53,25 @@ namespace RelogioDePonto.Applications
             }
         }
 
-        public void Save()
-        {
-            _projetoRepositorio.Save();
-        }
-
         public void Remove(Projeto projeto)
         {
             // Verificar se o Projeto existe
             _projetoRepositorio.Remove(projeto);
         }
 
-        public void Put(Projeto projeto)
+        public void Put(InputProjeto projetoInput)
         {
-            if (!Exists(projeto.Id))
+            _projetoRepositorio.Put(ToProjeto(projetoInput));
+        }
+
+        public Projeto ToProjeto(InputProjeto projetoInput)
+        {
+            return new Projeto
             {
-                _projetoRepositorio.Add(projeto);
-            }
-            else
-            {
-                _context.Update(projeto);
-            }
-            Save();
+                Nome = projetoInput.Nome,
+                Detalhe = projetoInput.Detalhe,
+                Status = projetoInput.Status
+            };
         }
     }
 }

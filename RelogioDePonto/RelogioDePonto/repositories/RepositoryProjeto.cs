@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace RelogioDePonto.Repositorios
 {
-    public class ProjetoRepositorio : Repositorio<Projeto>, IProjetoRepositorio
+    public class RepositoryProjeto : Repository<Projeto>, IProjetoRepositorio
     {
         private DbContext _context;
-        public ProjetoRepositorio(EmpresaContext context) : base(context)
+        public RepositoryProjeto(ContextEmpresa context) : base(context)
         {
             _context = context;
         }
@@ -25,6 +25,25 @@ namespace RelogioDePonto.Repositorios
         public IQueryable<Projeto> Search(string nome)
         {
             return _context.Set<Projeto>().FromSql("GetProjetos @p0", nome);
+        }
+
+        public void Put(Projeto projeto)
+        {
+            var target = Get(projeto.Id);
+
+            if (target != null)
+            {
+                target.Nome = projeto.Nome;
+                target.Detalhe = projeto.Detalhe;
+                target.Status = projeto.Status;
+
+                _context.Update(target);
+                Save();
+            }
+            else
+            {
+                Add(projeto);
+            }
         }
     }
 }

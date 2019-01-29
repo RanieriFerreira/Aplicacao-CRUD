@@ -6,11 +6,11 @@ using System.Linq;
 namespace RelogioDePonto.Repositories
 {
 
-    public class Repositorio<T> : IRepositorio<T> where T : class
+    public class Repository<T> : IRepositorio<T> where T : class
     {
         protected DbContext Context;
 
-        public Repositorio(DbContext context)
+        public Repository(DbContext context)
         {
             Context = context;
         }

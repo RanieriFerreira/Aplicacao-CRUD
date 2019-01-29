@@ -9,5 +9,6 @@ namespace RelogioDePonto.Interfaces
     public interface IProjetoRepositorio : IRepositorio<Projeto>
     {
         IQueryable<Projeto> Search(string nome);
+        void Put(Projeto projeto);
     }
 }

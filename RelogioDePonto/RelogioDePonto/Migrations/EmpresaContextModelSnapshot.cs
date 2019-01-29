@@ -7,7 +7,7 @@ using RelogioDePonto;
 
 namespace RelogioDePonto.Migrations
 {
-    [DbContext(typeof(EmpresaContext))]
+    [DbContext(typeof(ContextEmpresa))]
     partial class EmpresaContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

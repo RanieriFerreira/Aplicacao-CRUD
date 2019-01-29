@@ -14,12 +14,12 @@ namespace Tests
         [TestMethod]
         public void Get_BuscaTodosOsFuncionarios_True()
         {
-            var options = new DbContextOptionsBuilder<EmpresaContext>()
+            var options = new DbContextOptionsBuilder<ContextEmpresa>()
                 .UseInMemoryDatabase(databaseName: "Get_funcionarios")
                 .Options;
 
             // Insert seed data into the database using one instance of the context
-            using (var context = new EmpresaContext(options))
+            using (var context = new ContextEmpresa(options))
             {
                 context.Funcionarios.Add(new Funcionario { Cpf = 11111111111, Nome = "Funcionario 1" });
                 context.Funcionarios.Add(new Funcionario { Cpf = 22222222222, Nome = "Funcionario 2" });
@@ -28,9 +28,9 @@ namespace Tests
             }
 
             // Use a clean instance of the context to run the test
-            using (var context = new EmpresaContext(options))
+            using (var context = new ContextEmpresa(options))
             {
-                var service = new FuncionarioRepositorio(context);
+                var service = new RepositoryFuncionario(context);
                 var result = service.Get();
                 Assert.AreEqual(3, result.Count());
             }
@@ -39,20 +39,20 @@ namespace Tests
         [TestMethod]
         public void Add_AdicionarFuncionario_True()
         {
-            var options = new DbContextOptionsBuilder<EmpresaContext>()
+            var options = new DbContextOptionsBuilder<ContextEmpresa>()
                .UseInMemoryDatabase(databaseName: "Add_funcionario")
                .Options;
 
             // Run the test against one instance of the context
-            using (var context = new EmpresaContext(options))
+            using (var context = new ContextEmpresa(options))
             {
-                var service = new FuncionarioRepositorio(context);
+                var service = new RepositoryFuncionario(context);
                 var funcionario = new Funcionario { Cpf = 11111111111, Nome = "Novo Funcionario" };
                 service.Add(funcionario);
             }
 
             // Use a separate instance of the context to verify correct data was saved to database
-            using (var context = new EmpresaContext(options))
+            using (var context = new ContextEmpresa(options))
             {
                 Assert.AreEqual(1, context.Funcionarios.Count());
                 Assert.AreEqual("Novo Funcionario", context.Funcionarios.Single().Nome);
@@ -63,12 +63,12 @@ namespace Tests
         [TestMethod]
         public void Add_AdicionarFuncionarioDuplicado_Exception()
         {
-            var options = new DbContextOptionsBuilder<EmpresaContext>()
+            var options = new DbContextOptionsBuilder<ContextEmpresa>()
                .UseInMemoryDatabase(databaseName: "Add_funcionarios_iguais")
                .Options;
 
             // Run the test against one instance of the context
-            using (var context = new EmpresaContext(options))
+            using (var context = new ContextEmpresa(options))
             {
                 var service = new ApplicationFuncionario(context);
                 var funcionario1 = new Funcionario { Cpf = 1111111111, Nome = "Novo Funcionario" };
@@ -78,7 +78,7 @@ namespace Tests
             }
 
             // Use a separate instance of the context to verify correct data was saved to database
-            using (var context = new EmpresaContext(options))
+            using (var context = new ContextEmpresa(options))
             {
                 Assert.AreEqual(1, context.Funcionarios.Count());
             }
@@ -87,12 +87,12 @@ namespace Tests
         [TestMethod]
         public void GetOrderBy_BuscaOrdenadaComPaginacao_True()
         {
-            var options = new DbContextOptionsBuilder<EmpresaContext>()
+            var options = new DbContextOptionsBuilder<ContextEmpresa>()
                 .UseInMemoryDatabase(databaseName: "Get_funcionarios_pagina_ordenada")
                 .Options;
 
             // Insert seed data into the database using one instance of the context
-            using (var context = new EmpresaContext(options))
+            using (var context = new ContextEmpresa(options))
             {
                 context.Funcionarios.Add(new Funcionario { Cpf = 00000000000, Nome = "Funcionario 0" });
                 context.Funcionarios.Add(new Funcionario { Cpf = 11111111111, Nome = "Funcionario 1" });
@@ -108,10 +108,10 @@ namespace Tests
             }
 
             // Use a clean instance of the context to run the test
-            using (var context = new EmpresaContext(options))
+            using (var context = new ContextEmpresa(options))
             {
                 var service = new ApplicationFuncionario(context);
-                var result = service.GetOrderBy("Nome", 1, 4);
+                var result = service.GetPagedAndOrdered("Nome", 1, 4);
                 Assert.AreEqual(4, result.Count());
             }
         }
@@ -119,12 +119,12 @@ namespace Tests
         [TestMethod]
         public void Put_AtualizaDadoDoFuncionario_True()
         {
-            var options = new DbContextOptionsBuilder<EmpresaContext>()
+            var options = new DbContextOptionsBuilder<ContextEmpresa>()
                 .UseInMemoryDatabase(databaseName: "Put_funcionarios")
                 .Options;
 
             // Insert seed data into the database using one instance of the context
-            using (var context = new EmpresaContext(options))
+            using (var context = new ContextEmpresa(options))
             {
                 context.Funcionarios.Add(new Funcionario { Cpf = 11111111111, Nome = "Funcionario 1" });
                 context.Funcionarios.Add(new Funcionario { Cpf = 22222222222, Nome = "Funcionario 2" });
@@ -133,17 +133,17 @@ namespace Tests
             }
 
             // Use a clean instance of the context to run the test
-            using (var context = new EmpresaContext(options))
+            using (var context = new ContextEmpresa(options))
             {
-                var service = new FuncionarioRepositorio(context);
+                var service = new RepositoryFuncionario(context);
                 var funcionario = new Funcionario {Cpf = 11111111111, Nome = "Funcionario Modificado" };
                 context.Update(funcionario);
                 context.SaveChanges();
             }
 
-            using (var context = new EmpresaContext(options))
+            using (var context = new ContextEmpresa(options))
             {
-                var service = new FuncionarioRepositorio(context);
+                var service = new RepositoryFuncionario(context);
                 var result = service.Get(11111111111);
                 Assert.AreEqual("Funcionario Modificado", result.Nome);
             }

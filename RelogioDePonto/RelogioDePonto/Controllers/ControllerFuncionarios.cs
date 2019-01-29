@@ -13,11 +13,11 @@ namespace RelogioDePonto.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class FuncionariosController : ControllerBase
+    public class ControllerFuncionarios : ControllerBase
     {
         private ApplicationFuncionario _applicationFuncionario;
 
-        public FuncionariosController(EmpresaContext context)
+        public ControllerFuncionarios(ContextEmpresa context)
         {
             _applicationFuncionario = new ApplicationFuncionario(context);
         }

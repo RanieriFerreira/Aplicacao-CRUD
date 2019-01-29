@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="ModelsInput\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 

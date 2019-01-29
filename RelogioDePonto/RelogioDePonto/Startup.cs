@@ -24,7 +24,7 @@ namespace RelogioDePonto
         {
             //services.AddDbContext<EmpresaContext>(opt =>
             //    opt.UseInMemoryDatabase("EmpresaInMemory"));
-            services.AddDbContext<EmpresaContext>(opt =>
+            services.AddDbContext<ContextEmpresa>(opt =>
                 opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddMvc();
                 //.SetCompatibilityVersion(CompatibilityVersion.Version_2_1);

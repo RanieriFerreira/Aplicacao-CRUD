@@ -7,13 +7,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace RelogioDePonto
 {
-    public class EmpresaContext : DbContext 
+    public class ContextEmpresa : DbContext 
     {
-        public EmpresaContext()
+        public ContextEmpresa()
         {
         }
 
-        public EmpresaContext(DbContextOptions<EmpresaContext> options) : base(options)
+        public ContextEmpresa(DbContextOptions<ContextEmpresa> options) : base(options)
         {
         }
 
