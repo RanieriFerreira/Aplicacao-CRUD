@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Contextos\" />
+    <Folder Include="ModelsInput\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 

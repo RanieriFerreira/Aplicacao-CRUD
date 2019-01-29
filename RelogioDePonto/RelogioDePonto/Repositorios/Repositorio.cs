@@ -20,9 +20,9 @@ namespace RelogioDePonto.Repositories
         {
             return Context.Set<T>().Find(id);
         }
-        public IEnumerable<T> Get()
+        public IQueryable<T> Get()
         {
-            return Context.Set<T>().ToList();
+            return Context.Set<T>();
         }
 
         // Grupo para adicionar

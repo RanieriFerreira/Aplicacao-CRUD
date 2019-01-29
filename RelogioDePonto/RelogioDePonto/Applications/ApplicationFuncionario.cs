@@ -1,6 +1,8 @@
-﻿using PagedList;
+﻿using Microsoft.EntityFrameworkCore;
+using PagedList;
 using RelogioDePonto.Modelos;
 using RelogioDePonto.Repositorios;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -9,13 +11,15 @@ namespace RelogioDePonto.Applications
     public class ApplicationFuncionario
     {
         private FuncionarioRepositorio _funcionarioRepositorio;
+        private DbContext _context;
 
         public ApplicationFuncionario(EmpresaContext context)
         {
             _funcionarioRepositorio = new FuncionarioRepositorio(context);
+            _context = context;
         }
 
-        public Funcionario Get(int Cpf)
+        public Funcionario Get(double Cpf)
         {
             if (Exists(Cpf))
             {
@@ -28,7 +32,7 @@ namespace RelogioDePonto.Applications
             }
         }
 
-        public IEnumerable<Funcionario> Get()
+        public IQueryable<Funcionario> Get()
         {
             return _funcionarioRepositorio.Get();
         }
@@ -48,32 +52,9 @@ namespace RelogioDePonto.Applications
             }
         }
 
-        public IEnumerable<Funcionario> Paged(int number, int size, IEnumerable<Funcionario> funcionarios)
+        public IQueryable<Funcionario> GetPagedAndOrdered(string order, int page, int pageSize)
         {
-            return funcionarios.ToPagedList(number, size);
-        }
-
-        public IEnumerable<Funcionario> GetOrderBy(string ordenadoPor, int number, int size)
-        {
-            IEnumerable<Funcionario> funcionarios = Get();
-            
-            switch (ordenadoPor)
-            {
-                case "nome_desc":
-                    funcionarios = funcionarios.OrderByDescending(s => s.Nome);
-                    break;
-                case "Nome":
-                    funcionarios = funcionarios.OrderBy(s => s.Nome);
-                    break;
-                case "status_desc":
-                    funcionarios = funcionarios.OrderByDescending(s => s.Status);
-                    break;
-                default:
-                    funcionarios = funcionarios.OrderBy(s => s.Status);
-                    break;
-            }
-
-            return Paged(number, size, funcionarios);
+            return _funcionarioRepositorio.PagedAndOrdered(order, page, pageSize);
         }
 
         public bool Exists(double cpf)
@@ -106,5 +87,29 @@ namespace RelogioDePonto.Applications
                 return "Erro: Esse funcionário não esta cadastrado no sistema";
             }
         }
+
+        public void Put(Funcionario funcionario)
+        {
+            var entity = Get(funcionario.Cpf);
+
+            // Validate entity is not null
+            if (entity != null)
+            {
+                // Answer for question #2
+
+                // Make changes on entity
+                entity.Nome = funcionario.Nome;
+                entity.Status = funcionario.Status;
+
+                // Update entity in DbSet
+                _context.Update(entity);
+            }
+            else
+            {
+                Add(funcionario);
+            }
+            Save();
+        }
+            
     }
 }

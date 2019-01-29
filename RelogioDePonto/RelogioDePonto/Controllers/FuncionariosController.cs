@@ -28,10 +28,10 @@ namespace RelogioDePonto.Controllers
         /// </summary>
         /// <remarks>
         ///     Os status de um funcionario podem ser:
-        ///     0-Inativo
-        ///     1-Ativo
-        ///     2-Férias
-        ///     3-Desligado
+        ///      - 0 - Inativo
+        ///      - 1 - Ativo
+        ///      - 2 - Férias
+        ///      - 3 - Desligado
         /// </remarks>
         /// <param name="funcionario">Entidade que deseja criar</param>
         /// <response code="200">Se a operação foi feita com sucesso</response>
@@ -56,7 +56,7 @@ namespace RelogioDePonto.Controllers
         [HttpGet]
         [ProducesResponseType(200)]
         [ProducesResponseType(500)]
-        public IEnumerable<Funcionario> Get()
+        public IQueryable<Funcionario> Get()
         {
             return _applicationFuncionario.Get();
         }
@@ -91,25 +91,26 @@ namespace RelogioDePonto.Controllers
         ///     - default: Ordenação crescente por status
         /// </remarks>
         /// <param name="order">Tipo de orderação</param>
-        /// <param name="number">Número da página</param>
-        /// <param name="size">Quantidade de funcionários por página</param>
+        /// <param name="page">Número da página</param>
+        /// <param name="pageSize">Quantidade de funcionários por página</param>
         /// <returns>Retorna os funcioários em paginas e ordenados.</returns>
         /// <response code="200">Se a operação foi feita com sucesso</response>
         /// <response code="400">Parametros inválidos</response>
         /// <response code="500">Problema de acesso ao servidor</response>  
-        [HttpGet("/pag/{order}/{number}/{size}")]
+        [HttpGet("/pag/{order}/{page}/{pageSize}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(500)]
-        public IEnumerable<Funcionario> GetPagedAndOrdered([FromRoute]string order, int size, int number)
+        public IQueryable<Funcionario> GetPagedAndOrdered([FromRoute]string order, int page, int pageSize)
         {
-            return _applicationFuncionario.GetOrderBy(order, size, number);
+            return _applicationFuncionario.GetPagedAndOrdered(order, page, pageSize);
         }
 
         // PUT: api/Funcionarios/5
-        [HttpPut("{cpf}")]
-        public void Put([FromRoute] int cpf, [FromBody] Funcionario entity)
+        [HttpPut]
+        public void Put([FromBody] Funcionario funcionario)
         {
+            _applicationFuncionario.Put(funcionario);
         }
 
         // DELETE: api/Funcionarios/5

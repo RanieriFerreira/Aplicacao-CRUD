@@ -26,10 +26,10 @@ namespace RelogioDePonto.Controllers
         /// </summary>
         /// <remarks>
         ///     Os status de um projeto podem ser:
-        ///     0-Inativo
-        ///     1-Ativo
-        ///     2-Em espera
-        ///     3-Finalizado
+        ///      - 0 - Inativo
+        ///      - 1 - Ativo
+        ///      - 2 - Em espera
+        ///      - 3 - Finalizado
         /// </remarks>
         /// <param name="projeto">Entidade que deseja criar</param>
         /// <response code="200">Se a operação foi feita com sucesso</response>
@@ -54,7 +54,7 @@ namespace RelogioDePonto.Controllers
         [HttpGet]
         [ProducesResponseType(200)]
         [ProducesResponseType(500)]
-        public IEnumerable<Projeto> Get()
+        public IQueryable<Projeto> Get()
         {
             return _applicationProjeto.Get();
         }
@@ -91,16 +91,16 @@ namespace RelogioDePonto.Controllers
         [HttpGet("search/{nome}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(500)]
-        public IEnumerable<Projeto> Search([FromRoute]string nome)
+        public IQueryable<Projeto> Search([FromRoute]string nome)
         {
             return _applicationProjeto.Search(nome);
         }
 
         // PUT: api/Projetos/5
-        [HttpPut("{id}")]
-        public void Put([FromRoute] int id, [FromBody] Projeto entity)
+        [HttpPut]
+        public void Put([FromBody] Projeto projeto)
         {
-            //TODO
+            _applicationProjeto.Put(projeto);
         }
 
         // DELETE: api/ApiWithActions/5

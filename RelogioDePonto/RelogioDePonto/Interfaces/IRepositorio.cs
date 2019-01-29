@@ -10,7 +10,7 @@ namespace RelogioDePonto.Interfaces
     {
         // Grupo para buscar
         T Get(double id);
-        IEnumerable<T> Get();
+        IQueryable<T> Get();
         //IQueryable<T> Query(Expression<Func<T, bool>> filter);
 
         // Grupo para adicionar

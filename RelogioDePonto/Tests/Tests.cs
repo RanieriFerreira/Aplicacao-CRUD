@@ -115,8 +115,41 @@ namespace Tests
                 Assert.AreEqual(4, result.Count());
             }
         }
+
+        [TestMethod]
+        public void Put_AtualizaDadoDoFuncionario_True()
+        {
+            var options = new DbContextOptionsBuilder<EmpresaContext>()
+                .UseInMemoryDatabase(databaseName: "Put_funcionarios")
+                .Options;
+
+            // Insert seed data into the database using one instance of the context
+            using (var context = new EmpresaContext(options))
+            {
+                context.Funcionarios.Add(new Funcionario { Cpf = 11111111111, Nome = "Funcionario 1" });
+                context.Funcionarios.Add(new Funcionario { Cpf = 22222222222, Nome = "Funcionario 2" });
+                context.Funcionarios.Add(new Funcionario { Cpf = 33333333333, Nome = "Funcionario 3" });
+                context.SaveChanges();
+            }
+
+            // Use a clean instance of the context to run the test
+            using (var context = new EmpresaContext(options))
+            {
+                var service = new FuncionarioRepositorio(context);
+                var funcionario = new Funcionario {Cpf = 11111111111, Nome = "Funcionario Modificado" };
+                context.Update(funcionario);
+                context.SaveChanges();
+            }
+
+            using (var context = new EmpresaContext(options))
+            {
+                var service = new FuncionarioRepositorio(context);
+                var result = service.Get(11111111111);
+                Assert.AreEqual("Funcionario Modificado", result.Nome);
+            }
+        }
+
         // TODO - Testar deleção de usuário
-        // TODO - Testar get por Cpf
 
 
         //[TestMethod]
