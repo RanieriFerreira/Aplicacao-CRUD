@@ -8,13 +8,8 @@ namespace RelogioDePonto.Models
 {
     public class Funcionario
     {
-        //public Funcionario(int cpf, string nome)
-        //{
-        //    Cpf = cpf;
-        //    Nome = nome;
-        //}
-        [Key]
-        public double Cpf { get; set; }
+       [Key]
+        public int Cpf { get; set; }
         public string Nome { get; set; }
         public int Status { get; set; }
     }

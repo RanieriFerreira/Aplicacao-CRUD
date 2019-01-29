@@ -24,7 +24,7 @@ namespace RelogioDePonto.Controllers
 
         // POST: api/Funcionarios
         /// <summary>
-        ///     Cria projeto.
+        ///     Cria funcionario.
         /// </summary>
         /// <remarks>
         ///     Os status de um funcionario podem ser:
@@ -118,16 +118,15 @@ namespace RelogioDePonto.Controllers
         ///     Deleta o projeto com o mesmo Id que foi passado.
         /// </summary>
         /// <param name="cpf">CPF do funcionário que deseja deletar</param>
-        /// <param name="funcionario">Funcionario que deseja deletar</param>
         /// <response code="200">Se a operação foi feita com sucesso</response>
         /// <response code="500">Problema de acesso ao servidor</response>  
         [HttpDelete("{cpf}")]
 
         [ProducesResponseType(200)]
         [ProducesResponseType(500)]
-        public void Delete([FromRoute] int cpf, [FromBody] Funcionario funcionario)
+        public void Delete([FromRoute] int cpf)
         {
-            _applicationFuncionario.Remove(funcionario);
+            _applicationFuncionario.Remove(cpf);
         }
     }
 }

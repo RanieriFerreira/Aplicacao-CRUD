@@ -2,17 +2,15 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RelogioDePonto;
 
 namespace RelogioDePonto.Migrations
 {
     [DbContext(typeof(ContextEmpresa))]
-    [Migration("20190128130036_EmpresaDB")]
-    partial class EmpresaDB
+    partial class ContextEmpresaModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -20,9 +18,11 @@ namespace RelogioDePonto.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("RelogioDePonto.Modelos.Funcionario", b =>
+            modelBuilder.Entity("RelogioDePonto.Models.Funcionario", b =>
                 {
-                    b.Property<double>("Cpf");
+                    b.Property<int>("Cpf")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Nome");
 
@@ -33,7 +33,7 @@ namespace RelogioDePonto.Migrations
                     b.ToTable("Funcionarios");
                 });
 
-            modelBuilder.Entity("RelogioDePonto.Modelos.Projeto", b =>
+            modelBuilder.Entity("RelogioDePonto.Models.Projeto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

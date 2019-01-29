@@ -17,11 +17,6 @@ namespace RelogioDePonto.Repositorios
             _context = context;
         }
 
-        public Projeto Get(int id)
-        {
-            return Context.Set<Projeto>().Find(id);
-        }
-
         public IQueryable<Projeto> Search(string nome)
         {
             return _context.Set<Projeto>().FromSql("GetProjetos @p0", nome);

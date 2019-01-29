@@ -9,7 +9,7 @@ namespace RelogioDePonto.Interfaces
     public interface IRepositorio<T> where T : class
     {
         // Grupo para buscar
-        T Get(double id);
+        T Get(int id);
         IQueryable<T> Get();
         //IQueryable<T> Query(Expression<Func<T, bool>> filter);
 
@@ -20,6 +20,6 @@ namespace RelogioDePonto.Interfaces
         void Save();
 
         // Grupo para deletar
-        void Remove(T entity);
+        void Remove(int id);
     }
 }

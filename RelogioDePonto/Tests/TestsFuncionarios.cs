@@ -21,9 +21,9 @@ namespace Tests.RelogioDePonto
             // Insert seed data into the database using one instance of the context
             using (var context = new ContextEmpresa(options))
             {
-                context.Funcionarios.Add(new Funcionario { Cpf = 11111111111, Nome = "Funcionario 1" });
-                context.Funcionarios.Add(new Funcionario { Cpf = 22222222222, Nome = "Funcionario 2" });
-                context.Funcionarios.Add(new Funcionario { Cpf = 33333333333, Nome = "Funcionario 3" });
+                context.Funcionarios.Add(new Funcionario { Cpf = 111111111, Nome = "Funcionario 1" });
+                context.Funcionarios.Add(new Funcionario { Cpf = 222222222, Nome = "Funcionario 2" });
+                context.Funcionarios.Add(new Funcionario { Cpf = 333333333, Nome = "Funcionario 3" });
                 context.SaveChanges();
             }
 
@@ -47,7 +47,7 @@ namespace Tests.RelogioDePonto
             using (var context = new ContextEmpresa(options))
             {
                 var service = new RepositoryFuncionario(context);
-                var funcionario = new Funcionario { Cpf = 11111111111, Nome = "Novo Funcionario" };
+                var funcionario = new Funcionario { Cpf = 111111111, Nome = "Novo Funcionario" };
                 service.Add(funcionario);
             }
 
@@ -56,7 +56,7 @@ namespace Tests.RelogioDePonto
             {
                 Assert.AreEqual(1, context.Funcionarios.Count());
                 Assert.AreEqual("Novo Funcionario", context.Funcionarios.Single().Nome);
-                Assert.AreEqual(11111111111, context.Funcionarios.Single().Cpf);
+                Assert.AreEqual(111111111, context.Funcionarios.Single().Cpf);
             }
         }
 
@@ -71,8 +71,8 @@ namespace Tests.RelogioDePonto
             using (var context = new ContextEmpresa(options))
             {
                 var service = new ApplicationFuncionario(context);
-                var funcionario1 = new Funcionario { Cpf = 1111111111, Nome = "Novo Funcionario" };
-                var funcionario2 = new Funcionario { Cpf = 1111111111, Nome = "Novo Funcionario" };
+                var funcionario1 = new Funcionario { Cpf = 111111111, Nome = "Novo Funcionario" };
+                var funcionario2 = new Funcionario { Cpf = 111111111, Nome = "Novo Funcionario" };
                 service.Add(funcionario1);
                 Assert.AreEqual("Erro: Esse CPF já esta sendo usado", service.Add(funcionario2));
             }
@@ -94,16 +94,16 @@ namespace Tests.RelogioDePonto
             // Insert seed data into the database using one instance of the context
             using (var context = new ContextEmpresa(options))
             {
-                context.Funcionarios.Add(new Funcionario { Cpf = 00000000000, Nome = "Funcionario 0" });
-                context.Funcionarios.Add(new Funcionario { Cpf = 11111111111, Nome = "Funcionario 1" });
-                context.Funcionarios.Add(new Funcionario { Cpf = 22222222222, Nome = "Funcionario 2" });
-                context.Funcionarios.Add(new Funcionario { Cpf = 33333333333, Nome = "Funcionario 3" });
-                context.Funcionarios.Add(new Funcionario { Cpf = 44444444444, Nome = "Funcionario 4" });
-                context.Funcionarios.Add(new Funcionario { Cpf = 55555555555, Nome = "Funcionario 5" });
-                context.Funcionarios.Add(new Funcionario { Cpf = 66666666666, Nome = "Funcionario 6" });
-                context.Funcionarios.Add(new Funcionario { Cpf = 77777777777, Nome = "Funcionario 7" });
-                context.Funcionarios.Add(new Funcionario { Cpf = 88888888888, Nome = "Funcionario 8" });
-                context.Funcionarios.Add(new Funcionario { Cpf = 99999999999, Nome = "Funcionario 9" });
+                context.Funcionarios.Add(new Funcionario { Cpf = 000000000, Nome = "Funcionario 0" });
+                context.Funcionarios.Add(new Funcionario { Cpf = 111111111, Nome = "Funcionario 1" });
+                context.Funcionarios.Add(new Funcionario { Cpf = 222222222, Nome = "Funcionario 2" });
+                context.Funcionarios.Add(new Funcionario { Cpf = 333333333, Nome = "Funcionario 3" });
+                context.Funcionarios.Add(new Funcionario { Cpf = 444444444, Nome = "Funcionario 4" });
+                context.Funcionarios.Add(new Funcionario { Cpf = 555555555, Nome = "Funcionario 5" });
+                context.Funcionarios.Add(new Funcionario { Cpf = 666666666, Nome = "Funcionario 6" });
+                context.Funcionarios.Add(new Funcionario { Cpf = 777777777, Nome = "Funcionario 7" });
+                context.Funcionarios.Add(new Funcionario { Cpf = 888888888, Nome = "Funcionario 8" });
+                context.Funcionarios.Add(new Funcionario { Cpf = 999999999, Nome = "Funcionario 9" });
                 context.SaveChanges();
             }
 
@@ -126,9 +126,9 @@ namespace Tests.RelogioDePonto
             // Insert seed data into the database using one instance of the context
             using (var context = new ContextEmpresa(options))
             {
-                context.Funcionarios.Add(new Funcionario { Cpf = 11111111111, Nome = "Funcionario 1" });
-                context.Funcionarios.Add(new Funcionario { Cpf = 22222222222, Nome = "Funcionario 2" });
-                context.Funcionarios.Add(new Funcionario { Cpf = 33333333333, Nome = "Funcionario 3" });
+                context.Funcionarios.Add(new Funcionario { Cpf = 111111111, Nome = "Funcionario 1" });
+                context.Funcionarios.Add(new Funcionario { Cpf = 222222222, Nome = "Funcionario 2" });
+                context.Funcionarios.Add(new Funcionario { Cpf = 333333333, Nome = "Funcionario 3" });
                 context.SaveChanges();
             }
 
@@ -136,7 +136,7 @@ namespace Tests.RelogioDePonto
             using (var context = new ContextEmpresa(options))
             {
                 var service = new RepositoryFuncionario(context);
-                var funcionario = new Funcionario {Cpf = 11111111111, Nome = "Funcionario Modificado" };
+                var funcionario = new Funcionario {Cpf = 111111111, Nome = "Funcionario Modificado" };
                 context.Update(funcionario);
                 context.SaveChanges();
             }
@@ -144,7 +144,7 @@ namespace Tests.RelogioDePonto
             using (var context = new ContextEmpresa(options))
             {
                 var service = new RepositoryFuncionario(context);
-                var result = service.Get(11111111111);
+                var result = service.Get(111111111);
                 Assert.AreEqual("Funcionario Modificado", result.Nome);
             }
         }

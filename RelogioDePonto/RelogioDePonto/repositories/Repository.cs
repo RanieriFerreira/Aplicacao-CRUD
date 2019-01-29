@@ -16,7 +16,7 @@ namespace RelogioDePonto.Repositories
         }
 
         // Grupo para recuperar dados
-        public T Get(double id)
+        public T Get(int id)
         {
             return Context.Set<T>().Find(id);
         }
@@ -33,9 +33,9 @@ namespace RelogioDePonto.Repositories
         }
 
         // Grupo para deletar
-        public void Remove(T entity)
+        public void Remove(int id)
         {
-            Context.Set<T>().Remove(entity);
+            Context.Set<T>().Remove(Get(id));
             Save();
         }
 

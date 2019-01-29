@@ -109,15 +109,14 @@ namespace RelogioDePonto.Controllers
         ///     Deleta o projeto com o mesmo Id que foi passado.
         /// </summary>
         /// <param name="id">Id do projeto que deseja deletar</param>
-        /// <param name="projeto">Projeto que deseja deletar</param>
         /// <response code="200">Se a operação foi feita com sucesso</response>
         /// <response code="500">Problema de acesso ao servidor</response>  
         [HttpDelete("{id}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(500)]
-        public void Delete([FromRoute] int id,[FromBody] Projeto projeto)
+        public void Delete([FromRoute] int id)
         {
-            _applicationProjeto.Remove(projeto);
+            _applicationProjeto.Remove(id);
         }
     }
 }

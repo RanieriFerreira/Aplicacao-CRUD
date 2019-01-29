@@ -13,7 +13,7 @@ namespace RelogioDePonto.Applications
     public class ApplicationProjeto
     {
         private RepositoryProjeto _projetoRepositorio;
-        private DbContext _context;
+        private readonly DbContext _context;
 
         public ApplicationProjeto(ContextEmpresa context)
         {
@@ -41,7 +41,7 @@ namespace RelogioDePonto.Applications
             _projetoRepositorio.Add(ToProjeto(projeto));
         }
 
-        public bool Exists(double id)
+        public bool Exists(int id)
         {
             if (_projetoRepositorio.Get(id) == null)
             {
@@ -53,10 +53,10 @@ namespace RelogioDePonto.Applications
             }
         }
 
-        public void Remove(Projeto projeto)
+        public void Remove(int id)
         {
             // Verificar se o Projeto existe
-            _projetoRepositorio.Remove(projeto);
+            _projetoRepositorio.Remove(id);
         }
 
         public void Put(InputProjeto projetoInput)

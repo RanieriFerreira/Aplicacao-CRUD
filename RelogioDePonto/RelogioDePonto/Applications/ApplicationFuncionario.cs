@@ -11,7 +11,7 @@ namespace RelogioDePonto.Applications
     public class ApplicationFuncionario
     {
         private RepositoryFuncionario _funcionarioRepositorio;
-        private DbContext _context;
+        private readonly DbContext _context;
 
         public ApplicationFuncionario(ContextEmpresa context)
         {
@@ -19,7 +19,7 @@ namespace RelogioDePonto.Applications
             _context = context;
         }
 
-        public Funcionario Get(double Cpf)
+        public Funcionario Get(int Cpf)
         {
             if (Exists(Cpf))
             {
@@ -56,7 +56,7 @@ namespace RelogioDePonto.Applications
             return _funcionarioRepositorio.PagedAndOrdered(order, page, pageSize);
         }
 
-        public bool Exists(double cpf)
+        public bool Exists(int cpf)
         {
             if (_funcionarioRepositorio.Get(cpf) == null)
             {
@@ -68,12 +68,12 @@ namespace RelogioDePonto.Applications
             }
         }
 
-        public string Remove(Funcionario funcionario)
+        public string Remove(int cpf)
         {
-            if (!Exists(funcionario.Cpf))
+            if (!Exists(cpf))
             {
-                _funcionarioRepositorio.Remove(funcionario);
-                return funcionario.Cpf.ToString();
+                _funcionarioRepositorio.Remove(cpf);
+                return cpf.ToString();
             }
             else
             {

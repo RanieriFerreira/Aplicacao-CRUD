@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RelogioDePonto.Migrations
 {
-    public partial class EmpresaDB : Migration
+    public partial class CreateEmpresaDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,7 +11,8 @@ namespace RelogioDePonto.Migrations
                 name: "Funcionarios",
                 columns: table => new
                 {
-                    Cpf = table.Column<double>(nullable: false),
+                    Cpf = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Nome = table.Column<string>(nullable: true),
                     Status = table.Column<int>(nullable: false)
                 },
