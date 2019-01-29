@@ -20,45 +20,103 @@ namespace RelogioDePonto.Controllers
             _applicationProjeto = new ApplicationProjeto(context);
         }
 
+        // POST: api/Projetos
+        /// <summary>
+        ///     Cria projeto.
+        /// </summary>
+        /// <remarks>
+        ///     Os status de um projeto podem ser:
+        ///     0-Inativo
+        ///     1-Ativo
+        ///     2-Em espera
+        ///     3-Finalizado
+        /// </remarks>
+        /// <param name="projeto">Entidade que deseja criar</param>
+        /// <response code="200">Se a operação foi feita com sucesso</response>
+        /// <response code="400">Parametros inválidos</response>
+        /// <response code="500">Problema de acesso ao servidor</response>  
+        [HttpPost]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(500)]
+        public void Post([FromBody] Projeto projeto)
+        {
+            _applicationProjeto.Add(projeto);
+        }
+
         // GET: api/Projetos
+        /// <summary>
+        ///     Busca todos os projetos.
+        /// </summary>
+        /// <returns>Retorna todos os projetos cadastrados no banco</returns>
+        /// <response code="200">Se a operação foi feita com sucesso</response>
+        /// <response code="500">Problema de acesso ao servidor</response>  
         [HttpGet]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(500)]
         public IEnumerable<Projeto> Get()
         {
             return _applicationProjeto.Get();
         }
 
-        // GET: api/Projetos/<nome projeto>
-        [HttpGet("search/{nome}")]
-        public IEnumerable<Projeto> Search([FromRoute]string nome)
-        {
-            return _applicationProjeto.Search(nome);
-        }
-
         // GET: api/Projetos/5
+        /// <summary>
+        ///     Busca projeto por Id.
+        /// </summary>
+        /// <param name="id">Id do projeto que deseja procurar</param>
+        /// <returns>Retorna o projeto cadastrados no banco, cujo Id é igual ao que foi passado.</returns>
+        /// <response code="200">Se a operação foi feita com sucesso</response>
+        /// <response code="400">Parametros inválidos</response>
+        /// <response code="500">Problema de acesso ao servidor</response>  
         [HttpGet("{id}")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(500)]
         public Projeto Get([FromRoute]int id)
         {
             return _applicationProjeto.Get(id);
         }
 
-        // POST: api/Projetos
-        [HttpPost]
-        public void Post([FromBody] Projeto entity)
+        // GET: api/Projetos/<nome projeto>
+        /// <summary>
+        ///     Busca projetos pelo nome.
+        /// </summary>
+        /// <remarks>
+        ///     Busca todos os projetos, cujo nome, começam com o parametro passado.
+        /// </remarks>
+        /// <param name="nome">Inicio do nome de um projeto que deseja buscar</param>
+        /// <returns>Retorna todos os projetos cadastrados no banco com o inicio do nomecorrespondente ao que foi passado.</returns>
+        /// <response code="200">Se a operação foi feita com sucesso</response>
+        /// <response code="500">Problema de acesso ao servidor</response>  
+        [HttpGet("search/{nome}")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(500)]
+        public IEnumerable<Projeto> Search([FromRoute]string nome)
         {
-            _applicationProjeto.Add(entity);
+            return _applicationProjeto.Search(nome);
         }
 
         // PUT: api/Projetos/5
         [HttpPut("{id}")]
         public void Put([FromRoute] int id, [FromBody] Projeto entity)
         {
+            //TODO
         }
 
         // DELETE: api/ApiWithActions/5
+        /// <summary>
+        ///     Deleta o projeto com o mesmo Id que foi passado.
+        /// </summary>
+        /// <param name="id">Id do projeto que deseja deletar</param>
+        /// <param name="projeto">Projeto que deseja deletar</param>
+        /// <response code="200">Se a operação foi feita com sucesso</response>
+        /// <response code="500">Problema de acesso ao servidor</response>  
         [HttpDelete("{id}")]
-        public void Delete([FromRoute] int id,[FromBody] Projeto entity)
+        [ProducesResponseType(200)]
+        [ProducesResponseType(500)]
+        public void Delete([FromRoute] int id,[FromBody] Projeto projeto)
         {
-            _applicationProjeto.Remove(entity);
+            _applicationProjeto.Remove(projeto);
         }
     }
 }

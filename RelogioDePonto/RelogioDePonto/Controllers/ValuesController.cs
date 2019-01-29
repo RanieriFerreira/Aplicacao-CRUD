@@ -26,16 +26,15 @@ namespace RelogioDePonto.Controllers
 
         // POST api/values
         /// <summary>
-        /// Creates a TodoItem.
+        ///     Creates a TodoItem.
         /// </summary>
         /// <remarks>
-        /// Sample request:
+        ///     Sample request:
         ///
         ///     POST /Todo
         ///     {
-        ///        "value": string
+        ///         "value": string
         ///     }
-        ///
         /// </remarks>
         /// <param name="value"></param>
         /// <returns>A newly created TodoItem</returns>

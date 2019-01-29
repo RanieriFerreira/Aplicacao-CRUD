@@ -34,7 +34,8 @@ namespace RelogioDePonto
             //    opt.UseInMemoryDatabase("EmpresaInMemory"));
             services.AddDbContext<EmpresaContext>(opt =>
                 opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc();
+                //.SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info
