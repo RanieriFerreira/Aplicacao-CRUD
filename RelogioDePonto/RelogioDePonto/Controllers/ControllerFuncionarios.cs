@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using RelogioDePonto;
 using RelogioDePonto.Applications;
 using RelogioDePonto.Models;
+using RelogioDePonto.ModelsInput;
 
 namespace RelogioDePonto.Controllers
 {
@@ -33,7 +34,7 @@ namespace RelogioDePonto.Controllers
         ///      - 2 - Férias
         ///      - 3 - Desligado
         /// </remarks>
-        /// <param name="funcionario">Entidade que deseja criar</param>
+        /// <param name="inputFuncionario">Entidade que deseja criar</param>
         /// <response code="200">Se a operação foi feita com sucesso</response>
         /// <response code="400">Parametros inválidos</response>
         /// <response code="500">Problema de acesso ao servidor</response>  
@@ -41,9 +42,9 @@ namespace RelogioDePonto.Controllers
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(500)]
-        public void Post([FromBody] Funcionario funcionario)
+        public void Post([FromBody] InputFuncionario inputFuncionario)
         {
-            _applicationFuncionario.Add(funcionario);
+            _applicationFuncionario.Add(inputFuncionario);
         }
 
         // GET: api/Funcionarios
@@ -76,7 +77,7 @@ namespace RelogioDePonto.Controllers
         [ProducesResponseType(500)]
         public Funcionario Get([FromRoute] int cpf)
         {
-            return _applicationFuncionario.Get(cpf);
+            return _applicationFuncionario.GetByCpf(cpf);
         }
 
         // GET: api/Funcionarios/pag/<tipo de ordenação>/<pagina>/<tamanho>
@@ -108,9 +109,9 @@ namespace RelogioDePonto.Controllers
 
         // PUT: api/Funcionarios/5
         [HttpPut]
-        public void Put([FromBody] Funcionario funcionario)
+        public void Put([FromBody] InputFuncionario inputFuncionario)
         {
-            _applicationFuncionario.Put(funcionario);
+            _applicationFuncionario.Put(inputFuncionario);
         }
 
         // DELETE: api/Funcionarios/5
@@ -121,7 +122,6 @@ namespace RelogioDePonto.Controllers
         /// <response code="200">Se a operação foi feita com sucesso</response>
         /// <response code="500">Problema de acesso ao servidor</response>  
         [HttpDelete("{cpf}")]
-
         [ProducesResponseType(200)]
         [ProducesResponseType(500)]
         public void Delete([FromRoute] int cpf)

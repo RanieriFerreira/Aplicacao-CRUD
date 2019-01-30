@@ -9,10 +9,15 @@ namespace RelogioDePonto.Repositorios
 {
     public class RepositoryFuncionario : Repository<Funcionario>, IFuncionarioRepositorio
     {
-        private DbContext _context;
+        private ContextEmpresa _context;
         public RepositoryFuncionario (ContextEmpresa context) : base(context)
         {
             _context = context;
+        }
+
+        public Funcionario GetByCPF(int cpf)
+        {
+            return _context.Funcionarios.FirstOrDefault(s => s.Cpf == cpf);
         }
 
         public IQueryable<Funcionario> PagedAndOrdered(string order, int page, int pageSize)
@@ -34,20 +39,20 @@ namespace RelogioDePonto.Repositorios
 
         public void Put(Funcionario funcionario)
         {
-            //var target = Get(funcionario.Cpf);
+            var target = GetByCPF(funcionario.Cpf);
 
-            //if (target != null)
-            //{
-                //target.Nome = funcionario.Nome;
-                //target.Status = funcionario.Status;
+            if (target != null)
+            {
+                target.Nome = funcionario.Nome;
+                target.Status = funcionario.Status;
 
-                //_context.Update(target);
-                //Save();
-            //}
-            //else
-            //{
+                _context.Update(target);
+                Save();
+            }
+            else
+            {
                 Add(funcionario);
-            //}
+            }
         }
     }
 }

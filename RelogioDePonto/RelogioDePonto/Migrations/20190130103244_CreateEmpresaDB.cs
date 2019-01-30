@@ -11,14 +11,15 @@ namespace RelogioDePonto.Migrations
                 name: "Funcionarios",
                 columns: table => new
                 {
-                    Cpf = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Cpf = table.Column<int>(nullable: false),
                     Nome = table.Column<string>(nullable: true),
                     Status = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Funcionarios", x => x.Cpf);
+                    table.PrimaryKey("PK_Funcionarios", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -35,6 +36,18 @@ namespace RelogioDePonto.Migrations
                 {
                     table.PrimaryKey("PK_Projetos", x => x.Id);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Funcionarios_Id",
+                table: "Funcionarios",
+                column: "Id",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Projetos_Id",
+                table: "Projetos",
+                column: "Id",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

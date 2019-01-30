@@ -20,15 +20,20 @@ namespace RelogioDePonto.Migrations
 
             modelBuilder.Entity("RelogioDePonto.Models.Funcionario", b =>
                 {
-                    b.Property<int>("Cpf")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Cpf");
 
                     b.Property<string>("Nome");
 
                     b.Property<int>("Status");
 
-                    b.HasKey("Cpf");
+                    b.HasKey("Id");
+
+                    b.HasIndex("Id")
+                        .IsUnique();
 
                     b.ToTable("Funcionarios");
                 });
@@ -46,6 +51,9 @@ namespace RelogioDePonto.Migrations
                     b.Property<int>("Status");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Id")
+                        .IsUnique();
 
                     b.ToTable("Projetos");
                 });

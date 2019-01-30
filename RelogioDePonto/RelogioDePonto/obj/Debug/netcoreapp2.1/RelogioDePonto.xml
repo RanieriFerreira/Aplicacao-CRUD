@@ -4,7 +4,7 @@
         <name>RelogioDePonto</name>
     </assembly>
     <members>
-        <member name="M:RelogioDePonto.Controllers.ControllerFuncionarios.Post(RelogioDePonto.Models.Funcionario)">
+        <member name="M:RelogioDePonto.Controllers.ControllerFuncionarios.Post(RelogioDePonto.ModelsInput.InputFuncionario)">
             <summary>
                 Cria funcionario.
             </summary>
@@ -15,7 +15,7 @@
                  - 2 - Férias
                  - 3 - Desligado
             </remarks>
-            <param name="funcionario">Entidade que deseja criar</param>
+            <param name="inputFuncionario">Entidade que deseja criar</param>
             <response code="200">Se a operação foi feita com sucesso</response>
             <response code="400">Parametros inválidos</response>
             <response code="500">Problema de acesso ao servidor</response>  

@@ -59,18 +59,18 @@ namespace RelogioDePonto.Applications
             _projetoRepositorio.Remove(id);
         }
 
-        public void Put(InputProjeto projetoInput)
+        public void Put(InputProjeto inputProjeto)
         {
-            _projetoRepositorio.Put(ToProjeto(projetoInput));
+            _projetoRepositorio.Put(ToProjeto(inputProjeto));
         }
 
-        public Projeto ToProjeto(InputProjeto projetoInput)
+        public Projeto ToProjeto(InputProjeto inputProjeto)
         {
             return new Projeto
             {
-                Nome = projetoInput.Nome,
-                Detalhe = projetoInput.Detalhe,
-                Status = projetoInput.Status
+                Nome = inputProjeto.Nome,
+                Detalhe = inputProjeto.Detalhe,
+                Status = inputProjeto.Status
             };
         }
     }

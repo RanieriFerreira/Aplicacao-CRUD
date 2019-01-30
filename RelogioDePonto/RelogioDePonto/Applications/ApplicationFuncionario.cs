@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PagedList;
 using RelogioDePonto.Models;
+using RelogioDePonto.ModelsInput;
 using RelogioDePonto.Repositorios;
 using System;
 using System.Collections.Generic;
@@ -32,13 +33,28 @@ namespace RelogioDePonto.Applications
             }
         }
 
+        public Funcionario GetByCpf(int Cpf)
+        {
+            if (Exists(Cpf))
+            {
+                return _funcionarioRepositorio.GetByCPF(Cpf);
+            }
+            else
+            {
+                // TODO - Corrigir o tipo de retorno do erro
+                return null;
+            }
+        }
+
         public IQueryable<Funcionario> Get()
         {
             return _funcionarioRepositorio.Get();
         }
 
-        public string Add(Funcionario funcionario)
+        public string Add(InputFuncionario inputFuncionario)
         {
+            var funcionario = ToFuncionario(inputFuncionario);
+
             if (!Exists(funcionario.Cpf))
             {
                 _funcionarioRepositorio.Add(funcionario);
@@ -58,7 +74,7 @@ namespace RelogioDePonto.Applications
 
         public bool Exists(int cpf)
         {
-            if (_funcionarioRepositorio.Get(cpf) == null)
+            if (_funcionarioRepositorio.GetByCPF(cpf) == null)
             {
                 return false;
             }
@@ -82,10 +98,20 @@ namespace RelogioDePonto.Applications
             }
         }
 
-        public void Put(Funcionario funcionario)
+        public void Put(InputFuncionario inputFuncionario)
         {
+            var funcionario = ToFuncionario(inputFuncionario);
             _funcionarioRepositorio.Put(funcionario);
         }
-            
+
+        public Funcionario ToFuncionario(InputFuncionario inputFuncionario)
+        {
+            return new Funcionario
+            {
+                Nome = inputFuncionario.Nome,
+                Cpf = inputFuncionario.Cpf,
+                Status = inputFuncionario.Status
+            };
+        }
     }
 }

@@ -15,3 +15,4 @@ namespace RelogioDePonto.Models
         public int Status { get; set; }
     }
 }
+

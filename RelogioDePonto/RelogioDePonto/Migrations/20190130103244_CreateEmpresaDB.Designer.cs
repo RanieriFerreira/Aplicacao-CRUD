@@ -9,8 +9,8 @@ using RelogioDePonto;
 namespace RelogioDePonto.Migrations
 {
     [DbContext(typeof(ContextEmpresa))]
-    [Migration("20190129180447_sp-GetProjetos")]
-    partial class spGetProjetos
+    [Migration("20190130103244_CreateEmpresaDB")]
+    partial class CreateEmpresaDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -22,15 +22,20 @@ namespace RelogioDePonto.Migrations
 
             modelBuilder.Entity("RelogioDePonto.Models.Funcionario", b =>
                 {
-                    b.Property<int>("Cpf")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Cpf");
 
                     b.Property<string>("Nome");
 
                     b.Property<int>("Status");
 
-                    b.HasKey("Cpf");
+                    b.HasKey("Id");
+
+                    b.HasIndex("Id")
+                        .IsUnique();
 
                     b.ToTable("Funcionarios");
                 });
@@ -48,6 +53,9 @@ namespace RelogioDePonto.Migrations
                     b.Property<int>("Status");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Id")
+                        .IsUnique();
 
                     b.ToTable("Projetos");
                 });

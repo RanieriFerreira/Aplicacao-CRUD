@@ -24,6 +24,8 @@ namespace RelogioDePonto
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Funcionario>().HasIndex(u => u.Id).IsUnique();
+            modelBuilder.Entity<Projeto>().HasIndex(u => u.Id).IsUnique();
         }
 
         // Entidades
