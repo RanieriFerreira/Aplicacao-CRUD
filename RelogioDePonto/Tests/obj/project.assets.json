@@ -3546,7 +3546,7 @@
           "build/netcoreapp1.0/xunit.runner.visualstudio.props": {}
         }
       },
-      "RelogioDePonto/1.0.0": {
+      "CRUD_Empresa/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.1",
         "dependencies": {
@@ -3563,10 +3563,10 @@
           "TestToolsToXunitProxy": "0.0.4"
         },
         "compile": {
-          "bin/placeholder/RelogioDePonto.dll": {}
+          "bin/placeholder/CRUD_Empresa.dll": {}
         },
         "runtime": {
-          "bin/placeholder/RelogioDePonto.dll": {}
+          "bin/placeholder/CRUD_Empresa.dll": {}
         }
       }
     }
@@ -10652,21 +10652,21 @@
         "xunit.runner.visualstudio.nuspec"
       ]
     },
-    "RelogioDePonto/1.0.0": {
+    "CRUD_Empresa/1.0.0": {
       "type": "project",
-      "path": "../RelogioDePonto/RelogioDePonto.csproj",
-      "msbuildProject": "../RelogioDePonto/RelogioDePonto.csproj"
+      "path": "../RelogioDePonto/CRUD_Empresa.csproj",
+      "msbuildProject": "../RelogioDePonto/CRUD_Empresa.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.1": [
+      "CRUD_Empresa >= 1.0.0",
       "Microsoft.EntityFrameworkCore.InMemory >= 2.1.4",
       "Microsoft.EntityFrameworkCore.SqlServer >= 2.1.4",
       "Microsoft.EntityFrameworkCore.Tools >= 2.1.4",
       "Microsoft.NET.Test.Sdk >= 15.9.0",
       "Microsoft.NETCore.App >= 2.1.0",
       "PagedList.Mvc >= 4.5.0",
-      "RelogioDePonto >= 1.0.0",
       "System.Interactive.Async >= 3.2.0",
       "TestToolsToXunitProxy >= 0.0.4",
       "xunit >= 2.4.0",
@@ -10680,9 +10680,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ranieri.ferreira\\Desktop\\Aplicacao-CRUD\\RelogioDePonto\\Tests\\Tests.RelogioDePonto.csproj",
-      "projectName": "Tests.RelogioDePonto",
-      "projectPath": "C:\\Users\\ranieri.ferreira\\Desktop\\Aplicacao-CRUD\\RelogioDePonto\\Tests\\Tests.RelogioDePonto.csproj",
+      "projectUniqueName": "C:\\Users\\ranieri.ferreira\\Desktop\\Aplicacao-CRUD\\RelogioDePonto\\Tests\\CRUD_Empresa.Tests.csproj",
+      "projectName": "CRUD_Empresa.Tests",
+      "projectPath": "C:\\Users\\ranieri.ferreira\\Desktop\\Aplicacao-CRUD\\RelogioDePonto\\Tests\\CRUD_Empresa.Tests.csproj",
       "packagesPath": "C:\\Users\\ranieri.ferreira\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\ranieri.ferreira\\Desktop\\Aplicacao-CRUD\\RelogioDePonto\\Tests\\obj\\",
       "projectStyle": "PackageReference",
@@ -10703,8 +10703,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\ranieri.ferreira\\Desktop\\Aplicacao-CRUD\\RelogioDePonto\\RelogioDePonto\\RelogioDePonto.csproj": {
-              "projectPath": "C:\\Users\\ranieri.ferreira\\Desktop\\Aplicacao-CRUD\\RelogioDePonto\\RelogioDePonto\\RelogioDePonto.csproj"
+            "C:\\Users\\ranieri.ferreira\\Desktop\\Aplicacao-CRUD\\RelogioDePonto\\RelogioDePonto\\CRUD_Empresa.csproj": {
+              "projectPath": "C:\\Users\\ranieri.ferreira\\Desktop\\Aplicacao-CRUD\\RelogioDePonto\\RelogioDePonto\\CRUD_Empresa.csproj"
             }
           }
         }
