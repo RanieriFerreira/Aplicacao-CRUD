@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using RelogioDePonto;
 using RelogioDePonto.Applications;
 using RelogioDePonto.Models;
 using RelogioDePonto.ModelsInput;
@@ -108,10 +102,21 @@ namespace RelogioDePonto.Controllers
         }
 
         // PUT: api/Funcionarios/5
+        /// <summary>
+        ///     Atualiza ou cria funcionario.
+        /// </summary>
+        /// <remarks>
+        ///     Tenta alterar um funcionario com o CPF passado, se não existir um novo funcionario é criado.
+        /// </remarks>
+        /// <param name="funcionario">Funcionario com os dados alterados</param>
+        /// <response code="200">Se a operação foi feita com sucesso</response>
+        /// <response code="500">Problema de acesso ao servidor</response> 
         [HttpPut]
-        public void Put([FromBody] InputFuncionario inputFuncionario)
+        [ProducesResponseType(200)]
+        [ProducesResponseType(500)]
+        public void Put([FromBody] InputFuncionario funcionario)
         {
-            _applicationFuncionario.Put(inputFuncionario);
+            _applicationFuncionario.Put(funcionario);
         }
 
         // DELETE: api/Funcionarios/5

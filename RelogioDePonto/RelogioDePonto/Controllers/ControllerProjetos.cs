@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using RelogioDePonto.Applications;
 using RelogioDePonto.Models;
@@ -98,7 +94,19 @@ namespace RelogioDePonto.Controllers
         }
 
         // PUT: api/Projetos/5
+        /// <summary>
+        ///     Atualiza ou cria projeto.
+        /// </summary>
+        /// <remarks>
+        ///     Tenta alterar um projeto com o ID passado, se não existir um novo projeto é criado.
+        /// </remarks>
+        /// <param name="id">ID do projeto que deseja modificar</param>
+        /// <param name="projeto">Projeto com os dados alterados</param>
+        /// <response code="200">Se a operação foi feita com sucesso</response>
+        /// <response code="500">Problema de acesso ao servidor</response> 
         [HttpPut("{id}")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(500)]
         public void Put([FromRoute] int id, [FromBody] InputProjeto projeto)
         {
             _applicationProjeto.Put(id, projeto);

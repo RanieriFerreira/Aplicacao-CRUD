@@ -57,6 +57,17 @@
             <response code="400">Parametros inválidos</response>
             <response code="500">Problema de acesso ao servidor</response>  
         </member>
+        <member name="M:RelogioDePonto.Controllers.ControllerFuncionarios.Put(RelogioDePonto.ModelsInput.InputFuncionario)">
+            <summary>
+                Atualiza ou cria funcionario.
+            </summary>
+            <remarks>
+                Tenta alterar um funcionario com o CPF passado, se não existir um novo funcionario é criado.
+            </remarks>
+            <param name="funcionario">Funcionario com os dados alterados</param>
+            <response code="200">Se a operação foi feita com sucesso</response>
+            <response code="500">Problema de acesso ao servidor</response> 
+        </member>
         <member name="M:RelogioDePonto.Controllers.ControllerFuncionarios.Delete(System.Int32)">
             <summary>
                 Deleta o projeto com o mesmo Id que foi passado.
@@ -110,6 +121,18 @@
             <returns>Retorna todos os projetos cadastrados no banco com o inicio do nomecorrespondente ao que foi passado.</returns>
             <response code="200">Se a operação foi feita com sucesso</response>
             <response code="500">Problema de acesso ao servidor</response>  
+        </member>
+        <member name="M:RelogioDePonto.Controllers.ControllerProjetos.Put(System.Int32,RelogioDePonto.ModelsInput.InputProjeto)">
+            <summary>
+                Atualiza ou cria projeto.
+            </summary>
+            <remarks>
+                Tenta alterar um projeto com o ID passado, se não existir um novo projeto é criado.
+            </remarks>
+            <param name="id">ID do projeto que deseja modificar</param>
+            <param name="projeto">Projeto com os dados alterados</param>
+            <response code="200">Se a operação foi feita com sucesso</response>
+            <response code="500">Problema de acesso ao servidor</response> 
         </member>
         <member name="M:RelogioDePonto.Controllers.ControllerProjetos.Delete(System.Int32)">
             <summary>
