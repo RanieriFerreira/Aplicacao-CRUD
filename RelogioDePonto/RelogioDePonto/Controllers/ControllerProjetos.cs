@@ -98,10 +98,10 @@ namespace RelogioDePonto.Controllers
         }
 
         // PUT: api/Projetos/5
-        [HttpPut]
-        public void Put([FromBody] InputProjeto projeto)
+        [HttpPut("{id}")]
+        public void Put([FromRoute] int id, [FromBody] InputProjeto projeto)
         {
-            _applicationProjeto.Put(projeto);
+            _applicationProjeto.Put(id, projeto);
         }
 
         // DELETE: api/ApiWithActions/5
@@ -114,9 +114,9 @@ namespace RelogioDePonto.Controllers
         [HttpDelete("{id}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(500)]
-        public void Delete([FromRoute] int id)
+        public string Delete([FromRoute] int id)
         {
-            _applicationProjeto.Remove(id);
+            return _applicationProjeto.Remove(id);
         }
     }
 }

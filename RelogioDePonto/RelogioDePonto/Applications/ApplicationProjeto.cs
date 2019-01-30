@@ -43,25 +43,43 @@ namespace RelogioDePonto.Applications
 
         public bool Exists(int id)
         {
-            if (_projetoRepositorio.Get(id) == null)
-            {
-                return false;
-            }
-            else
+            if (_projetoRepositorio.Get(id) != null)
             {
                 return true;
             }
+            else
+            {
+                return false;
+            }
         }
 
-        public void Remove(int id)
+        public string Remove(int id)
         {
-            // Verificar se o Projeto existe
-            _projetoRepositorio.Remove(id);
+            if (Exists(id))
+            {
+                var projeto = _projetoRepositorio.Get(id);
+                _projetoRepositorio.Remove(projeto);
+                return id.ToString();
+            }
+            else
+            {
+                // TODO - Corrigir o tipo de retorno do erro
+                return "Erro: Esse funcionário não esta cadastrado no sistema";
+            }
         }
 
-        public void Put(InputProjeto inputProjeto)
+        public void Put(int id, InputProjeto inputProjeto)
         {
-            _projetoRepositorio.Put(ToProjeto(inputProjeto));
+            var projeto = ToProjeto(inputProjeto);
+
+            if (Exists(id))
+            {
+                _projetoRepositorio.Put(id, projeto);
+            }
+            else
+            {
+                Add(inputProjeto);
+            }
         }
 
         public Projeto ToProjeto(InputProjeto inputProjeto)

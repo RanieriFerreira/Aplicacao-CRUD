@@ -124,9 +124,9 @@ namespace RelogioDePonto.Controllers
         [HttpDelete("{cpf}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(500)]
-        public void Delete([FromRoute] int cpf)
+        public string Delete([FromRoute] int cpf)
         {
-            _applicationFuncionario.Remove(cpf);
+           return  _applicationFuncionario.Remove(cpf);
         }
     }
 }

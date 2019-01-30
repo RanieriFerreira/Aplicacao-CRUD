@@ -74,21 +74,22 @@ namespace RelogioDePonto.Applications
 
         public bool Exists(int cpf)
         {
-            if (_funcionarioRepositorio.GetByCPF(cpf) == null)
+            if (_funcionarioRepositorio.GetByCPF(cpf) != null)
             {
-                return false;
+                return true;
             }
             else
             {
-                return true;
+                return false;
             }
         }
 
         public string Remove(int cpf)
         {
-            if (!Exists(cpf))
+            if (Exists(cpf))
             {
-                _funcionarioRepositorio.Remove(cpf);
+                var funcionario = _funcionarioRepositorio.GetByCPF(cpf);
+                _funcionarioRepositorio.Remove(funcionario);
                 return cpf.ToString();
             }
             else
@@ -101,7 +102,15 @@ namespace RelogioDePonto.Applications
         public void Put(InputFuncionario inputFuncionario)
         {
             var funcionario = ToFuncionario(inputFuncionario);
-            _funcionarioRepositorio.Put(funcionario);
+
+            if (Exists(inputFuncionario.Cpf))
+            {
+                _funcionarioRepositorio.Put(funcionario);
+            }
+            else
+            {
+                Add(inputFuncionario);
+            }
         }
 
         public Funcionario ToFuncionario(InputFuncionario inputFuncionario)

@@ -61,30 +61,6 @@ namespace Tests.RelogioDePonto
         }
 
         [TestMethod]
-        public void Add_AdicionarFuncionarioDuplicado_Exception()
-        {
-            var options = new DbContextOptionsBuilder<ContextEmpresa>()
-               .UseInMemoryDatabase(databaseName: "Add_funcionarios_iguais")
-               .Options;
-
-            // Run the test against one instance of the context
-            using (var context = new ContextEmpresa(options))
-            {
-                var service = new ApplicationFuncionario(context);
-                var funcionario1 = new Funcionario { Cpf = 111111111, Nome = "Novo Funcionario" };
-                var funcionario2 = new Funcionario { Cpf = 111111111, Nome = "Novo Funcionario" };
-                service.Add(funcionario1);
-                Assert.AreEqual("Erro: Esse CPF já esta sendo usado", service.Add(funcionario2));
-            }
-
-            // Use a separate instance of the context to verify correct data was saved to database
-            using (var context = new ContextEmpresa(options))
-            {
-                Assert.AreEqual(1, context.Funcionarios.Count());
-            }
-        }
-
-        [TestMethod]
         public void GetOrderBy_BuscaOrdenadaComPaginacao_True()
         {
             var options = new DbContextOptionsBuilder<ContextEmpresa>()
@@ -137,43 +113,15 @@ namespace Tests.RelogioDePonto
             {
                 var service = new RepositoryFuncionario(context);
                 var funcionario = new Funcionario {Cpf = 111111111, Nome = "Funcionario Modificado" };
-                context.Update(funcionario);
-                context.SaveChanges();
+                service.Put(funcionario);
             }
 
             using (var context = new ContextEmpresa(options))
             {
                 var service = new RepositoryFuncionario(context);
-                var result = service.Get(111111111);
+                var result = service.GetByCPF(111111111);
                 Assert.AreEqual("Funcionario Modificado", result.Nome);
             }
         }
-
-        // TODO - Testar deleção de usuário
-
-
-        //[TestMethod]
-        //public void SPGetProjetos_BuscaProjetosLike_True()
-        //{
-        //    var options = new DbContextOptionsBuilder<EmpresaContext>()
-        //        .UseInMemoryDatabase(databaseName: "Get_projetos_like")
-        //        .Options;
-
-        //    // Insert seed data into the database using one instance of the context
-        //    using (var context = new EmpresaContext(options))
-        //    {
-        //        context.Projetos.Add(new Projeto { Nome = "Ifood",  Status = 0});
-        //        context.Projetos.Add(new Projeto { Nome = "Banco virtual",  Status = 1});
-        //        context.Projetos.Add(new Projeto { Nome = "Banco digital",  Status = 2});
-        //        context.SaveChanges();
-        //    }
-
-        //    // Use a clean instance of the context to run the test
-        //    using (var context = new EmpresaContext(options))
-        //    {
-        //        var projetos = context.Projetos.FromSql("EXEC dbo.GetProjetos @Nome = 'Banco'").ToList();
-        //        Assert.AreEqual(2, projetos.Count());
-        //    }
-        //}
     }
 }

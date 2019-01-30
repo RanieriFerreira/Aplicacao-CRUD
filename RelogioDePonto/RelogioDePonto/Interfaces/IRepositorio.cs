@@ -20,6 +20,6 @@ namespace RelogioDePonto.Interfaces
         void Save();
 
         // Grupo para deletar
-        void Remove(int id);
+        void Remove(T entity);
     }
 }

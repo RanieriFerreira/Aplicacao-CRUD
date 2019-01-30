@@ -41,18 +41,11 @@ namespace RelogioDePonto.Repositorios
         {
             var target = GetByCPF(funcionario.Cpf);
 
-            if (target != null)
-            {
-                target.Nome = funcionario.Nome;
-                target.Status = funcionario.Status;
+            target.Nome = funcionario.Nome;
+            target.Status = funcionario.Status;
 
-                _context.Update(target);
-                Save();
-            }
-            else
-            {
-                Add(funcionario);
-            }
+            _context.Update(target);
+            Save();
         }
     }
 }

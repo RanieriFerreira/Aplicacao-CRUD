@@ -33,9 +33,9 @@ namespace RelogioDePonto.Repositories
         }
 
         // Grupo para deletar
-        public void Remove(int id)
+        public void Remove(T entity)
         {
-            Context.Set<T>().Remove(Get(id));
+            Context.Set<T>().Remove(entity);
             Save();
         }
 

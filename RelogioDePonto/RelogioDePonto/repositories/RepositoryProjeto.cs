@@ -11,7 +11,7 @@ namespace RelogioDePonto.Repositorios
 {
     public class RepositoryProjeto : Repository<Projeto>, IProjetoRepositorio
     {
-        private DbContext _context;
+        private ContextEmpresa _context;
         public RepositoryProjeto(ContextEmpresa context) : base(context)
         {
             _context = context;
@@ -22,23 +22,16 @@ namespace RelogioDePonto.Repositorios
             return _context.Set<Projeto>().FromSql("GetProjetos @p0", nome);
         }
 
-        public void Put(Projeto projeto)
+        public void Put(int id, Projeto projeto)
         {
-            var target = Get(projeto.Id);
+            var target = Get(id);
 
-            if (target != null)
-            {
-                target.Nome = projeto.Nome;
-                target.Detalhe = projeto.Detalhe;
-                target.Status = projeto.Status;
+            target.Nome = projeto.Nome;
+            target.Detalhe = projeto.Detalhe;
+            target.Status = projeto.Status;
 
-                _context.Update(target);
-                Save();
-            }
-            else
-            {
-                Add(projeto);
-            }
+            _context.Update(target);
+            Save();
         }
     }
 }
