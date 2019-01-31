@@ -64,21 +64,22 @@ namespace RelogioDePonto.Applications
             else
             {
                 // TODO - Corrigir o tipo de retorno do erro
-                return "Erro: Esse funcionário não esta cadastrado no sistema";
+                return "Erro: Esse projeto não esta cadastrado no sistema";
             }
         }
 
-        public void Put(int id, InputProjeto inputProjeto)
+        public string Put(int id, InputProjeto inputProjeto)
         {
             var projeto = ToProjeto(inputProjeto);
 
             if (Exists(id))
             {
                 _projetoRepositorio.Put(id, projeto);
+                return id.ToString();
             }
             else
             {
-                Add(inputProjeto);
+                return "Erro: Esse projeto não esta cadastrado no sistema";
             }
         }
 

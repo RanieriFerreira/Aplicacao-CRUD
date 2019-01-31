@@ -29,6 +29,7 @@ namespace RelogioDePonto.Applications
             else
             {
                 // TODO - Corrigir o tipo de retorno do erro
+                //return "Erro: Funcionário não encontrado";
                 return null;
             }
         }
@@ -42,6 +43,7 @@ namespace RelogioDePonto.Applications
             else
             {
                 // TODO - Corrigir o tipo de retorno do erro
+                //return "Erro: Funcionário não encontrado";
                 return null;
             }
         }
@@ -62,7 +64,6 @@ namespace RelogioDePonto.Applications
             }
             else
             {
-                // TODO - Corrigir o tipo de retorno do erro
                 return "Erro: Esse CPF já esta sendo usado";
             }
         }
@@ -94,22 +95,22 @@ namespace RelogioDePonto.Applications
             }
             else
             {
-                // TODO - Corrigir o tipo de retorno do erro
                 return "Erro: Esse funcionário não esta cadastrado no sistema";
             }
         }
 
-        public void Put(InputFuncionario inputFuncionario)
+        public string Put(InputFuncionario inputFuncionario)
         {
             var funcionario = ToFuncionario(inputFuncionario);
 
             if (Exists(inputFuncionario.Cpf))
             {
                 _funcionarioRepositorio.Put(funcionario);
+                return funcionario.Cpf.ToString();
             }
             else
             {
-                Add(inputFuncionario);
+                return "Erro: Esse funcionário não esta cadastrado no sistema";
             }
         }
 

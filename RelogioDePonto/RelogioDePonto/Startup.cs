@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
 using System.Reflection;
 using System.IO;
+using Microsoft.AspNetCore.Mvc;
 
 namespace RelogioDePonto
 {
@@ -26,8 +27,7 @@ namespace RelogioDePonto
             //    opt.UseInMemoryDatabase("EmpresaInMemory"));
             services.AddDbContext<ContextEmpresa>(opt =>
                 opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddMvc();
-                //.SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info

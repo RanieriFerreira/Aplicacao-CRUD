@@ -36,9 +36,9 @@ namespace RelogioDePonto.Controllers
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(500)]
-        public void Post([FromBody] InputFuncionario inputFuncionario)
+        public string Post([FromBody] InputFuncionario inputFuncionario)
         {
-            _applicationFuncionario.Add(inputFuncionario);
+            return _applicationFuncionario.Add(inputFuncionario);
         }
 
         // GET: api/Funcionarios
@@ -114,9 +114,9 @@ namespace RelogioDePonto.Controllers
         [HttpPut]
         [ProducesResponseType(200)]
         [ProducesResponseType(500)]
-        public void Put([FromBody] InputFuncionario funcionario)
+        public string Put([FromBody] InputFuncionario funcionario)
         {
-            _applicationFuncionario.Put(funcionario);
+            return _applicationFuncionario.Put(funcionario);
         }
 
         // DELETE: api/Funcionarios/5
