@@ -64,10 +64,12 @@ namespace RelogioDePonto.Controllers
         /// <returns>Retorna o projeto cadastrados no banco, cujo Id é igual ao que foi passado.</returns>
         /// <response code="200">Se a operação foi feita com sucesso</response>
         /// <response code="400">Parametros inválidos</response>
+        /// <response code="404">Se não encontrar o funcionario</response>
         /// <response code="500">Problema de acesso ao servidor</response>  
         [HttpGet("{cpf}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
         [ProducesResponseType(500)]
         public ActionResult<Funcionario> Get([FromRoute] int cpf)
         {
@@ -110,9 +112,11 @@ namespace RelogioDePonto.Controllers
         /// </remarks>
         /// <param name="funcionario">Funcionario com os dados alterados</param>
         /// <response code="200">Se a operação foi feita com sucesso</response>
+        /// <response code="404">Se não encontrar o funcionario</response>
         /// <response code="500">Problema de acesso ao servidor</response> 
         [HttpPut]
         [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
         [ProducesResponseType(500)]
         public ActionResult<Funcionario> Put([FromBody] InputFuncionario funcionario)
         {
@@ -125,9 +129,11 @@ namespace RelogioDePonto.Controllers
         /// </summary>
         /// <param name="cpf">CPF do funcionário que deseja deletar</param>
         /// <response code="200">Se a operação foi feita com sucesso</response>
+        /// <response code="404">Se não encontrar o funcionario</response>
         /// <response code="500">Problema de acesso ao servidor</response>  
         [HttpDelete("{cpf}")]
         [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
         [ProducesResponseType(500)]
         public ActionResult<Funcionario> Delete([FromRoute] int cpf)
         {

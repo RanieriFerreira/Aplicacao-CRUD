@@ -84,7 +84,7 @@ namespace RelogioDePonto.Applications
             }
             else
             {
-                return NotFound(_msgCpfExists);
+                return NotFound(_msgFuncionarioNotFound);
             }
         }
 

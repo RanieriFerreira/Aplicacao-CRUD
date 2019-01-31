@@ -64,10 +64,12 @@ namespace RelogioDePonto.Controllers
         /// <returns>Retorna o projeto cadastrados no banco, cujo Id é igual ao que foi passado.</returns>
         /// <response code="200">Se a operação foi feita com sucesso</response>
         /// <response code="400">Parametros inválidos</response>
+        /// <response code="404">Se não encontrar o projeto</response>
         /// <response code="500">Problema de acesso ao servidor</response>  
         [HttpGet("{id}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
         [ProducesResponseType(500)]
         public ActionResult<Projeto> Get([FromRoute]int id)
         {
@@ -84,9 +86,11 @@ namespace RelogioDePonto.Controllers
         /// <param name="nome">Inicio do nome de um projeto que deseja buscar</param>
         /// <returns>Retorna todos os projetos cadastrados no banco com o inicio do nomecorrespondente ao que foi passado.</returns>
         /// <response code="200">Se a operação foi feita com sucesso</response>
+        /// <response code="404">Se não encontrar o projeto</response>
         /// <response code="500">Problema de acesso ao servidor</response>  
         [HttpGet("search/{nome}")]
         [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
         [ProducesResponseType(500)]
         public IQueryable<Projeto> Search([FromRoute]string nome)
         {
@@ -103,9 +107,11 @@ namespace RelogioDePonto.Controllers
         /// <param name="id">ID do projeto que deseja modificar</param>
         /// <param name="projeto">Projeto com os dados alterados</param>
         /// <response code="200">Se a operação foi feita com sucesso</response>
+        /// <response code="404">Se não encontrar o projeto</response>
         /// <response code="500">Problema de acesso ao servidor</response> 
         [HttpPut("{id}")]
         [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
         [ProducesResponseType(500)]
         public ActionResult<Projeto> Put([FromRoute] int id, [FromBody] InputProjeto projeto)
         {
@@ -118,9 +124,11 @@ namespace RelogioDePonto.Controllers
         /// </summary>
         /// <param name="id">Id do projeto que deseja deletar</param>
         /// <response code="200">Se a operação foi feita com sucesso</response>
+        /// <response code="404">Se não encontrar o projeto</response>
         /// <response code="500">Problema de acesso ao servidor</response>  
         [HttpDelete("{id}")]
         [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
         [ProducesResponseType(500)]
         public ActionResult<Projeto> Delete([FromRoute] int id)
         {
