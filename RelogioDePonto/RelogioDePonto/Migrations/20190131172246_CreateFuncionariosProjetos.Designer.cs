@@ -2,15 +2,15 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using RelogioDePonto;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RelogioDePonto.Migrations
 {
     [DbContext(typeof(ContextEmpresa))]
-    partial class ContextEmpresaModelSnapshot : ModelSnapshot
+    [Migration("20190131172246_CreateFuncionariosProjetos")]
+    partial class CreateFuncionariosProjetos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

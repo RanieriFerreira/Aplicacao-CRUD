@@ -1,8 +1,6 @@
-﻿using System;
+﻿using CRUD_Empresa.Models;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace RelogioDePonto.Models
 {
@@ -13,6 +11,8 @@ namespace RelogioDePonto.Models
         public string Nome { get; set; }
         public string Detalhe { get; set; }
         public int Status { get; set; }
+
+        public IList<FuncionarioProjeto> FuncionariosProjetos { get; set; }
     }
 }
 

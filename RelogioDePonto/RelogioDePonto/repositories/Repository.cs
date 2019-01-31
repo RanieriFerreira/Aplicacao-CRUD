@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RelogioDePonto.Interfaces;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace RelogioDePonto.Repositories

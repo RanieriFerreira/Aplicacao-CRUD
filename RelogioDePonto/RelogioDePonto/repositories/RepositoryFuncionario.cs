@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using Microsoft.EntityFrameworkCore;
+﻿using System.Linq;
 using RelogioDePonto.Interfaces;
 using RelogioDePonto.Models;
 using RelogioDePonto.Repositories;

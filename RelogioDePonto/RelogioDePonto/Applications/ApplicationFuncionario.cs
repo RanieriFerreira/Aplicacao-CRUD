@@ -1,11 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using PagedList;
 using RelogioDePonto.Models;
 using RelogioDePonto.ModelsInput;
 using RelogioDePonto.Repositorios;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace RelogioDePonto.Applications
