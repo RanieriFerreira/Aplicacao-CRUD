@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using RelogioDePonto.Interfaces;
 using RelogioDePonto.Models;
 using RelogioDePonto.ModelsInput;
@@ -10,10 +11,13 @@ using System.Threading.Tasks;
 
 namespace RelogioDePonto.Applications
 {
-    public class ApplicationProjeto
+    public class ApplicationProjeto : ControllerBase
     {
         private RepositoryProjeto _projetoRepositorio;
         private readonly DbContext _context;
+
+        // Mensagens de retorno
+        private string _msgProjetoNotFound = "Nenhum projeto encontrado";
 
         public ApplicationProjeto(ContextEmpresa context)
         {
@@ -21,9 +25,15 @@ namespace RelogioDePonto.Applications
             _context = context;
         }
 
-        public Projeto Get(int id)
+        public ActionResult<Projeto> Get(int id)
         {
-            return _projetoRepositorio.Get(id);
+            if (Exists(id))
+            {
+                return Ok(_projetoRepositorio.Get(id));
+            }
+            else {
+                return NotFound(_msgProjetoNotFound);
+            }
         }
 
         public IQueryable<Projeto> Get()
@@ -36,9 +46,39 @@ namespace RelogioDePonto.Applications
             return _projetoRepositorio.Search(nome);
         }
 
-        public void Add(InputProjeto projeto)
+        public ActionResult<Projeto> Add(InputProjeto projeto)
         {
-            _projetoRepositorio.Add(ToProjeto(projeto));
+            var newProjeto = ToProjeto(projeto);
+            _projetoRepositorio.Add(newProjeto);
+            return Ok(newProjeto.Id);
+        }
+
+        public ActionResult<Projeto> Remove(int id)
+        {
+            if (Exists(id))
+            {
+                var projeto = _projetoRepositorio.Get(id);
+                _projetoRepositorio.Remove(projeto);
+                return NoContent();
+            }
+            else
+            {
+                return NotFound(_msgProjetoNotFound);
+            }
+        }
+
+        public ActionResult<Projeto> Put(int id, InputProjeto inputProjeto)
+        {
+            if (Exists(id))
+            {
+                var projeto = ToProjeto(inputProjeto);
+                _projetoRepositorio.Put(id, projeto);
+                return Ok(projeto.Id);
+            }
+            else
+            {
+                return NotFound(_msgProjetoNotFound);
+            }
         }
 
         public bool Exists(int id)
@@ -50,36 +90,6 @@ namespace RelogioDePonto.Applications
             else
             {
                 return false;
-            }
-        }
-
-        public string Remove(int id)
-        {
-            if (Exists(id))
-            {
-                var projeto = _projetoRepositorio.Get(id);
-                _projetoRepositorio.Remove(projeto);
-                return id.ToString();
-            }
-            else
-            {
-                // TODO - Corrigir o tipo de retorno do erro
-                return "Erro: Esse projeto não esta cadastrado no sistema";
-            }
-        }
-
-        public string Put(int id, InputProjeto inputProjeto)
-        {
-            var projeto = ToProjeto(inputProjeto);
-
-            if (Exists(id))
-            {
-                _projetoRepositorio.Put(id, projeto);
-                return id.ToString();
-            }
-            else
-            {
-                return "Erro: Esse projeto não esta cadastrado no sistema";
             }
         }
 

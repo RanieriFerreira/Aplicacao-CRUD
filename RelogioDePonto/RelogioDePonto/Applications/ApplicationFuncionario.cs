@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PagedList;
 using RelogioDePonto.Models;
 using RelogioDePonto.ModelsInput;
@@ -9,10 +10,14 @@ using System.Linq;
 
 namespace RelogioDePonto.Applications
 {
-    public class ApplicationFuncionario
+    public class ApplicationFuncionario : ControllerBase
     {
         private RepositoryFuncionario _funcionarioRepositorio;
         private readonly DbContext _context;
+
+        // Mensagens de retorno
+        private string _msgFuncionarioNotFound = "Nenhum funcionário encontrado";
+        private string _msgCpfExists = "CPF já cadastrado";
 
         public ApplicationFuncionario(ContextEmpresa context)
         {
@@ -20,21 +25,7 @@ namespace RelogioDePonto.Applications
             _context = context;
         }
 
-        public Funcionario Get(int Cpf)
-        {
-            if (Exists(Cpf))
-            {
-                return _funcionarioRepositorio.Get(Cpf);
-            }
-            else
-            {
-                // TODO - Corrigir o tipo de retorno do erro
-                //return "Erro: Funcionário não encontrado";
-                return null;
-            }
-        }
-
-        public Funcionario GetByCpf(int Cpf)
+        public ActionResult<Funcionario> GetByCpf(int Cpf)
         {
             if (Exists(Cpf))
             {
@@ -42,9 +33,7 @@ namespace RelogioDePonto.Applications
             }
             else
             {
-                // TODO - Corrigir o tipo de retorno do erro
-                //return "Erro: Funcionário não encontrado";
-                return null;
+                return NotFound(_msgFuncionarioNotFound);
             }
         }
 
@@ -53,24 +42,53 @@ namespace RelogioDePonto.Applications
             return _funcionarioRepositorio.Get();
         }
 
-        public string Add(InputFuncionario inputFuncionario)
+        public ActionResult<Funcionario> Add(InputFuncionario inputFuncionario)
         {
             var funcionario = ToFuncionario(inputFuncionario);
 
             if (!Exists(funcionario.Cpf))
             {
                 _funcionarioRepositorio.Add(funcionario);
-                return funcionario.Cpf.ToString();
+                return Ok(funcionario.Cpf.ToString());
             }
             else
             {
-                return "Erro: Esse CPF já esta sendo usado";
+                return BadRequest(_msgCpfExists);
+            }
+        }
+
+        public ActionResult<Funcionario> Remove(int cpf)
+        {
+            if (Exists(cpf))
+            {
+                var funcionario = _funcionarioRepositorio.GetByCPF(cpf);
+                _funcionarioRepositorio.Remove(funcionario);
+                return Ok(cpf.ToString());
+            }
+            else
+            {
+                return NotFound(_msgFuncionarioNotFound);
             }
         }
 
         public IQueryable<Funcionario> GetPagedAndOrdered(string order, int page, int pageSize)
         {
             return _funcionarioRepositorio.PagedAndOrdered(order, page, pageSize);
+        }
+
+        public ActionResult<Funcionario> Put(InputFuncionario inputFuncionario)
+        {
+            var funcionario = ToFuncionario(inputFuncionario);
+
+            if (Exists(inputFuncionario.Cpf))
+            {
+                _funcionarioRepositorio.Put(funcionario);
+                return Ok(funcionario.Cpf.ToString());
+            }
+            else
+            {
+                return NotFound(_msgCpfExists);
+            }
         }
 
         public bool Exists(int cpf)
@@ -82,35 +100,6 @@ namespace RelogioDePonto.Applications
             else
             {
                 return false;
-            }
-        }
-
-        public string Remove(int cpf)
-        {
-            if (Exists(cpf))
-            {
-                var funcionario = _funcionarioRepositorio.GetByCPF(cpf);
-                _funcionarioRepositorio.Remove(funcionario);
-                return cpf.ToString();
-            }
-            else
-            {
-                return "Erro: Esse funcionário não esta cadastrado no sistema";
-            }
-        }
-
-        public string Put(InputFuncionario inputFuncionario)
-        {
-            var funcionario = ToFuncionario(inputFuncionario);
-
-            if (Exists(inputFuncionario.Cpf))
-            {
-                _funcionarioRepositorio.Put(funcionario);
-                return funcionario.Cpf.ToString();
-            }
-            else
-            {
-                return "Erro: Esse funcionário não esta cadastrado no sistema";
             }
         }
 

@@ -36,9 +36,9 @@ namespace RelogioDePonto.Controllers
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(500)]
-        public void Post([FromBody] InputProjeto projeto)
+        public ActionResult<Projeto> Post([FromBody] InputProjeto projeto)
         {
-            _applicationProjeto.Add(projeto);
+            return _applicationProjeto.Add(projeto);
         }
 
         // GET: api/Projetos
@@ -69,7 +69,7 @@ namespace RelogioDePonto.Controllers
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(500)]
-        public Projeto Get([FromRoute]int id)
+        public ActionResult<Projeto> Get([FromRoute]int id)
         {
             return _applicationProjeto.Get(id);
         }
@@ -107,7 +107,7 @@ namespace RelogioDePonto.Controllers
         [HttpPut("{id}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(500)]
-        public string Put([FromRoute] int id, [FromBody] InputProjeto projeto)
+        public ActionResult<Projeto> Put([FromRoute] int id, [FromBody] InputProjeto projeto)
         {
             return _applicationProjeto.Put(id, projeto);
         }
@@ -122,7 +122,7 @@ namespace RelogioDePonto.Controllers
         [HttpDelete("{id}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(500)]
-        public string Delete([FromRoute] int id)
+        public ActionResult<Projeto> Delete([FromRoute] int id)
         {
             return _applicationProjeto.Remove(id);
         }

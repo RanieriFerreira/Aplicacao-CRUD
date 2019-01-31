@@ -36,7 +36,7 @@ namespace RelogioDePonto.Controllers
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(500)]
-        public string Post([FromBody] InputFuncionario inputFuncionario)
+        public ActionResult<Funcionario> Post([FromBody] InputFuncionario inputFuncionario)
         {
             return _applicationFuncionario.Add(inputFuncionario);
         }
@@ -69,7 +69,7 @@ namespace RelogioDePonto.Controllers
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(500)]
-        public Funcionario Get([FromRoute] int cpf)
+        public ActionResult<Funcionario> Get([FromRoute] int cpf)
         {
             return _applicationFuncionario.GetByCpf(cpf);
         }
@@ -114,7 +114,7 @@ namespace RelogioDePonto.Controllers
         [HttpPut]
         [ProducesResponseType(200)]
         [ProducesResponseType(500)]
-        public string Put([FromBody] InputFuncionario funcionario)
+        public ActionResult<Funcionario> Put([FromBody] InputFuncionario funcionario)
         {
             return _applicationFuncionario.Put(funcionario);
         }
@@ -129,7 +129,7 @@ namespace RelogioDePonto.Controllers
         [HttpDelete("{cpf}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(500)]
-        public string Delete([FromRoute] int cpf)
+        public ActionResult<Funcionario> Delete([FromRoute] int cpf)
         {
            return  _applicationFuncionario.Remove(cpf);
         }
