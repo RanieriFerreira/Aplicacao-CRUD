@@ -10,7 +10,7 @@ namespace RelogioDePonto.Applications
     public class ApplicationProjeto : ControllerBase
     {
         private RepositoryProjeto _projetoRepositorio;
-        private readonly DbContext _context;
+        private readonly ContextEmpresa _context;
 
         // Mensagens de retorno
         private string _msgProjetoNotFound = "Nenhum projeto encontrado";

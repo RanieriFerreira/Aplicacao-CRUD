@@ -1,6 +1,7 @@
 ﻿using RelogioDePonto.Models;
 using Microsoft.EntityFrameworkCore;
 using CRUD_Empresa.Models;
+using CRUD_Empresa.ModelsInput;
 
 namespace RelogioDePonto
 {

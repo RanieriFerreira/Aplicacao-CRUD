@@ -36,6 +36,7 @@
             <returns>Retorna o projeto cadastrados no banco, cujo Id é igual ao que foi passado.</returns>
             <response code="200">Se a operação foi feita com sucesso</response>
             <response code="400">Parametros inválidos</response>
+            <response code="404">Se não encontrar o funcionario</response>
             <response code="500">Problema de acesso ao servidor</response>  
         </member>
         <member name="M:RelogioDePonto.Controllers.ControllerFuncionarios.GetPagedAndOrdered(System.String,System.Int32,System.Int32)">
@@ -66,6 +67,7 @@
             </remarks>
             <param name="funcionario">Funcionario com os dados alterados</param>
             <response code="200">Se a operação foi feita com sucesso</response>
+            <response code="404">Se não encontrar o funcionario</response>
             <response code="500">Problema de acesso ao servidor</response> 
         </member>
         <member name="M:RelogioDePonto.Controllers.ControllerFuncionarios.Delete(System.Int32)">
@@ -74,6 +76,7 @@
             </summary>
             <param name="cpf">CPF do funcionário que deseja deletar</param>
             <response code="200">Se a operação foi feita com sucesso</response>
+            <response code="404">Se não encontrar o funcionario</response>
             <response code="500">Problema de acesso ao servidor</response>  
         </member>
         <member name="M:RelogioDePonto.Controllers.ControllerProjetos.Post(RelogioDePonto.ModelsInput.InputProjeto)">
@@ -108,6 +111,7 @@
             <returns>Retorna o projeto cadastrados no banco, cujo Id é igual ao que foi passado.</returns>
             <response code="200">Se a operação foi feita com sucesso</response>
             <response code="400">Parametros inválidos</response>
+            <response code="404">Se não encontrar o projeto</response>
             <response code="500">Problema de acesso ao servidor</response>  
         </member>
         <member name="M:RelogioDePonto.Controllers.ControllerProjetos.Search(System.String)">
@@ -120,6 +124,7 @@
             <param name="nome">Inicio do nome de um projeto que deseja buscar</param>
             <returns>Retorna todos os projetos cadastrados no banco com o inicio do nomecorrespondente ao que foi passado.</returns>
             <response code="200">Se a operação foi feita com sucesso</response>
+            <response code="404">Se não encontrar o projeto</response>
             <response code="500">Problema de acesso ao servidor</response>  
         </member>
         <member name="M:RelogioDePonto.Controllers.ControllerProjetos.Put(System.Int32,RelogioDePonto.ModelsInput.InputProjeto)">
@@ -132,6 +137,7 @@
             <param name="id">ID do projeto que deseja modificar</param>
             <param name="projeto">Projeto com os dados alterados</param>
             <response code="200">Se a operação foi feita com sucesso</response>
+            <response code="404">Se não encontrar o projeto</response>
             <response code="500">Problema de acesso ao servidor</response> 
         </member>
         <member name="M:RelogioDePonto.Controllers.ControllerProjetos.Delete(System.Int32)">
@@ -140,6 +146,7 @@
             </summary>
             <param name="id">Id do projeto que deseja deletar</param>
             <response code="200">Se a operação foi feita com sucesso</response>
+            <response code="404">Se não encontrar o projeto</response>
             <response code="500">Problema de acesso ao servidor</response>  
         </member>
     </members>

@@ -16,3 +16,4 @@ C:\Users\ranieri.ferreira\Desktop\Aplicacao-CRUD\RelogioDePonto\RelogioDePonto\o
 C:\Users\ranieri.ferreira\Desktop\Aplicacao-CRUD\RelogioDePonto\RelogioDePonto\obj\Debug\netcoreapp2.1\CRUD_Empresa.dll
 C:\Users\ranieri.ferreira\Desktop\Aplicacao-CRUD\RelogioDePonto\RelogioDePonto\obj\Debug\netcoreapp2.1\CRUD_Empresa.xml
 C:\Users\ranieri.ferreira\Desktop\Aplicacao-CRUD\RelogioDePonto\RelogioDePonto\obj\Debug\netcoreapp2.1\CRUD_Empresa.pdb
+C:\Users\ranieri.ferreira\Desktop\Aplicacao-CRUD\RelogioDePonto\RelogioDePonto\obj\Debug\netcoreapp2.1\CRUD_Empresa.csprojAssemblyReference.cache
