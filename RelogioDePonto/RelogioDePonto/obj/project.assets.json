@@ -13707,11 +13707,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ranieri.ferreira\\Desktop\\Aplicacao-CRUD\\RelogioDePonto\\RelogioDePonto\\CRUD_Empresa.csproj",
+      "projectUniqueName": "C:\\Users\\ranieri.ferreira\\Documents\\Aplicacao-CRUD\\RelogioDePonto\\RelogioDePonto\\CRUD_Empresa.csproj",
       "projectName": "CRUD_Empresa",
-      "projectPath": "C:\\Users\\ranieri.ferreira\\Desktop\\Aplicacao-CRUD\\RelogioDePonto\\RelogioDePonto\\CRUD_Empresa.csproj",
+      "projectPath": "C:\\Users\\ranieri.ferreira\\Documents\\Aplicacao-CRUD\\RelogioDePonto\\RelogioDePonto\\CRUD_Empresa.csproj",
       "packagesPath": "C:\\Users\\ranieri.ferreira\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ranieri.ferreira\\Desktop\\Aplicacao-CRUD\\RelogioDePonto\\RelogioDePonto\\obj\\",
+      "outputPath": "C:\\Users\\ranieri.ferreira\\Documents\\Aplicacao-CRUD\\RelogioDePonto\\RelogioDePonto\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
