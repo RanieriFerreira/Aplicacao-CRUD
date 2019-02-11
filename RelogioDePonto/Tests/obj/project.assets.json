@@ -10690,11 +10690,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ranieri.ferreira\\Desktop\\Aplicacao-CRUD\\RelogioDePonto\\Tests\\CRUD_Empresa.Tests.csproj",
+      "projectUniqueName": "C:\\Users\\ranieri.ferreira\\Documents\\Aplicacao-CRUD\\RelogioDePonto\\Tests\\CRUD_Empresa.Tests.csproj",
       "projectName": "CRUD_Empresa.Tests",
-      "projectPath": "C:\\Users\\ranieri.ferreira\\Desktop\\Aplicacao-CRUD\\RelogioDePonto\\Tests\\CRUD_Empresa.Tests.csproj",
+      "projectPath": "C:\\Users\\ranieri.ferreira\\Documents\\Aplicacao-CRUD\\RelogioDePonto\\Tests\\CRUD_Empresa.Tests.csproj",
       "packagesPath": "C:\\Users\\ranieri.ferreira\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ranieri.ferreira\\Desktop\\Aplicacao-CRUD\\RelogioDePonto\\Tests\\obj\\",
+      "outputPath": "C:\\Users\\ranieri.ferreira\\Documents\\Aplicacao-CRUD\\RelogioDePonto\\Tests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -10713,8 +10713,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\ranieri.ferreira\\Desktop\\Aplicacao-CRUD\\RelogioDePonto\\RelogioDePonto\\CRUD_Empresa.csproj": {
-              "projectPath": "C:\\Users\\ranieri.ferreira\\Desktop\\Aplicacao-CRUD\\RelogioDePonto\\RelogioDePonto\\CRUD_Empresa.csproj"
+            "C:\\Users\\ranieri.ferreira\\Documents\\Aplicacao-CRUD\\RelogioDePonto\\RelogioDePonto\\CRUD_Empresa.csproj": {
+              "projectPath": "C:\\Users\\ranieri.ferreira\\Documents\\Aplicacao-CRUD\\RelogioDePonto\\RelogioDePonto\\CRUD_Empresa.csproj"
             }
           }
         }
