@@ -1,2 +1,9 @@
 # Ignora arquivo lock
 RelogioDePonto/.vs/RelogioDePonto/v15/Server/sqlite3/db.lock
+# Ignora arquivos bd
+RelogioDePonto/.vs/RelogioDePonto/v15/Server/sqlite3/storage.ide-shm
+RelogioDePonto/.vs/RelogioDePonto/v15/Server/sqlite3/storage.ide-wal
+RelogioDePonto/RelogioDePonto/obj/Debug/netcoreapp2.1/CRUD_Empresa.assets.cache
+RelogioDePonto/RelogioDePonto/obj/Debug/netcoreapp2.1/CRUD_Empresa.csproj.CoreCompileInputs.cache
+RelogioDePonto/Tests/obj/Debug/netcoreapp2.1/CRUD_Empresa.Tests.csproj.CoreCompileInputs.cache
+RelogioDePonto/Tests/obj/Debug/netcoreapp2.1/CRUD_Empresa.Tests.csprojAssemblyReference.cache
