@@ -28,7 +28,12 @@ namespace RelogioDePonto
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowSpecificOrigin",
-                    builder => builder.AllowAnyOrigin());
+                    builder => builder
+                    .AllowAnyOrigin()
+                    .AllowAnyHeader()
+                    .AllowCredentials()
+                    .SetIsOriginAllowedToAllowWildcardSubdomains()
+                    .AllowAnyMethod());
             });
             services.AddDbContext<ContextEmpresa>(opt =>
                 opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));

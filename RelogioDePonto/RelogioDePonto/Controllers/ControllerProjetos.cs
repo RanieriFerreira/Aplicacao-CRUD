@@ -8,6 +8,7 @@ using RelogioDePonto.ModelsInput;
 namespace RelogioDePonto.Controllers
 {
     [Route("api/[controller]")]
+    [EnableCors("AllowSpecificOrigin")]
     [ApiController]
     public class ControllerProjetos : ControllerBase
     {

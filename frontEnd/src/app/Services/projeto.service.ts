@@ -37,13 +37,11 @@ export class ProjetoService {
 
   /* GET heroes whose name contains search term */
   searchProjetos(term: string): Observable<Projeto[]> {
-    term = term.trim();
+    //term = term.trim();
 
     // Add safe, URL encoded search parameter if there is a search term
-    const options = term ?
-     { params: new HttpParams().set('nome', term) } : {};
-
-    return this.http.get<Projeto[]>(this.apiUrl+'/search', options) 
+    const options = term ? { params: new HttpParams().set('nome', term) } : {};
+    return this.http.get<Projeto[]>(`${this.apiUrl}/search/${term}`) 
   }
 
   //////// Save methods //////////
@@ -55,8 +53,8 @@ export class ProjetoService {
 
   /** DELETE: delete the hero from the server */
   deleteProjeto (id: number): Observable<{}> {
-    const url = `${this.apiUrl}/${id}`; // DELETE api/heroes/42
-    return this.http.delete(url, httpOptions)  
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.delete(url)  
   }
 
   /** PUT: update the hero on the server. Returns the updated hero upon success. */

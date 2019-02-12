@@ -1,0 +1,18 @@
+<h2>Editar projeto</h2>
+<form action="">
+  <input #id type="hidden" name="id">
+  <div class="form-group">
+    <label class="form-label" for="name">Nome</label><input #nome class="form-input" type="text" name="nome">
+  </div>
+  <div class="form-group">
+    <label class="form-label" for="status">Status</label><input #status class="form-input" type="number" name="status">
+  </div>
+  <div class="form-group">
+    <label class="form-label" for="detalhe">Detalhe</label><input #detalhe class="form-input" type="text" name="detalhe">
+  </div>
+  <br>
+  <button type="button" class="btn" (click)="addProjeto(status.value, nome.value, detalhe.value)">Editar</button>
+  <button type="button" class="btn btn-primary" (click)="changeShowEdit()">Cancelar</button>
+</form>
+<span>{{errorMessage}}</span>
+<hr>
