@@ -4,9 +4,19 @@ import { ProjetosComponent } from './Components/projetos/projetos.component';
 import { FuncionariosComponent } from './Components/funcionarios/funcionarios.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/projetos', pathMatch: 'full' },
-  { path: 'funcionarios', component: FuncionariosComponent },
-  { path: 'projetos', component: ProjetosComponent }
+  { 
+    path: '', 
+    redirectTo: '/projetos', 
+    pathMatch: 'full' 
+  },
+  { 
+    path: 'funcionarios', 
+    component: FuncionariosComponent 
+  },
+  { 
+    path: 'projetos', 
+    component: ProjetosComponent 
+  }
 ]
 
 @NgModule({

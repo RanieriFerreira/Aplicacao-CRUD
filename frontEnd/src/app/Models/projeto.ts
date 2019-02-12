@@ -1,6 +1,6 @@
 export class Projeto {
-    id: number;
-    status: number;
-    nome: string;
-    detalhe: string;
+    public id: number;
+    public status: number;
+    public nome: string;
+    public detalhe: string;
 }

@@ -25,6 +25,11 @@ namespace RelogioDePonto
         {
             //services.AddDbContext<EmpresaContext>(opt =>
             //    opt.UseInMemoryDatabase("EmpresaInMemory"));
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowSpecificOrigin",
+                    builder => builder.AllowAnyOrigin());
+            });
             services.AddDbContext<ContextEmpresa>(opt =>
                 opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
@@ -63,6 +68,7 @@ namespace RelogioDePonto
             {
                 app.UseHsts();
             }
+            app.UseCors("AllowSpecificOrigin");
 
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();

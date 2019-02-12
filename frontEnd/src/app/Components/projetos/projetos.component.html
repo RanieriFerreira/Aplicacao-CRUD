@@ -14,6 +14,7 @@
   <button type="submit" class="btn">Criar</button>
   <button type="submit" class="btn btn-primary">Cancelar</button>
 </form>
+
 <h2>Listagem dos projetos</h2>
 <table>
   <thead>
@@ -26,27 +27,11 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>Item 1</td>
-      <td>Item 2</td>
-      <td>Item 3</td>
-      <td>Item 4</td>
-      <td>Editar</td>
-      <td>Deletar</td>
-    </tr>
-    <tr>
-      <td>Item 1</td>
-      <td>Item 2</td>
-      <td>Item 3</td>
-      <td>Item 4</td>
-      <td>Editar</td>
-      <td>Deletar</td>
-    </tr>
-    <tr>
-      <td>Item 1</td>
-      <td>Item 2</td>
-      <td>Item 3</td>
-      <td>Item 4</td>
+    <tr *ngFor="let projeto of projetos">
+      <td>{{projeto.id}}</td>
+      <td>{{projeto.nome}}</td>
+      <td>{{projeto.status}}</td>
+      <td>{{projeto.detalhe}}</td>
       <td>Editar</td>
       <td>Deletar</td>
     </tr>
