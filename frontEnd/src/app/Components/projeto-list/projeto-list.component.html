@@ -1,0 +1,25 @@
+<label class="form-label" for="description">Buscar projeto</label><input #search class="form-input" type="text" name="search">
+<button class="btn" (click)="searchProjetos(search.value)">Pesquisar</button>
+<hr>
+<h2>Listagem dos projetos</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Nome</th>
+      <th>Status</th>
+      <th>Detalhe</th>
+      <th colspan="2">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let projeto of _httpService.projetos">
+      <td>{{projeto.id}}</td>
+      <td>{{projeto.nome}}</td>
+      <td>{{projeto.status}}</td>
+      <td>{{projeto.detalhe}}</td>
+      <td (click)="editProjeto(projeto)">Editar</td>
+      <td (click)="deleteProjeto(projeto.id)">Deletar</td>
+    </tr>
+  </tbody>
+</table>

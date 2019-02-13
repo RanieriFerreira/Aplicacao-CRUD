@@ -8,11 +8,12 @@ import { catchError } from 'rxjs/operators';
 
  
 import { Projeto } from '../Models/projeto';
+import { MessagesService } from './messages.service';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type': 'application/json; text/html; charset=utf-8',
-    'Access-Control-Allow-Origin': '*'
+    'Content-Type':  'application/json',
+    'Authorization': 'my-auth-token'
   })
 };
 
@@ -22,14 +23,26 @@ const httpOptions = {
 
 export class ProjetoService {
   apiUrl = 'https://localhost:44302/api/ControllerProjetos';
+  projetos: Projeto[] = [];
+  projetoInput: Projeto = new Projeto();
+  editMode: boolean = false;
   
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    public messageService: MessagesService
     ) {  }
 
   getProjetos(): Observable<Projeto[]> {
     try {
       return this.http.get<Projeto[]>(this.apiUrl)
+    } catch(error){
+      alert(error);
+    }
+  }
+
+  getProjeto(id: number): Observable<Projeto> {
+    try {
+      return this.http.get<Projeto>(`${this.apiUrl}/${id}`)
     } catch(error){
       alert(error);
     }
@@ -48,7 +61,7 @@ export class ProjetoService {
 
   /** POST: add a new hero to the database */
   addProjeto (projeto: Projeto): Observable<Projeto> {
-    return this.http.post<Projeto>(this.apiUrl, projeto, httpOptions) 
+    return this.http.post<Projeto>(this.apiUrl, projeto, httpOptions);
   }
 
   /** DELETE: delete the hero from the server */
@@ -58,10 +71,10 @@ export class ProjetoService {
   }
 
   /** PUT: update the hero on the server. Returns the updated hero upon success. */
-  updateHero (projeto: Projeto): Observable<Projeto> {
+  updateProjeto (projeto: Projeto): Observable<Projeto> {
     httpOptions.headers =
       httpOptions.headers.set('Authorization', 'my-new-auth-token');
 
-    return this.http.put<Projeto>(this.apiUrl, projeto, httpOptions)
+    return this.http.put<Projeto>(`${this.apiUrl}/${projeto.id}`, projeto, httpOptions)
   }
 }
