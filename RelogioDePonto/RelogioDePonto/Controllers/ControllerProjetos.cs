@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using RelogioDePonto.Applications;
 using RelogioDePonto.Models;
@@ -7,6 +8,7 @@ using RelogioDePonto.ModelsInput;
 namespace RelogioDePonto.Controllers
 {
     [Route("api/[controller]")]
+    [EnableCors("AllowSpecificOrigin")]
     [ApiController]
     public class ControllerProjetos : ControllerBase
     {

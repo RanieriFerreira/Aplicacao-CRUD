@@ -9,5 +9,9 @@ RelogioDePonto/Tests/obj/Debug/netcoreapp2.1/CRUD_Empresa.Tests.csproj.CoreCompi
 RelogioDePonto/Tests/obj/Debug/netcoreapp2.1/CRUD_Empresa.Tests.csprojAssemblyReference.cache
 # Ignora debug
 RelogioDePonto/.vs/RelogioDePonto/v15/Server/sqlite3/storage.ide
+RelogioDePonto/.vs/RelogioDePonto/v15/Server/sqlite3/storage.ide-shm
 RelogioDePonto/RelogioDePonto/bin/Debug/netcoreapp2.1/CRUD_Empresa.dll
 RelogioDePonto/RelogioDePonto/bin/Debug/netcoreapp2.1/CRUD_Empresa.pdb
+# Ignora arquivos de compilação
+RelogioDePonto/.vs/RelogioDePonto/v15/.suo
+RelogioDePonto/Tests/obj/Debug/netcoreapp2.1/CRUD_Empresa.Tests.csprojAssemblyReference.cache
