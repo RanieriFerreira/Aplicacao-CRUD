@@ -10,7 +10,6 @@ import { Projeto } from 'src/app/Models/projeto';
   styleUrls: ['./projeto-form.component.scss']
 })
 export class ProjetoFormComponent implements OnInit {
-  operation: string = "Novo";
   projeto: Projeto = new Projeto();
 
   constructor(

@@ -48,29 +48,20 @@ export class ProjetoService {
     }
   }
 
-  /* GET heroes whose name contains search term */
   searchProjetos(term: string): Observable<Projeto[]> {
-    //term = term.trim();
-
-    // Add safe, URL encoded search parameter if there is a search term
     const options = term ? { params: new HttpParams().set('nome', term) } : {};
     return this.http.get<Projeto[]>(`${this.apiUrl}/search/${term}`) 
   }
 
-  //////// Save methods //////////
-
-  /** POST: add a new hero to the database */
   addProjeto (projeto: Projeto): Observable<Projeto> {
     return this.http.post<Projeto>(this.apiUrl, projeto, httpOptions);
   }
 
-  /** DELETE: delete the hero from the server */
   deleteProjeto (id: number): Observable<{}> {
     const url = `${this.apiUrl}/${id}`;
     return this.http.delete(url)  
   }
 
-  /** PUT: update the hero on the server. Returns the updated hero upon success. */
   updateProjeto (projeto: Projeto): Observable<Projeto> {
     httpOptions.headers =
       httpOptions.headers.set('Authorization', 'my-new-auth-token');

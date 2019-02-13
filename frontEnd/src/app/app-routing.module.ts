@@ -6,7 +6,7 @@ import { FuncionariosComponent } from './Components/funcionarios/funcionarios.co
 const routes: Routes = [
   { 
     path: '', 
-    redirectTo: '/projetos', 
+    redirectTo: '/funcionarios', 
     pathMatch: 'full' 
   },
   { 

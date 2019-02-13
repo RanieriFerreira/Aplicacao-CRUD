@@ -1,6 +1,8 @@
 export class Funcionario {
-    id: number;
-    cpf: number;
-    nome: string;
-    status: string;
+    constructor (
+        public id: number = undefined,
+        public cpf: number = undefined,
+        public nome: string = undefined,
+        public status: string = undefined
+    ) {}
 }

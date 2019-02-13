@@ -11,6 +11,8 @@ import { MenuComponent } from './Components/menu/menu.component';
 import { MessagesComponent } from './Components/messages/messages.component';
 import { ProjetoFormComponent } from './Components/projeto-form/projeto-form.component';
 import { ProjetoListComponent } from './Components/projeto-list/projeto-list.component';
+import { FuncionarioListComponent } from './Components/funcionario-list/funcionario-list.component';
+import { FuncionarioFormComponent } from './Components/funcionario-form/funcionario-form.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { ProjetoListComponent } from './Components/projeto-list/projeto-list.com
     MenuComponent,
     MessagesComponent,
     ProjetoFormComponent,
-    ProjetoListComponent
+    ProjetoListComponent,
+    FuncionarioListComponent,
+    FuncionarioFormComponent
   ],
   imports: [
     FormsModule,

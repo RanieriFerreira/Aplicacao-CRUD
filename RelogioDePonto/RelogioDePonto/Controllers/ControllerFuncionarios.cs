@@ -94,7 +94,7 @@ namespace RelogioDePonto.Controllers
         /// <response code="200">Se a operação foi feita com sucesso</response>
         /// <response code="400">Parametros inválidos</response>
         /// <response code="500">Problema de acesso ao servidor</response>  
-        [HttpGet("/pag/{order}/{page}/{pageSize}")]
+        [HttpGet("pag/{order}/{page}/{pageSize}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(500)]
