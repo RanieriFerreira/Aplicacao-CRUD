@@ -42,7 +42,7 @@ export class FuncionarioService {
     const idUrl = funcionario? funcionario.cpf : id; 
     return this.http.get<Funcionario>(`${this.apiUrl}/${idUrl}`)
     .pipe(
-      catchError(this.handleError('getFuncionarios', undefined))
+      catchError(this.handleError('getFuncionario', undefined))
     );
   }
 

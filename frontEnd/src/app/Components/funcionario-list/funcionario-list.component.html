@@ -10,7 +10,7 @@
 <button class="btn" (click)="paginacaoFuncionarios(ordem.value, paginaNumero,paginaQuantidade)">Pesquisar</button>
 <button class="btn btn-primary" (click)="clear()">Cancelar</button>
 <hr>
-<h2>Listagem dos funcionarios</h2>
+<h2>Listagem dos funcionários</h2>
 <h3 *ngIf="!this._httpService.funcionarios.length">Nenhum funcionário foi encontrado</h3>
 <table *ngIf="this._httpService.funcionarios.length">
   <thead>

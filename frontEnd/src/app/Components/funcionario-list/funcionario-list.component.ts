@@ -49,8 +49,8 @@ export class FuncionarioListComponent implements OnInit {
   deleteFuncionario(funcionario: Funcionario): void {
     this._httpService.deleteFuncionario(funcionario).subscribe(data => {
       if(data != -1) {
-        console.log(data)
         this._httpService.funcionarios = this._httpService.funcionarios.filter(funcionarioList => funcionarioList.id !== funcionario.id);
+        this.messageService.add("Funcionário deletado com sucesso.", "Success");
       } else {
         this.messageService.add("Não foi possível deletar o funcionario.", "Error");
       }

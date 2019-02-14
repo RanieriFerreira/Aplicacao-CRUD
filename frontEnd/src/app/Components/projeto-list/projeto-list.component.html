@@ -1,11 +1,11 @@
-<label class="form-label" for="description">Buscar projeto</label><input #search class="form-input" type="text" name="search">
-<button class="btn" (click)="searchProjetos(search.value)">Pesquisar</button>
+<label class="form-label" for="searchInput">Buscar projeto</label><input [(ngModel)]="searchInput" (keyup)="searchProjetos(searchInput)" class="form-input" type="text" name="searchInput">
+<button class="btn" (click)="clear()">Limpar</button>
 <hr>
 <h2>Listagem dos projetos</h2>
-<table>
+<h3 *ngIf="!this._httpService.projetos.length">Nenhum projeto foi encontrado</h3>
+<table *ngIf="this._httpService.projetos.length">
   <thead>
     <tr>
-      <th>Id</th>
       <th>Nome</th>
       <th>Status</th>
       <th>Detalhe</th>
@@ -14,12 +14,11 @@
   </thead>
   <tbody>
     <tr *ngFor="let projeto of _httpService.projetos">
-      <td>{{projeto.id}}</td>
       <td>{{projeto.nome}}</td>
       <td>{{projeto.status}}</td>
       <td>{{projeto.detalhe}}</td>
       <td (click)="editProjeto(projeto)">Editar</td>
-      <td (click)="deleteProjeto(projeto.id)">Deletar</td>
+      <td (click)="deleteProjeto(projeto)">Deletar</td>
     </tr>
   </tbody>
 </table>

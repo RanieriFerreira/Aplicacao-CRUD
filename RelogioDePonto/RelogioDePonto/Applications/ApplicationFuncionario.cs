@@ -26,7 +26,7 @@ namespace RelogioDePonto.Applications
         {
             if (Exists(Cpf))
             {
-                return _funcionarioRepositorio.GetByCPF(Cpf);
+                return Ok(_funcionarioRepositorio.GetByCPF(Cpf));
             }
             else
             {

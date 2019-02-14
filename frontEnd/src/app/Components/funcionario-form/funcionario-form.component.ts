@@ -18,37 +18,23 @@ export class FuncionarioFormComponent implements OnInit {
 
   ngOnInit() { }
 
-  printFuncionario() {
-    console.log(this._httpService.funcionarioInput);
-  }
-
   clean() {
     this._httpService.editMode = false;
     this._httpService.funcionarioInput = new Funcionario();
   }
 
   addFuncionario(funcionario: Funcionario) {
-    if (funcionario.status && funcionario.nome && funcionario.cpf) { 
-      this._httpService.addFuncionario(funcionario)
-      .subscribe(funcionario => {
-          if (funcionario.id) { 
-            this._httpService.funcionarios.push(funcionario);
-            this.messageService.add("Funcionario adicionado com sucesso", "Error");
-            this.clean();
-          } else {
-            this.messageService.add("Não foi possível adicionar o funcionario", "Error");
-          }
-      });
-    } else {
-      this.messageService.add("Preencha todos os campos corretamente", "Error");
-    }
+    this.validation(funcionario);
   }
 
   editFuncionario(funcionario: Funcionario) {
+    this.validation(funcionario);
+  }
+
+  validation(funcionario: Funcionario) {
     if (funcionario.id && funcionario.status && funcionario.nome && funcionario.cpf) { 
       this._httpService.updateFuncionario(funcionario)
       .subscribe(funcionario => {
-        console.log(funcionario);
         if (funcionario.id) { 
           const ix = funcionario ? this._httpService.funcionarios.findIndex(p => p.id === funcionario.id) : -1;
           if (ix > -1) { this._httpService.funcionarios[ix] = funcionario;};
@@ -57,6 +43,17 @@ export class FuncionarioFormComponent implements OnInit {
         } else {
           this.messageService.add("Não foi possível modificar o funcionario", "Error");
         }
+      });
+    } else if (funcionario.status && funcionario.nome && funcionario.cpf) { 
+      this._httpService.addFuncionario(funcionario)
+      .subscribe(funcionario => {
+          if (funcionario.id) { 
+            this._httpService.funcionarios.push(funcionario);
+            this.messageService.add("Funcionario adicionado com sucesso", "Success");
+            this.clean();
+          } else {
+            this.messageService.add("Não foi possível adicionar o funcionario", "Error");
+          }
       });
     } else {
       this.messageService.add("Preencha todos os campos corretamente", "Error");

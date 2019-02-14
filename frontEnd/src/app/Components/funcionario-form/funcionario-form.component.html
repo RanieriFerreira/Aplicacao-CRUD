@@ -1,5 +1,5 @@
-<h2 *ngIf="!this._httpService.editMode">Novo funcionario</h2>
-<h2 *ngIf="this._httpService.editMode">Editar funcionario</h2>
+<h2 *ngIf="!this._httpService.editMode">Novo funcionário</h2>
+<h2 *ngIf="this._httpService.editMode">Editar funcionário</h2>
 <form action="">
   <div class="form-group">
     <label class="form-label" for="cpf">CPF</label><input [disabled]="this._httpService.editMode? true: false" class="form-input" type="number" [(ngModel)]="this._httpService.funcionarioInput.cpf" name="cpf">
