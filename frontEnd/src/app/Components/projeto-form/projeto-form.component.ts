@@ -34,9 +34,9 @@ export class ProjetoFormComponent implements OnInit {
       this._httpService.addProjeto(projeto)
       .subscribe(projeto => this._httpService.projetos.push(projeto));
       this.clean();
-      this.messageService.add("Projeto adicionado com sucesso");
+      this.messageService.add("Projeto adicionado com sucesso", "Success");
     } else {
-      this.messageService.add("Preencha todos os campos corretamente");
+      this.messageService.add("Preencha todos os campos corretamente", "Error");
     }
   }
 
@@ -47,9 +47,9 @@ export class ProjetoFormComponent implements OnInit {
         const ix = projeto ? this._httpService.projetos.findIndex(p => p.id === projeto.id) : -1;
           if (ix > -1) { this._httpService.projetos[ix] = projeto; }});
       this.clean();
-      this.messageService.add("Projeto editado com sucesso");
+      this.messageService.add("Projeto editado com sucesso", "Success");
     } else {
-      this.messageService.add("Preencha todos os campos corretamente");
+      this.messageService.add("Preencha todos os campos corretamente", "Error");
     }
   }
 }

@@ -9,15 +9,14 @@ import { MessagesService } from 'src/app/Services/messages.service';
   styleUrls: ['./funcionario-form.component.scss']
 })
 export class FuncionarioFormComponent implements OnInit {
-
   funcionario: Funcionario = new Funcionario();
 
   constructor(
     private _httpService: FuncionarioService,
     public messageService: MessagesService
-    ) { }
+  ) { }
 
-  ngOnInit() {  }
+  ngOnInit() { }
 
   printFuncionario() {
     console.log(this._httpService.funcionarioInput);
@@ -30,13 +29,18 @@ export class FuncionarioFormComponent implements OnInit {
 
   addFuncionario(funcionario: Funcionario) {
     if (funcionario.status && funcionario.nome && funcionario.cpf) { 
-      //TODO - Corrigir push do novo funcionario ou remover id da listagem
       this._httpService.addFuncionario(funcionario)
-      .subscribe(funcionario => this._httpService.funcionarios.push(funcionario));
-      this.clean();
-      this.messageService.add("Funcionario adicionado com sucesso");
+      .subscribe(funcionario => {
+          if (funcionario.id) { 
+            this._httpService.funcionarios.push(funcionario);
+            this.messageService.add("Funcionario adicionado com sucesso", "Error");
+            this.clean();
+          } else {
+            this.messageService.add("Não foi possível adicionar o funcionario", "Error");
+          }
+      });
     } else {
-      this.messageService.add("Preencha todos os campos corretamente");
+      this.messageService.add("Preencha todos os campos corretamente", "Error");
     }
   }
 
@@ -44,12 +48,18 @@ export class FuncionarioFormComponent implements OnInit {
     if (funcionario.id && funcionario.status && funcionario.nome && funcionario.cpf) { 
       this._httpService.updateFuncionario(funcionario)
       .subscribe(funcionario => {
-        const ix = funcionario ? this._httpService.funcionarios.findIndex(p => p.id === funcionario.id) : -1;
-          if (ix > -1) { this._httpService.funcionarios[ix] = funcionario; }});
-      this.clean();
-      this.messageService.add("Funcionario editado com sucesso");
+        console.log(funcionario);
+        if (funcionario.id) { 
+          const ix = funcionario ? this._httpService.funcionarios.findIndex(p => p.id === funcionario.id) : -1;
+          if (ix > -1) { this._httpService.funcionarios[ix] = funcionario;};
+          this.messageService.add("Funcionario modificado com sucesso", "Success");
+          this.clean();
+        } else {
+          this.messageService.add("Não foi possível modificar o funcionario", "Error");
+        }
+      });
     } else {
-      this.messageService.add("Preencha todos os campos corretamente");
+      this.messageService.add("Preencha todos os campos corretamente", "Error");
     }
   }
 }

@@ -32,6 +32,9 @@ table {
 $primary-color: rgb(212, 80, 80);
 $secondary-color: rgb(218, 218, 218);
 $auxiliary-color: white;
+$success-color: green;
+$warning-color: orange;
+$error-color:red;
 
 $menu-width: 20%;
 $main-size: 100px;
@@ -168,4 +171,17 @@ input, select {
 
 .btn-primary {
     background-color: $primary-color;
+}
+
+/* Status */
+.success {
+    background-color: $success-color
+}
+
+.warning {
+    background-color: $warning-color
+}
+
+.error {
+    background-color: $error-color
 }

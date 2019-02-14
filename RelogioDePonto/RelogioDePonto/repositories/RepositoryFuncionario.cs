@@ -35,7 +35,7 @@ namespace RelogioDePonto.Repositorios
             }
         }
 
-        public void Put(Funcionario funcionario)
+        public int Put(Funcionario funcionario)
         {
             var target = GetByCPF(funcionario.Cpf);
 
@@ -44,6 +44,7 @@ namespace RelogioDePonto.Repositorios
 
             _context.Update(target);
             Save();
+            return target.Id;
         }
     }
 }

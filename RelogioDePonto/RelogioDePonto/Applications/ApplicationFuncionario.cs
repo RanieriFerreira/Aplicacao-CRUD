@@ -13,7 +13,7 @@ namespace RelogioDePonto.Applications
         private readonly DbContext _context;
 
         // Mensagens de retorno
-        private string _msgFuncionarioNotFound = "Nenhum funcionário encontrado";
+        private string _msgFuncionarioNotFound = "Nenhum funcionário encontrado com esse CPF";
         private string _msgCpfExists = "CPF já cadastrado";
 
         public ApplicationFuncionario(ContextEmpresa context)
@@ -46,7 +46,7 @@ namespace RelogioDePonto.Applications
             if (!Exists(funcionario.Cpf))
             {
                 _funcionarioRepositorio.Add(funcionario);
-                return Ok(funcionario.Cpf.ToString());
+                return Ok(funcionario);
             }
             else
             {
@@ -79,8 +79,8 @@ namespace RelogioDePonto.Applications
 
             if (Exists(inputFuncionario.Cpf))
             {
-                _funcionarioRepositorio.Put(funcionario);
-                return Ok(funcionario.Cpf.ToString());
+                funcionario.Id=_funcionarioRepositorio.Put(funcionario);
+                return Ok(funcionario);
             }
             else
             {
