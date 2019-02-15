@@ -1,8 +1,8 @@
 <div *ngIf="messageService.messages.length">
   <h3>Mensagens</h3>
-  <ol>
-    <li *ngFor='let message of messageService.messages'>{{message}}</li>
-  </ol>
+  <ul class="message-list">
+    <li *ngFor='let message of messageService.messages' [ngClass]="(message.status == 'Error')? 'error' : (message.status == 'Success')? 'success' : 'warning'">{{message.body}}</li>
+  </ul>
   <button class="btn" (click)="messageService.clear()">Limpar</button>
   <hr>
 </div>

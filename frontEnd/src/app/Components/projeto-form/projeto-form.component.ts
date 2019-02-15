@@ -19,37 +19,48 @@ export class ProjetoFormComponent implements OnInit {
 
   ngOnInit() {  }
 
-  printProjeto() {
-    console.log(this._httpService.projetoInput);
-  }
-
   clean() {
     this._httpService.editMode = false;
     this._httpService.projetoInput = new Projeto();
   }
 
   addProjeto(projeto: Projeto) {
-    if (projeto.status && projeto.nome && projeto.detalhe) { 
-      //TODO - Corrigir push do novo projeto ou remover id da listagem
-      this._httpService.addProjeto(projeto)
-      .subscribe(projeto => this._httpService.projetos.push(projeto));
-      this.clean();
-      this.messageService.add("Projeto adicionado com sucesso");
-    } else {
-      this.messageService.add("Preencha todos os campos corretamente");
-    }
+    this.validate(projeto);
   }
 
   editProjeto(projeto: Projeto) {
+    this.validate(projeto);
+  }
+
+  validate(projeto: Projeto) {
     if (projeto.id && projeto.status && projeto.nome && projeto.detalhe) { 
       this._httpService.updateProjeto(projeto)
       .subscribe(projeto => {
-        const ix = projeto ? this._httpService.projetos.findIndex(p => p.id === projeto.id) : -1;
-          if (ix > -1) { this._httpService.projetos[ix] = projeto; }});
-      this.clean();
-      this.messageService.add("Projeto editado com sucesso");
+        console.log(projeto);
+        if (projeto.id) { 
+          const ix = projeto ? this._httpService.projetos.findIndex(p => p.id === projeto.id) : -1;
+          if (ix > -1) { this._httpService.projetos[ix] = projeto;};
+          this.messageService.add("Projeto editado com sucesso", "Success");
+          this.clean();
+        } else {
+          this.messageService.add("Não foi possível editar o projeto", "Error");
+        }
+      });
+    } else if (projeto.status && projeto.nome && projeto.detalhe) { 
+      this._httpService.addProjeto(projeto)
+      .subscribe(projeto => {
+        
+        console.log(projeto);
+          if (projeto.id) { 
+            this._httpService.projetos.push(projeto);
+            this.messageService.add("Projeto adicionado com sucesso", "Success");
+            this.clean();
+          } else {
+            this.messageService.add("Não foi possível adicionar o projeto", "Error");
+          }
+      });
     } else {
-      this.messageService.add("Preencha todos os campos corretamente");
+      this.messageService.add("Preencha todos os campos corretamente", "Error");
     }
   }
 }

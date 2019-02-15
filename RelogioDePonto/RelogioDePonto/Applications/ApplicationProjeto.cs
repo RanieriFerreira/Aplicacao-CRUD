@@ -46,7 +46,7 @@ namespace RelogioDePonto.Applications
         {
             var newProjeto = ToProjeto(projeto);
             _projetoRepositorio.Add(newProjeto);
-            return Ok(newProjeto.Id);
+            return Ok(newProjeto);
         }
 
         public ActionResult<Projeto> Remove(int id)
@@ -68,8 +68,8 @@ namespace RelogioDePonto.Applications
             if (Exists(id))
             {
                 var projeto = ToProjeto(inputProjeto);
-                _projetoRepositorio.Put(id, projeto);
-                return Ok(projeto.Id);
+                projeto.Id = _projetoRepositorio.Put(id, projeto);
+                return Ok(projeto);
             }
             else
             {

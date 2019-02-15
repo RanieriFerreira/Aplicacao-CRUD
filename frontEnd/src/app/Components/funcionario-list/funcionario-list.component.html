@@ -5,12 +5,14 @@
   <option value="Nome">Nome</option>
   <option value="nome_desc">Nome decrescente</option>
 </select><br>
-<label class="form-label" for="paginaNumero">Número da página</label><input #paginaNumero class="form-input" type="number" name="paginaNumero"><br>
-<label class="form-label" for="paginaQuantidade">Quantidade de funcionários</label><input #paginaQuantidade class="form-input" type="number" name="paginaQuantidade"><br>
-<button class="btn" (click)="paginacaoFuncionarios(ordem.value, paginaNumero.value,paginaQuantidade.value)">Pesquisar</button>
+<label class="form-label" for="paginaNumero">Número da página</label><input [(ngModel)]="paginaNumero" class="form-input" type="number" name="paginaNumero"><br>
+<label class="form-label" for="paginaQuantidade">Quantidade de funcionários</label><input [(ngModel)]="paginaQuantidade" class="form-input" type="number" name="paginaQuantidade"><br>
+<button class="btn" (click)="paginacaoFuncionarios(ordem.value, paginaNumero,paginaQuantidade)">Pesquisar</button>
+<button class="btn btn-primary" (click)="clear()">Cancelar</button>
 <hr>
-<h2>Listagem dos funcionarios</h2>
-<table>
+<h2>Listagem dos funcionários</h2>
+<h3 *ngIf="!this._httpService.funcionarios.length">Nenhum funcionário foi encontrado</h3>
+<table *ngIf="this._httpService.funcionarios.length">
   <thead>
     <tr>
       <th>Nome</th>
