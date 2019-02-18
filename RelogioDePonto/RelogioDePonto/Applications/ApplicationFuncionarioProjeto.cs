@@ -1,5 +1,5 @@
 ﻿using CRUD_Empresa.Models;
-using CRUD_Empresa.ModelsInput;
+using CRUD_Empresa.ViewsModels;
 using CRUD_Empresa.repositories;
 using Microsoft.AspNetCore.Mvc;
 using RelogioDePonto;
@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using RelogioDePonto.Models;
 
 namespace CRUD_Empresa.Applications
 {
@@ -21,18 +22,45 @@ namespace CRUD_Empresa.Applications
             _context = context;
         }
 
-        // ADD function
-        // REMOVE function
-        // PROCEDURES:
-        //  - Get all funcionario from project id
-
-        public FuncionarioProjeto ToFuncionarioProjeto(InputFuncionarioProjeto inputFuncionarioProjeto)
+        public ActionResult<FuncionarioProjeto> Get(int idFuncionario, int idProjeto)
         {
-            return new FuncionarioProjeto
+            return Ok(_projetoFuncionarioProjeto.Get(idFuncionario, idProjeto));
+        }
+
+        public ActionResult<FuncionarioProjeto> Get()
+        {
+            return Ok(_projetoFuncionarioProjeto.Get());
+        }
+
+        public ActionResult<FuncionarioProjeto> GetFuncionariosFromProjetos(int id)
+        {
+            return Ok(_projetoFuncionarioProjeto.GetFuncionariosFromProjeto(id));
+        }
+
+        public ActionResult<FuncionarioProjeto> GetProjetosFromFuncionario(int id)
+        {
+            return Ok(_projetoFuncionarioProjeto.GetProjetosFromFuncionario(id));
+        }
+
+        public ActionResult<Funcionario> Add(int idFuncionario, int idProjeto)
+        {
+            return Ok(_projetoFuncionarioProjeto.Add(idFuncionario, idProjeto));
+        }
+
+        public void Remove(int idFuncionario, int idProjeto) {
+            _projetoFuncionarioProjeto.Remove(idFuncionario, idProjeto);
+        }
+
+        public bool Exists(int idFuncionario, int idProjeto)
+        {
+            if (_projetoFuncionarioProjeto.Get(idFuncionario, idProjeto) != null)
             {
-                FuncionarioId = inputFuncionarioProjeto.FuncionarioID,
-                ProjetoId = inputFuncionarioProjeto.ProjetoID
-            };
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

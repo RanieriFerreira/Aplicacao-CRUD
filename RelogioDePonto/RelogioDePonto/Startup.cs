@@ -8,6 +8,7 @@ using Swashbuckle.AspNetCore.Swagger;
 using System.Reflection;
 using System.IO;
 using Microsoft.AspNetCore.Mvc;
+using AutoMapper;
 
 namespace RelogioDePonto
 {
@@ -23,8 +24,6 @@ namespace RelogioDePonto
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddDbContext<EmpresaContext>(opt =>
-            //    opt.UseInMemoryDatabase("EmpresaInMemory"));
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowSpecificOrigin",
@@ -35,8 +34,8 @@ namespace RelogioDePonto
                     .SetIsOriginAllowedToAllowWildcardSubdomains()
                     .AllowAnyMethod());
             });
-            services.AddDbContext<ContextEmpresa>(opt =>
-                opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<ContextEmpresa>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddAutoMapper();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddSwaggerGen(c =>
             {

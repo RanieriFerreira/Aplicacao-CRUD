@@ -1,9 +1,10 @@
 ﻿using System.Linq;
+using AutoMapper;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using RelogioDePonto.Applications;
 using RelogioDePonto.Models;
-using RelogioDePonto.ModelsInput;
+using RelogioDePonto.ViewsModels;
 
 namespace RelogioDePonto.Controllers
 {
@@ -14,9 +15,9 @@ namespace RelogioDePonto.Controllers
     {
         private ApplicationProjeto _applicationProjeto;
 
-        public ControllerProjetos(ContextEmpresa context)
+        public ControllerProjetos(ContextEmpresa context, IMapper mapper)
         {
-            _applicationProjeto = new ApplicationProjeto(context);
+            _applicationProjeto = new ApplicationProjeto(context, mapper);
         }
 
         // POST: api/Projetos
@@ -38,7 +39,7 @@ namespace RelogioDePonto.Controllers
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(500)]
-        public ActionResult<Projeto> Post([FromBody] InputProjeto projeto)
+        public ActionResult<Projeto> Post([FromBody] ViewModelProjeto projeto)
         {
             return _applicationProjeto.Add(projeto);
         }
@@ -115,7 +116,7 @@ namespace RelogioDePonto.Controllers
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
         [ProducesResponseType(500)]
-        public ActionResult<Projeto> Put([FromRoute] int id, [FromBody] InputProjeto projeto)
+        public ActionResult<Projeto> Put([FromRoute] int id, [FromBody] ViewModelProjeto projeto)
         {
             return _applicationProjeto.Put(id, projeto);
         }
