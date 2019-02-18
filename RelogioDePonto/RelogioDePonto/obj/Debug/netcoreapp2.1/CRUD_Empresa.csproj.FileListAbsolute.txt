@@ -26,7 +26,6 @@ C:\Users\ranieri.ferreira\Documents\Aplicacao-CRUD\RelogioDePonto\RelogioDePonto
 C:\Users\ranieri.ferreira\Documents\Aplicacao-CRUD\RelogioDePonto\RelogioDePonto\bin\Debug\netcoreapp2.1\CRUD_Empresa.dll
 C:\Users\ranieri.ferreira\Documents\Aplicacao-CRUD\RelogioDePonto\RelogioDePonto\bin\Debug\netcoreapp2.1\CRUD_Empresa.pdb
 C:\Users\ranieri.ferreira\Documents\Aplicacao-CRUD\RelogioDePonto\RelogioDePonto\bin\Debug\netcoreapp2.1\CRUD_Empresa.xml
-C:\Users\ranieri.ferreira\Documents\Aplicacao-CRUD\RelogioDePonto\RelogioDePonto\obj\Debug\netcoreapp2.1\CRUD_Empresa.csprojAssemblyReference.cache
 C:\Users\ranieri.ferreira\Documents\Aplicacao-CRUD\RelogioDePonto\RelogioDePonto\obj\Debug\netcoreapp2.1\CRUD_Empresa.csproj.CoreCompileInputs.cache
 C:\Users\ranieri.ferreira\Documents\Aplicacao-CRUD\RelogioDePonto\RelogioDePonto\obj\Debug\netcoreapp2.1\CRUD_Empresa.RazorAssemblyInfo.cache
 C:\Users\ranieri.ferreira\Documents\Aplicacao-CRUD\RelogioDePonto\RelogioDePonto\obj\Debug\netcoreapp2.1\CRUD_Empresa.RazorAssemblyInfo.cs
@@ -36,3 +35,4 @@ C:\Users\ranieri.ferreira\Documents\Aplicacao-CRUD\RelogioDePonto\RelogioDePonto
 C:\Users\ranieri.ferreira\Documents\Aplicacao-CRUD\RelogioDePonto\RelogioDePonto\obj\Debug\netcoreapp2.1\CRUD_Empresa.dll
 C:\Users\ranieri.ferreira\Documents\Aplicacao-CRUD\RelogioDePonto\RelogioDePonto\obj\Debug\netcoreapp2.1\CRUD_Empresa.xml
 C:\Users\ranieri.ferreira\Documents\Aplicacao-CRUD\RelogioDePonto\RelogioDePonto\obj\Debug\netcoreapp2.1\CRUD_Empresa.pdb
+C:\Users\ranieri.ferreira\Documents\Aplicacao-CRUD\RelogioDePonto\RelogioDePonto\obj\Debug\netcoreapp2.1\CRUD_Empresa.csprojAssemblyReference.cache

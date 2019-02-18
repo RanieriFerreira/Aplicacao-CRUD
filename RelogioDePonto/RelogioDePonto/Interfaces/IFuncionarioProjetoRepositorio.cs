@@ -1,5 +1,5 @@
 ﻿using CRUD_Empresa.Models;
-using CRUD_Empresa.ModelsInput;
+using CRUD_Empresa.ViewsModels;
 using RelogioDePonto.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ namespace CRUD_Empresa.Interfaces
 {
     interface IFuncionarioProjetoRepositorio : IRepositorio<FuncionarioProjeto>
     {
-        IQueryable<OutputFuncionarioProjeto> GetFuncionariosProjeto(int id);
-        IQueryable<OutputCountFuncionarioProjeto> CountFuncionariosProjeto(int id);
+        IQueryable<FuncionarioProjeto> GetFuncionariosFromProjeto(int id);
+        IQueryable<FuncionarioProjeto> GetProjetosFromFuncionario(int id);
     }
 }

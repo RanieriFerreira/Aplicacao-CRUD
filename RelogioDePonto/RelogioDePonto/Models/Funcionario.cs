@@ -12,6 +12,7 @@ namespace RelogioDePonto.Models
         public string Nome { get; set; }
         public int Status { get; set; }
 
-        public IList<FuncionarioProjeto> FuncionariosProjetos { get; set; }
+        // Relações
+        public IList<FuncionarioProjeto> ProjetosLink { get; set; }
     }
 }

@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RelogioDePonto.Models;
-using RelogioDePonto.ModelsInput;
+using RelogioDePonto.ViewsModels;
 using RelogioDePonto.Repositorios;
 using System.Linq;
+using AutoMapper;
 
 namespace RelogioDePonto.Applications
 {
@@ -11,15 +12,17 @@ namespace RelogioDePonto.Applications
     {
         private RepositoryFuncionario _funcionarioRepositorio;
         private readonly DbContext _context;
+        private readonly IMapper _mapper;
 
         // Mensagens de retorno
         private string _msgFuncionarioNotFound = "Nenhum funcionário encontrado com esse CPF";
         private string _msgCpfExists = "CPF já cadastrado";
 
-        public ApplicationFuncionario(ContextEmpresa context)
+        public ApplicationFuncionario(ContextEmpresa context, IMapper mapper)
         {
             _funcionarioRepositorio = new RepositoryFuncionario(context);
             _context = context;
+            _mapper = mapper;
         }
 
         public ActionResult<Funcionario> GetByCpf(int Cpf)
@@ -39,9 +42,9 @@ namespace RelogioDePonto.Applications
             return _funcionarioRepositorio.Get();
         }
 
-        public ActionResult<Funcionario> Add(InputFuncionario inputFuncionario)
+        public ActionResult<Funcionario> Add(ViewModelFuncionario inputFuncionario)
         {
-            var funcionario = ToFuncionario(inputFuncionario);
+            var funcionario = _mapper.Map<ViewModelFuncionario, Funcionario>(inputFuncionario); ;
 
             if (!Exists(funcionario.Cpf))
             {
@@ -73,9 +76,9 @@ namespace RelogioDePonto.Applications
             return _funcionarioRepositorio.PagedAndOrdered(order, page, pageSize);
         }
 
-        public ActionResult<Funcionario> Put(InputFuncionario inputFuncionario)
+        public ActionResult<Funcionario> Put(ViewModelFuncionario inputFuncionario)
         {
-            var funcionario = ToFuncionario(inputFuncionario);
+            var funcionario = _mapper.Map<ViewModelFuncionario, Funcionario>(inputFuncionario);
 
             if (Exists(inputFuncionario.Cpf))
             {
@@ -98,16 +101,6 @@ namespace RelogioDePonto.Applications
             {
                 return false;
             }
-        }
-
-        public Funcionario ToFuncionario(InputFuncionario inputFuncionario)
-        {
-            return new Funcionario
-            {
-                Nome = inputFuncionario.Nome,
-                Cpf = inputFuncionario.Cpf,
-                Status = inputFuncionario.Status
-            };
         }
     }
 }

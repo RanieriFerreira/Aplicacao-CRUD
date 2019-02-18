@@ -4,7 +4,7 @@
         <name>CRUD_Empresa</name>
     </assembly>
     <members>
-        <member name="M:RelogioDePonto.Controllers.ControllerFuncionarios.Post(RelogioDePonto.ModelsInput.InputFuncionario)">
+        <member name="M:RelogioDePonto.Controllers.ControllerFuncionarios.Post(RelogioDePonto.ViewsModels.ViewModelFuncionario)">
             <summary>
                 Cria funcionario.
             </summary>
@@ -58,7 +58,7 @@
             <response code="400">Parametros inválidos</response>
             <response code="500">Problema de acesso ao servidor</response>  
         </member>
-        <member name="M:RelogioDePonto.Controllers.ControllerFuncionarios.Put(RelogioDePonto.ModelsInput.InputFuncionario)">
+        <member name="M:RelogioDePonto.Controllers.ControllerFuncionarios.Put(RelogioDePonto.ViewsModels.ViewModelFuncionario)">
             <summary>
                 Atualiza ou cria funcionario.
             </summary>
@@ -79,7 +79,7 @@
             <response code="404">Se não encontrar o funcionario</response>
             <response code="500">Problema de acesso ao servidor</response>  
         </member>
-        <member name="M:RelogioDePonto.Controllers.ControllerProjetos.Post(RelogioDePonto.ModelsInput.InputProjeto)">
+        <member name="M:RelogioDePonto.Controllers.ControllerProjetos.Post(RelogioDePonto.ViewsModels.ViewModelProjeto)">
             <summary>
                 Cria projeto.
             </summary>
@@ -127,7 +127,7 @@
             <response code="404">Se não encontrar o projeto</response>
             <response code="500">Problema de acesso ao servidor</response>  
         </member>
-        <member name="M:RelogioDePonto.Controllers.ControllerProjetos.Put(System.Int32,RelogioDePonto.ModelsInput.InputProjeto)">
+        <member name="M:RelogioDePonto.Controllers.ControllerProjetos.Put(System.Int32,RelogioDePonto.ViewsModels.ViewModelProjeto)">
             <summary>
                 Atualiza ou cria projeto.
             </summary>
