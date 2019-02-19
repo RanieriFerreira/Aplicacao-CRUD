@@ -9,4 +9,18 @@ describe('MessagesService', () => {
     const service: MessagesService = TestBed.get(MessagesService);
     expect(service).toBeTruthy();
   });
+
+  it('should add a message', () => {
+    const service: MessagesService = TestBed.get(MessagesService);
+    service.clear();
+    service.add("Menssagem", "Status");
+    expect(service.messages[0].body).toBeTruthy("Menssagem");
+  });
+
+  it('should clear de messages', () => {
+    const service: MessagesService = TestBed.get(MessagesService);
+    service.add("Menssagem", "Status");
+    service.clear();
+    expect(service.messages.length).toBe(0);
+  });
 });
