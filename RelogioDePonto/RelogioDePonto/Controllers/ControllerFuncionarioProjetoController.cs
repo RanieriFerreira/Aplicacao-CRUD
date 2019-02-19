@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CRUD_Empresa.Applications;
 using CRUD_Empresa.Models;
+using CRUD_Empresa.ViewsModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RelogioDePonto;
@@ -29,14 +30,14 @@ namespace CRUD_Empresa.Controllers
         }
      
         // GET: api/ControllerFuncionarioProjeto/5
-        [HttpGet("projeto/{idFuncionario}")]
+        [HttpGet("funcionario/{idFuncionario}")]
         public ActionResult<FuncionarioProjeto> GetProjetosFromFuncionario([FromRoute] int idFuncionario)
         {
             return _applicationFuncionarioProjeto.GetProjetosFromFuncionario(idFuncionario);
         }
 
         // GET: api/ControllerFuncionarioProjeto/5
-        [HttpGet("funcionario/{idProjeto}")]
+        [HttpGet("projeto/{idProjeto}")]
         public ActionResult<FuncionarioProjeto> GetFuncionariosFromProjetos([FromRoute] int idProjeto)
         {
             return _applicationFuncionarioProjeto.GetFuncionariosFromProjetos(idProjeto);
@@ -44,9 +45,9 @@ namespace CRUD_Empresa.Controllers
 
         // POST: api/ControllerFuncionarioProjeto
         [HttpPost]
-        public void Post([FromForm] int idFuncionario, [FromForm] int idProjeto)
+        public ActionResult<Relacao> Post([FromBody] Relacao relacao)
         {
-            _applicationFuncionarioProjeto.Add(idFuncionario, idProjeto);
+            return _applicationFuncionarioProjeto.Add(relacao);
         }
 
         [HttpDelete("{idFuncionario}/{idProjeto}")]

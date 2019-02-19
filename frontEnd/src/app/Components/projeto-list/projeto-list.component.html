@@ -9,7 +9,7 @@
       <th>Nome</th>
       <th>Status</th>
       <th>Detalhe</th>
-      <th colspan="2">Ações</th>
+      <th colspan="3">Ações</th>
     </tr>
   </thead>
   <tbody>
@@ -17,6 +17,7 @@
       <td>{{projeto.nome}}</td>
       <td>{{projeto.status}}</td>
       <td>{{projeto.detalhe}}</td>
+      <td (click)="listFuncionarios(projeto.id)">Mais informações</td>
       <td (click)="editProjeto(projeto)">Editar</td>
       <td (click)="deleteProjeto(projeto)">Deletar</td>
     </tr>

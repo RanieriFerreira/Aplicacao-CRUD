@@ -36,8 +36,8 @@ namespace CRUD_Empresa.repositories
         public IQueryable<FuncionarioProjeto> GetFuncionariosFromProjeto(int id)
         {
             return from fp in _context.FuncionariosProjetos
-                   from p in _context.Projetos
-                   where fp.ProjetoId == p.Id
+                   join p in _context.Projetos on fp.Projeto.Id equals p.Id
+                   where (fp.ProjetoId == id)
                    select new FuncionarioProjeto
                    {
                        ProjetoId = fp.ProjetoId,
@@ -48,8 +48,8 @@ namespace CRUD_Empresa.repositories
         public IQueryable<FuncionarioProjeto> GetProjetosFromFuncionario(int id)
         {
            return from fp in _context.FuncionariosProjetos
-                  from f in _context.Funcionarios
-                  where fp.FuncionarioId == f.Id
+                  join f in _context.Funcionarios on fp.FuncionarioId equals f.Id
+                  where (fp.FuncionarioId == id)
                   select new FuncionarioProjeto
                   {
                       FuncionarioId = f.Id,
@@ -57,15 +57,17 @@ namespace CRUD_Empresa.repositories
                   };
         }
 
-        public FuncionarioProjeto Add(int idFuncionario, int idProjeto)
+        public Relacao Add(Relacao relacao)
         {
+            var func = _context.Funcionarios.Find(relacao.idFuncionario);
+
             var targetFuncionario = _context.Funcionarios
                     .Include(p => p.ProjetosLink)
-                    .Single(p => p.Id == idFuncionario);
+                    .Single(p => p.Id == relacao.idFuncionario);
 
             var newProjeto = _context.Projetos
                 .Include(p => p.FuncionariosLink)
-                .Single(p => p.Id == idProjeto);
+                .Single(p => p.Id == relacao.idProjeto);
 
             targetFuncionario.ProjetosLink.Add(new FuncionarioProjeto
             {
@@ -76,7 +78,8 @@ namespace CRUD_Empresa.repositories
             });
 
             Save();
-            return targetFuncionario.ProjetosLink.Last();
+
+            return relacao;
         }
 
         public void Remove(int idFuncionario, int idProjeto)

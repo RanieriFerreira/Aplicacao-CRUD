@@ -42,9 +42,9 @@ namespace CRUD_Empresa.Applications
             return Ok(_projetoFuncionarioProjeto.GetProjetosFromFuncionario(id));
         }
 
-        public ActionResult<Funcionario> Add(int idFuncionario, int idProjeto)
+        public ActionResult<Relacao> Add(Relacao relacao)
         {
-            return Ok(_projetoFuncionarioProjeto.Add(idFuncionario, idProjeto));
+            return Ok(_projetoFuncionarioProjeto.Add(relacao));
         }
 
         public void Remove(int idFuncionario, int idProjeto) {
