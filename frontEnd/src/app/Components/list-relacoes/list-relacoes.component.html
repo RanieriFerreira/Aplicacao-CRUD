@@ -1,0 +1,24 @@
+<div *ngIf="this._httpServiceRelacao.listMode">
+  <h3>Adicionar funcionario ao projeto</h3>
+  <select name="selectFuncionario" #selectFuncionario>
+    <option *ngFor="let funcionario of _httpServiceRelacao.funcionarios" [value]="funcionario.id">{{funcionario.nome}}</option>
+  </select>
+  <button class="btn" (click)="add(selectFuncionario.value, _httpServiceRelacao.projetoId)">Adicionar</button>
+  <button class="btn btn-primary"  (click)="cancel()">Cancelar</button>
+  <h3>Funcionários do projeto</h3>
+  <p *ngIf="!_httpServiceRelacao.projetoFuncionarios.length">Nenhum funcionário nesse projeto</p>
+  <table *ngIf="_httpServiceRelacao.projetoFuncionarios.length">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let projetoFuncionario of _httpServiceRelacao.projetoFuncionarios">
+          <td>{{projetoFuncionario.funcionario.nome}}</td>
+          <td (click)="delete(projetoFuncionario.funcionario.id, projetoFuncionario.projetoId)">Deletar</td>
+        </tr>
+      </tbody>
+    </table>
+</div>

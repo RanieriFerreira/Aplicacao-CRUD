@@ -13,6 +13,7 @@ import { ProjetoFormComponent } from './Components/projeto-form/projeto-form.com
 import { ProjetoListComponent } from './Components/projeto-list/projeto-list.component';
 import { FuncionarioListComponent } from './Components/funcionario-list/funcionario-list.component';
 import { FuncionarioFormComponent } from './Components/funcionario-form/funcionario-form.component';
+import { ListRelacoesComponent } from './Components/list-relacoes/list-relacoes.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { FuncionarioFormComponent } from './Components/funcionario-form/funciona
     ProjetoFormComponent,
     ProjetoListComponent,
     FuncionarioListComponent,
-    FuncionarioFormComponent
+    FuncionarioFormComponent,
+    ListRelacoesComponent
   ],
   imports: [
     FormsModule,
