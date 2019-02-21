@@ -1,9 +1,9 @@
 <nav class="menu">
-  <button (click)="showSidebar = !showSidebar"><img src="../../../assets/imgs/icons/icons8-menu-32.png" alt="Icone menu"></button>
+  <button (click)="this.isOpen = !this.isOpen" *ngIf="!this.isOpen" class="menu-btn"><img src="../../../assets/imgs/icons/icons8-menu-32.png" alt="Icone menu"></button>
+  <button (click)="this.isOpen = !this.isOpen" *ngIf="this.isOpen" class="menu-btn"><img src="../../../assets/imgs/icons/icons8-fechar-32.png" alt="Icone menu"></button>
   <img class="menu-img-logo" src="../../assets/imgs/generic-company-logo.png" alt="Logo da empresa">
 </nav>
-<div [class]="!showSidebar ? 'displayNone' : 'menu-sidebar' ">
-  <button (click)="showSidebar = !showSidebar"><img src="../../../assets/imgs/icons/icons8-fechar-32.png" alt="Icone menu"></button>
+<div [ngClass]="isOpen ? 'menu-sidebar open' : 'menu-sidebar'">
   <ul class="menu-list">
     <li class="menu-list-item" (click)="status = !status"><img class="menu-list-icon" src="../../../assets/imgs/icons/icons8-mais-32.png" alt="Mostrar mais"> Gerenciar</li>
     <ul class="menu-sublist" [class]="status ? 'displayNone' : '' ">

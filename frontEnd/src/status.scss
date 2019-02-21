@@ -17,6 +17,6 @@
 }
 
 .displayNone {
-    display: none;
-    transition: display 1s ease-in-out;
+    height: 0px;
+    transition: height 1s ease-out;
 }

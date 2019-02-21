@@ -1,5 +1,10 @@
-<label class="form-label" for="searchInput">Buscar projeto</label><input [(ngModel)]="searchInput" (keyup)="searchProjetos(searchInput)" class="form-input" type="text" name="searchInput">
-<button class="btn" (click)="clear()">Limpar</button>
+<form>
+  <div class="form-group">
+    <label class="form-label" for="searchInput">Buscar projeto</label>
+    <input [(ngModel)]="searchInput" (keyup)="searchProjetos(searchInput)" class="form-input" type="text" name="searchInput">
+  </div>
+  <button class="btn" (click)="clear()">Limpar</button>
+</form>
 <hr>
 <h2>Listagem dos projetos</h2>
 <h3 *ngIf="!this._httpService.projetos.length">Nenhum projeto foi encontrado</h3>
@@ -17,9 +22,9 @@
       <td>{{projeto.nome}}</td>
       <td>{{projeto.status}}</td>
       <td>{{projeto.detalhe}}</td>
-      <td (click)="listFuncionarios(projeto.id)">Mais informações</td>
-      <td (click)="editProjeto(projeto)">Editar</td>
-      <td (click)="deleteProjeto(projeto)">Deletar</td>
+      <td (click)="listFuncionarios(projeto.id)"><img class="icon" src="../../../assets/imgs/icons/icons8-informações-32.png" alt="Detalhes"></td>
+      <td (click)="editProjeto(projeto)"><img class="icon" src="../../../assets/imgs/icons/icons8-editar-32.png" alt="Editar"></td>
+      <td (click)="deleteProjeto(projeto)"><img class="icon" src="../../../assets/imgs/icons/icons8-excluir-32.png" alt="Deletar"></td>
     </tr>
   </tbody>
 </table>

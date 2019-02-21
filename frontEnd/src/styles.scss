@@ -65,13 +65,11 @@ h3 {
     font-size: 1.5rem;
 }
 
-@media (max-width: 425px) {
-    table {
+table {
+    @media (max-width: 426px) {
         width: 100%
     }
-}
-
-table {
+    vertical-align: middle;
     border-collapse: collapse;
     thead {
         background-color: $primary-color;
@@ -135,12 +133,12 @@ input, select {
 
 .btn {
     text-transform: uppercase;
-    border-radius: 10px;
-    padding: 0.5em 1em;
-    margin: 0.5em;
     font-family:'Roboto Slab', serif;
     font-weight: bold;
+    border-radius: 10px;
     border: 0.15em solid;
+    padding: 0.5em 1em;
+    margin: 0.5em;
     box-shadow: 0px;
 }
 

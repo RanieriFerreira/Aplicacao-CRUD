@@ -2,6 +2,7 @@
 /*************/
 /* Variables */
 /*************/
+$menu-height: 50px;
 
 /********/
 /* Base */
@@ -19,18 +20,24 @@
     box-sizing: border-box;
     padding: 0.3em;
     background-color: $primary-color;
+    height: $menu-height;
 }
 
 .menu-sidebar {
     background-color: $primary-color;
-    height: 100%;
     width: 90%;
+    left: -90%;
     max-width: 300px;
     padding: 0.3em;
+    height: 100%;
 
     position: fixed;
+    top: $menu-height;
     z-index: 1;
+    transition: left 0.7s ease-in-out;
 }
+
+
 
 /*************/
 /* Component */
@@ -98,6 +105,11 @@
     }
 }
 
+.menu-btn {
+    background-color: transparent;
+    border: none;
+}
+
 /**********/
 /* Status */
 /**********/
@@ -105,3 +117,9 @@
     background-color: $secondary-color;
     font-weight: bold
 }
+
+.open {
+    left: 0;
+    transition: left 0.7s ease-in-out;
+}
+
