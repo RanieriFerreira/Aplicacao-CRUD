@@ -1,0 +1,22 @@
+/**********/
+/* Status */
+/**********/
+.success {
+    background-color: $success-background-color;
+    color: $success-color;
+}
+
+.warning {
+    background-color: $warning-background-color;
+    color: $warning-color;
+}
+
+.error {
+    background-color: $error-background-color;
+    color: $error-color;
+}
+
+.displayNone {
+    display: none;
+    transition: display 1s ease-in-out;
+}

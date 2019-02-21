@@ -1,12 +1,14 @@
-<nav class="menu-sidebar">
-  <div class="menu-logo">
-    <img src="../../assets/imgs/generic-company-logo.png" alt="Logo da empresa">
-  </div>
+<nav class="menu">
+  <button (click)="showSidebar = !showSidebar"><img src="../../../assets/imgs/icons/icons8-menu-32.png" alt="Icone menu"></button>
+  <img class="menu-img-logo" src="../../assets/imgs/generic-company-logo.png" alt="Logo da empresa">
+</nav>
+<div [class]="!showSidebar ? 'displayNone' : 'menu-sidebar' ">
+  <button (click)="showSidebar = !showSidebar"><img src="../../../assets/imgs/icons/icons8-fechar-32.png" alt="Icone menu"></button>
   <ul class="menu-list">
-    <li class="menu-item">Gerenciar</li>
-    <ul>
-      <li class="menu-subitem"><a routerLink="/funcionarios">Funcionarios</a></li>
-      <li class="menu-subitem"><a routerLink="/projetos" class="menu-list-item-active">Projetos</a></li>
+    <li class="menu-list-item" (click)="status = !status"><img class="menu-list-icon" src="../../../assets/imgs/icons/icons8-mais-32.png" alt="Mostrar mais"> Gerenciar</li>
+    <ul class="menu-sublist" [class]="status ? 'displayNone' : '' ">
+      <li class="menu-list-subitem" [ngClass]="{'menu-item-active': selectedItem == 1}"><a routerLink="/funcionarios" (click)="selectedItem = 1">Funcionarios</a></li>
+      <li class="menu-list-subitem" [ngClass]="{'menu-item-active': selectedItem == 2}"><a routerLink="/projetos" (click)="selectedItem = 2">Projetos</a></li>
     </ul>
   </ul>
-</nav>
+</div>

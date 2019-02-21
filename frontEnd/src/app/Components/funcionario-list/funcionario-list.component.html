@@ -1,14 +1,24 @@
-<label class="form-label" for="ordem">Ordenar por</label>
-<select name="ordem" #ordem>
-  <option value="Status">Status</option>
-  <option value="status_desc">Status decrescente</option>
-  <option value="Nome">Nome</option>
-  <option value="nome_desc">Nome decrescente</option>
-</select><br>
-<label class="form-label" for="paginaNumero">Número da página</label><input [(ngModel)]="paginaNumero" class="form-input" type="number" name="paginaNumero"><br>
-<label class="form-label" for="paginaQuantidade">Quantidade de funcionários</label><input [(ngModel)]="paginaQuantidade" class="form-input" type="number" name="paginaQuantidade"><br>
-<button class="btn" (click)="paginacaoFuncionarios(ordem.value, paginaNumero,paginaQuantidade)">Pesquisar</button>
-<button class="btn btn-primary" (click)="clear()">Cancelar</button>
+<form>
+  <div class="form-group">
+    <label class="form-label" for="ordem">Ordenar por</label>
+    <select name="ordem" #ordem>
+      <option value="Status">Status</option>
+      <option value="status_desc">Status decrescente</option>
+      <option value="Nome">Nome</option>
+      <option value="nome_desc">Nome decrescente</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label class="form-label" for="paginaNumero">Número da página</label>
+    <input [(ngModel)]="paginaNumero" class="form-input" type="number" name="paginaNumero">
+  </div>
+  <div class="form-group">
+    <label class="form-label" for="paginaQuantidade">Quantidade de funcionários</label>
+    <input [(ngModel)]="paginaQuantidade" class="form-input" type="number" name="paginaQuantidade">
+  </div>
+  <button class="btn" (click)="paginacaoFuncionarios(ordem.value, paginaNumero,paginaQuantidade)">Pesquisar</button>
+  <button class="btn btn-primary" (click)="clear()">Cancelar</button>
+</form>
 <hr>
 <h2>Listagem dos funcionários</h2>
 <h3 *ngIf="!this._httpService.funcionarios.length">Nenhum funcionário foi encontrado</h3>
@@ -26,8 +36,8 @@
       <td>{{funcionario.nome}}</td>
       <td>{{funcionario.status}}</td>
       <td>{{funcionario.cpf}}</td>
-      <td (click)="editFuncionario(funcionario)">Editar</td>
-      <td (click)="deleteFuncionario(funcionario)">Deletar</td>
+      <td (click)="editFuncionario(funcionario)"><img class="icon" src="../../../assets/imgs/icons/icons8-editar-32.png" alt="Editar"></td>
+      <td (click)="deleteFuncionario(funcionario)"><img class="icon" src="../../../assets/imgs/icons/icons8-excluir-32.png" alt="Deletar"></td>
     </tr>
   </tbody>
 </table>

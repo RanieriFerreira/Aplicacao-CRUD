@@ -1,4 +1,9 @@
+@import "./variables.scss";
+@import "./status.scss";
+
+/*********/
 /* Reset */
+/*********/
 html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,a, abbr, acronym, address, big, cite, code,del, dfn, em, img, ins, kbd, q, s, samp,small, strike, strong, sub, sup, tt, var,b, u, i, center,dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td,article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary,time, mark, audio, video {
 	margin: 0;
 	padding: 0;
@@ -28,24 +33,14 @@ table {
     border-spacing: 0;
 }
 
-/* --> Variables */
-$primary-color: rgb(212, 80, 80);
-$secondary-color: rgb(218, 218, 218);
-$auxiliary-color: white;
-$warning-background-color: rgb(255, 167, 5);
-$warning-color: rgb(255, 186, 59);
-$success-background-color: rgb(109, 168, 109);
-$success-color: green;
-$error-background-color: rgb(255, 139, 139);
-$error-color:red;
-
-$menu-width: 15%;
-$main-size: 100px;
-
-/* --> Base */
+/********/
+/* Base */
+/********/
 html {
+    color: black;
     font-size: 1rem;
     font-family:'Roboto Slab', serif;
+    background-color: $secondary-color;
 }
 
 h1 {
@@ -70,9 +65,14 @@ h3 {
     font-size: 1.5rem;
 }
 
+@media (max-width: 425px) {
+    table {
+        width: 100%
+    }
+}
+
 table {
     border-collapse: collapse;
-    width: 100%;
     thead {
         background-color: $primary-color;
     }
@@ -101,68 +101,21 @@ input, select {
 }
 
 
-/* --> Layout */
-/* Menu */
-.menu-sidebar {
-    
-    height: 100vh;
-    min-width: $menu-width;
-    max-width: $menu-width;
-    background-color: $primary-color;
-    float: left;
-    border-right: 0.2em solid black;
-}
+/**********/
+/* Layout */
+/**********/
 
-.menu-logo {
-    padding-left: 0px;
-    img {
-        max-width: 100%;
-        padding-left: 0px
-    }
-    
-}
-
-.menu-list {
-    padding: 0.5em 1em;
-    color: $auxiliary-color;
-    border-top: 0.1em solid black;
-    border-bottom: 0.1em solid black;
-    ul {
-        li {
-            padding-left: 1em;
-            padding-top: 0.2em;
-            padding-bottom: 0.2em;
-            
-            a {
-                text-decoration: none;
-                color: $secondary-color;
-            }
-        }
-    }
-}
-
-.menu-list {
-    ul {
-        li:last-child {
-            padding-bottom: 0.2em;
-        }
-    }
-}
-
-.menu-item-active {
-    color: black !important;
-    font-weight: bold
-}
-
-/* Container */
+//Container
 .container {
-    padding-left: 20em;
-    padding-right: 3em;
+    padding: 3em 1em;
+    box-sizing: border-box;
+    width: 100%;
     height: 100vh;
-    background-color: $secondary-color;
 }
 
-/* --> Component */
+/*************/
+/* Component */
+/*************/
 .message-list {
     li {
         padding: 1em;
@@ -175,8 +128,9 @@ input, select {
 }
 
 .form-group {
-    margin: 0.2rem 0.5rem;
-    display: inline-block;
+    padding-bottom: 1em;
+    display: flex;
+    flex-direction: column;
 }
 
 .btn {
@@ -194,18 +148,6 @@ input, select {
     background-color: $primary-color;
 }
 
-/* Status */
-.success {
-    background-color: $success-background-color;
-    color: $success-color;
-}
-
-.warning {
-    background-color: $warning-background-color;
-    color: $warning-color;
-}
-
-.error {
-    background-color: $error-background-color;
-    color: $error-color;
+.icon {
+    max-width: 1.5em;
 }

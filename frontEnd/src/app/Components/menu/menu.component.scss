@@ -1,2 +1,107 @@
+@import "../../../variables.scss";
+/*************/
+/* Variables */
+/*************/
+
+/********/
+/* Base */
+/********/
+
+/**********/
+/* Layout */
+/**********/
+// Menu
+.menu {
+    width: 100%;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0.3em;
+    background-color: $primary-color;
+}
+
+.menu-sidebar {
+    background-color: $primary-color;
+    height: 100%;
+    width: 90%;
+    max-width: 300px;
+    padding: 0.3em;
+
+    position: fixed;
+    z-index: 1;
+}
+
+/*************/
+/* Component */
+/*************/
+.menu-img-logo {
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%);
+    max-width: 25%;
 
 
+    // TODO: Melhorar medidas do logo
+    @media (min-width: 426px) {
+        width: 15%;
+    }
+
+    @media (min-width: 769px) {
+        width: 10%;
+    }
+
+    @media (min-width: 1025px) {
+        width: 8%;
+    }
+}
+
+.menu-list {
+    padding: 0.5em 1em;
+    font-weight: bold;
+}
+
+.menu-list-item {
+    display: flex;
+    align-items: center;
+    img {
+        padding-right: 0.5em;
+    }
+}
+
+.menu-sublist {
+    display: inline;
+}
+
+.menu-list-subitem {
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    padding-left: 1em;
+    a {
+        text-decoration: none;
+        color: black;
+    }
+}
+
+.menu-list {
+    ul {
+        li:last-child {
+            padding-bottom: 0.2em;
+        }
+    }
+}
+
+.menu-subitem {
+    a {
+        width: 100%;
+    }
+}
+
+/**********/
+/* Status */
+/**********/
+.menu-item-active {
+    background-color: $secondary-color;
+    font-weight: bold
+}
