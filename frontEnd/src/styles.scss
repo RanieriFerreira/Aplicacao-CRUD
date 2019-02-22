@@ -29,8 +29,14 @@ blockquote:before, blockquote:after,q:before, q:after {
 	content: none;
 }
 table {
-	border-collapse: collapse;
+    border-collapse: collapse;
     border-spacing: 0;
+}
+input,
+select:focus,
+select:active {
+    border:none;
+    outline: none;
 }
 
 /********/
@@ -66,21 +72,23 @@ h3 {
 }
 
 table {
-    @media (max-width: 426px) {
-        width: 100%
-    }
+    background-color: rgb(243, 243, 243);
+    width: 100%;
     vertical-align: middle;
     border-collapse: collapse;
+    border-radius: 0.5em;
+    overflow: hidden;
     thead {
         background-color: $primary-color;
     }
 }
 
-table, th, td {
-    border: 0.1em solid black;
+table {
+    box-shadow: 0em 0.1em 0.5em;
 }
 
 th, td {
+    vertical-align: middle;
     padding: 0.5em;
 }
 
@@ -91,29 +99,89 @@ form {
 
 input, select {
     border-radius: 10px;
-    padding: 0.5em 1em;
-    margin: 0.2em 1em;
+    padding: 1em;
+    margin: 1em;
     font-family:'Roboto Slab', serif;
     font-weight: bold;
-    box-shadow: 0px;
 }
 
+input:focus,
+input:hover,
+select:focus,
+select:hover {
+    box-shadow:inset 0em 0em 0em 0.2em $primary-color;
+    outline: none;
+    transition: box-shadow 666ms ease-in-out;
+}
 
 /**********/
 /* Layout */
 /**********/
-
 //Container
 .container {
-    padding: 3em 1em;
+    padding: 3em 1.5em 2em 1.5em;
     box-sizing: border-box;
     width: 100%;
-    height: 100vh;
+    height: 100%;
+    @media (min-width: 769px) {
+        padding: 1em;
+        float: right;
+        width: 80%;
+        padding: 1em 2em 2em 2em;
+    }
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col-m-6 {
+    @media (max-width: 769px) {
+        width: 50%;
+    }
+}
+
+.col-m-12 {
+    @media (max-width: 769px) {
+        width: 100%;
+    }
+}
+
+.col-6 {
+    @media (min-width: 769px) {
+        width: 50%;
+    }
+}
+
+.col-4 {
+    @media (min-width: 769px) {
+        width: 33%;
+    }
+}
+
+.col-3 {
+    @media (min-width: 769px) {
+        width: 25%;
+    }
 }
 
 /*************/
 /* Component */
 /*************/
+.section-subtitle {
+    margin-top: 1.5rem; 
+    margin-right:0.5rem;   
+    margin-bottom: 1rem;  
+    margin-left:0.5rem;    
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    h2 {
+        margin: 0;
+    }
+}
+
 .message-list {
     li {
         padding: 1em;
@@ -122,6 +190,14 @@ input, select {
         max-width: 50%;
         text-align: center;
         margin-bottom: 0.5em;
+    }
+}
+
+table.striped {
+    tbody {
+        >tr:nth-of-type(2n) {
+            background-color: rgb(192, 192, 192);
+        }
     }
 }
 
@@ -147,5 +223,7 @@ input, select {
 }
 
 .icon {
-    max-width: 1.5em;
+    max-width: 2em;
+    max-height: 2em;
+    
 }

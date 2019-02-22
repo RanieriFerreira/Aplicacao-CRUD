@@ -17,6 +17,31 @@
 }
 
 .displayNone {
-    height: 0px;
+    display: none;
     transition: height 1s ease-out;
+}
+
+.collapse-target {
+    height: auto;
+    transition: max-height,opacity 666ms ease-in-out;
+}
+
+.collapsed {
+    transform: scale(0, 0);
+    max-height: 0;
+    opacity: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.text-centered {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right
+}
+
+.text-left {
+    text-align: left
 }

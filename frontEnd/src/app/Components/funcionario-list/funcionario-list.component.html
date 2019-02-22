@@ -1,20 +1,27 @@
-<form>
-  <div class="form-group">
-    <label class="form-label" for="ordem">Ordenar por</label>
-    <select name="ordem" #ordem>
-      <option value="Status">Status</option>
-      <option value="status_desc">Status decrescente</option>
-      <option value="Nome">Nome</option>
-      <option value="nome_desc">Nome decrescente</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label class="form-label" for="paginaNumero">Número da página</label>
-    <input [(ngModel)]="paginaNumero" class="form-input" type="number" name="paginaNumero">
-  </div>
-  <div class="form-group">
-    <label class="form-label" for="paginaQuantidade">Quantidade de funcionários</label>
-    <input [(ngModel)]="paginaQuantidade" class="form-input" type="number" name="paginaQuantidade">
+<div (click)="expanded = !expanded" class="section-subtitle">
+  <h2>Pesquisa avançada</h2>
+  <img *ngIf="!expanded" class="icon" src="../../../assets/imgs/icons/icons8-mais-32.png" alt="Icone mostrar mais">
+  <img *ngIf="expanded"class="icon" src="../../../assets/imgs/icons/icons8-menos-32.png" alt="Icone mostrar menos">
+</div>
+<form [ngClass]="expanded? 'collapse-target' : 'collapse-target collapsed'">
+  <div class="row">
+    <div class="form-group col-m-12 col-4">
+      <label class="form-label" for="ordem">Ordenar por</label>
+      <select name="ordem" #ordem>
+        <option value="Status">Status</option>
+        <option value="status_desc">Status decrescente</option>
+        <option value="Nome">Nome</option>
+        <option value="nome_desc">Nome decrescente</option>
+      </select>
+    </div>
+    <div class="form-group col-m-6 col-4">
+      <label class="form-label" for="paginaNumero">Número da página</label>
+      <input [(ngModel)]="paginaNumero" class="form-input" type="number" name="paginaNumero">
+    </div>
+    <div class="form-group col-m-6 col-4">
+      <label class="form-label" for="paginaQuantidade">Quantidade funcionários</label>
+      <input [(ngModel)]="paginaQuantidade" class="form-input" type="number" name="paginaQuantidade">
+    </div>
   </div>
   <button class="btn" (click)="paginacaoFuncionarios(ordem.value, paginaNumero,paginaQuantidade)">Pesquisar</button>
   <button class="btn btn-primary" (click)="clear()">Cancelar</button>
@@ -22,7 +29,7 @@
 <hr>
 <h2>Listagem dos funcionários</h2>
 <h3 *ngIf="!this._httpService.funcionarios.length">Nenhum funcionário foi encontrado</h3>
-<table *ngIf="this._httpService.funcionarios.length">
+<table *ngIf="this._httpService.funcionarios.length" class="striped">
   <thead>
     <tr>
       <th>Nome</th>
@@ -34,10 +41,10 @@
   <tbody>
     <tr *ngFor="let funcionario of _httpService.funcionarios">
       <td>{{funcionario.nome}}</td>
-      <td>{{funcionario.status}}</td>
-      <td>{{funcionario.cpf}}</td>
-      <td (click)="editFuncionario(funcionario)"><img class="icon" src="../../../assets/imgs/icons/icons8-editar-32.png" alt="Editar"></td>
-      <td (click)="deleteFuncionario(funcionario)"><img class="icon" src="../../../assets/imgs/icons/icons8-excluir-32.png" alt="Deletar"></td>
+      <td class="text-centered">{{funcionario.status}}</td>
+      <td class="text-centered">{{funcionario.cpf}}</td>
+      <td class="text-right" (click)="editFuncionario(funcionario)"><img class="icon" src="../../../assets/imgs/icons/icons8-editar-32.png" alt="Editar"></td>
+      <td class="text-left" (click)="deleteFuncionario(funcionario)"><img class="icon" src="../../../assets/imgs/icons/icons8-excluir-32.png" alt="Deletar"></td>
     </tr>
   </tbody>
 </table>

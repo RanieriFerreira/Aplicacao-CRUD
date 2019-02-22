@@ -5,10 +5,20 @@
 </nav>
 <div [ngClass]="isOpen ? 'menu-sidebar open' : 'menu-sidebar'">
   <ul class="menu-list">
-    <li class="menu-list-item" (click)="status = !status"><img class="menu-list-icon" src="../../../assets/imgs/icons/icons8-mais-32.png" alt="Mostrar mais"> Gerenciar</li>
-    <ul class="menu-sublist" [class]="status ? 'displayNone' : '' ">
-      <li class="menu-list-subitem" [ngClass]="{'menu-item-active': selectedItem == 1}"><a routerLink="/funcionarios" (click)="selectedItem = 1">Funcionarios</a></li>
-      <li class="menu-list-subitem" [ngClass]="{'menu-item-active': selectedItem == 2}"><a routerLink="/projetos" (click)="selectedItem = 2">Projetos</a></li>
-    </ul>
+    <li class="menu-list-item">
+      <div class="menu-list-item-title">
+        <span>Gerenciar</span>
+        <img class="menu-list-icon" src="../../../assets/imgs/icons/icons8-gerenciar-32.png" alt="Icone de gerenciamento">
+      </div>
+      <ul [class]="!status ? 'collapse' : 'menu-sublist' ">
+        <li class="menu-list-subitem" [ngClass]="{'menu-item-active': selectedItem == 1}">
+          <img src="../../../assets/imgs/icons/icons8-grupo-de-usuário-homem-homem-32.png" class="icon" alt="Icone funcionários">
+          <a routerLink="/funcionarios" (click)="selectedItem = 1">Funcionarios</a>
+        </li>
+        <li class="menu-list-subitem" [ngClass]="{'menu-item-active': selectedItem == 2}">
+          <img src="../../../assets/imgs/icons/icons8-trabalhos-32.png" class="icon" alt="Icone projetos">
+          <a routerLink="/projetos" (click)="selectedItem = 2">Projetos</a></li>
+      </ul>
+    </li>
   </ul>
 </div>

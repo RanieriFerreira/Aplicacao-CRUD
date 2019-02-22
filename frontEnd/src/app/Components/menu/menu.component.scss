@@ -1,4 +1,5 @@
 @import "../../../variables.scss";
+@import "../../../status.scss";
 /*************/
 /* Variables */
 /*************/
@@ -18,9 +19,13 @@ $menu-height: 50px;
     display: flex;
     align-items: center;
     box-sizing: border-box;
-    padding: 0.3em;
+    padding: 0.5em;
     background-color: $primary-color;
     height: $menu-height;
+    border-bottom: 0.2em solid black;
+    @media (min-width: 769px) {
+        position: relative;
+    }
 }
 
 .menu-sidebar {
@@ -28,13 +33,24 @@ $menu-height: 50px;
     width: 90%;
     left: -90%;
     max-width: 300px;
-    padding: 0.3em;
     height: 100%;
+    border-right: 0.2em solid black;
 
     position: fixed;
     top: $menu-height;
     z-index: 1;
     transition: left 0.7s ease-in-out;
+    @media (min-width: 769px) {
+        position: absolute;
+        width: 20%;
+        height: 100%;
+        left: 0;
+    }
+}
+
+.container-menu {
+    @media (min-width: 769px) {
+    }
 }
 
 
@@ -65,61 +81,70 @@ $menu-height: 50px;
 }
 
 .menu-list {
-    padding: 0.5em 1em;
+    background-color: white;  
+}
+
+.menu-list-item-title {
+    font-size: 1.2em;
     font-weight: bold;
+    padding: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .menu-list-item {
-    display: flex;
-    align-items: center;
     img {
         padding-right: 0.5em;
     }
 }
 
 .menu-sublist {
-    display: inline;
+    position: relative;
+    >li {
+        position: absolute;
+        left: -10%;
+        display: none;
+    }
 }
 
 .menu-list-subitem {
-    padding-top: 0.2em;
-    padding-bottom: 0.2em;
-    padding-left: 1em;
+    height: auto;
+    background-color: $secondary-color;
+    padding: 1em 0.5em;
+    display: flex;
+    align-items: center;
     a {
+        font-size: 0.9em;
+        width: 100%;
         text-decoration: none;
         color: black;
     }
 }
 
-.menu-list {
-    ul {
-        li:last-child {
-            padding-bottom: 0.2em;
-        }
-    }
-}
-
-.menu-subitem {
-    a {
-        width: 100%;
-    }
+.menu-list-subitem:hover {
+    font-weight: bold; 
 }
 
 .menu-btn {
     background-color: transparent;
     border: none;
+    @media (min-width: 769px) {
+        display: none;
+    }
 }
 
 /**********/
 /* Status */
 /**********/
 .menu-item-active {
-    background-color: $secondary-color;
-    font-weight: bold
+    font-weight: 900;
+    font-size: 1em;
+    border-left: 0.4em solid black;
 }
 
 .open {
     left: 0;
-    transition: left 0.7s ease-in-out;
+    transition: left 666ms ease-in-out 0s;
 }
 

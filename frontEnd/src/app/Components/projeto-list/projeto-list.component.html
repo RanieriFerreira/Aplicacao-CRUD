@@ -20,11 +20,11 @@
   <tbody>
     <tr *ngFor="let projeto of _httpService.projetos">
       <td>{{projeto.nome}}</td>
-      <td>{{projeto.status}}</td>
+      <td class="text-centered" >{{projeto.status}}</td>
       <td>{{projeto.detalhe}}</td>
-      <td (click)="listFuncionarios(projeto.id)"><img class="icon" src="../../../assets/imgs/icons/icons8-informações-32.png" alt="Detalhes"></td>
-      <td (click)="editProjeto(projeto)"><img class="icon" src="../../../assets/imgs/icons/icons8-editar-32.png" alt="Editar"></td>
-      <td (click)="deleteProjeto(projeto)"><img class="icon" src="../../../assets/imgs/icons/icons8-excluir-32.png" alt="Deletar"></td>
+      <td class="text-centered" (click)="listFuncionarios(projeto.id)"><img class="icon" src="../../../assets/imgs/icons/icons8-informações-32.png" alt="Detalhes"></td>
+      <td class="text-centered" (click)="editProjeto(projeto)"><img class="icon" src="../../../assets/imgs/icons/icons8-editar-32.png" alt="Editar"></td>
+      <td class="text-centered" (click)="deleteProjeto(projeto)"><img class="icon" src="../../../assets/imgs/icons/icons8-excluir-32.png" alt="Deletar"></td>
     </tr>
   </tbody>
 </table>
