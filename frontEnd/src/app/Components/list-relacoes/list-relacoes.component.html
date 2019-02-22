@@ -20,7 +20,7 @@
       <tbody>
         <tr *ngFor="let projetoFuncionario of _httpServiceRelacao.projetoFuncionarios">
           <td>{{projetoFuncionario.funcionario.nome}}</td>
-          <td class="text-centered" (click)="delete(projetoFuncionario.funcionario.id, projetoFuncionario.projetoId)"><img class="icon" src="../../../assets/imgs/icons/icons8-excluir-32.png" alt="Deletar"></td>
+          <td class="text-centered" (click)="delete(projetoFuncionario.funcionario.id, projetoFuncionario.projetoId)"><img class="icon icon-wiggle" src="../../../assets/imgs/icons/icons8-excluir-32.png" alt="Deletar"></td>
         </tr>
       </tbody>
     </table>

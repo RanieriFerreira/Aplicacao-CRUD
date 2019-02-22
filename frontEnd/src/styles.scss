@@ -205,6 +205,10 @@ select:hover {
     }
 }
 
+.section-subtitle:hover {
+    cursor: pointer;
+}
+
 .message-list {
     li {
         padding: 1em;
@@ -254,3 +258,12 @@ table.striped {
     max-width: 2em;
     max-height: 2em;
 }
+
+.icon-wiggle:hover {
+    animation: wiggle 1s ease 0s ;
+}
+
+.icon-resizing:hover {
+    animation: resizing 1s ease 0s ;
+}
+
