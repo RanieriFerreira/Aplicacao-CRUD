@@ -11,4 +11,18 @@ $success-color: green;
 $error-background-color: rgb(255, 139, 139);
 $error-color:red;
 
-$menu-width: 15%;
+$width-mobile: 425px;
+$width-tablet: 768px;
+$width-desk: 1024px;
+
+/*************/
+/* Keyframes */
+/*************/
+@keyframes fadeStart {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+}

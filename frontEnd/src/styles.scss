@@ -100,7 +100,7 @@ form {
 input, select {
     border-radius: 10px;
     padding: 1em;
-    margin: 1em;
+    margin: 0.5em;
     font-family:'Roboto Slab', serif;
     font-weight: bold;
 }
@@ -134,37 +134,60 @@ select:hover {
 .row {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
 }
 
-.col-m-6 {
-    @media (max-width: 769px) {
-        width: 50%;
-    }
-}
+.col-12 { width: 100.0%; }
+.col-11 { width: 91.66%; }
+.col-10 { width: 83.33%; }
+.col-9  { width: 75.00%; }
+.col-8  { width: 66.66%; }
+.col-7  { width: 58.33%; }
+.col-6  { width: 50.00%; }
+.col-5  { width: 41.66%; }
+.col-4  { width: 33.33%; }
+.col-3  { width: 25.00%; }
+.col-2  { width: 16.66%; }
+.col-1  { width: 08.33%; }
 
-.col-m-12 {
-    @media (max-width: 769px) {
-        width: 100%;
-    }
-}
+.col-m-12 { @media (max-width: $width-mobile) { width: 100.0%; }}
+.col-m-11 { @media (max-width: $width-mobile) { width: 91.66%; }}
+.col-m-10 { @media (max-width: $width-mobile) { width: 83.33%; }}
+.col-m-9  { @media (max-width: $width-mobile) { width: 75.00%; }}
+.col-m-8  { @media (max-width: $width-mobile) { width: 66.66%; }}
+.col-m-7  { @media (max-width: $width-mobile) { width: 58.33%; }}
+.col-m-6  { @media (max-width: $width-mobile) { width: 50.00%; }}
+.col-m-5  { @media (max-width: $width-mobile) { width: 41.66%; }}
+.col-m-4  { @media (max-width: $width-mobile) { width: 33.33%; }}
+.col-m-3  { @media (max-width: $width-mobile) { width: 25.00%; }}
+.col-m-2  { @media (max-width: $width-mobile) { width: 16.66%; }}
+.col-m-1  { @media (max-width: $width-mobile) { width: 08.33%; }}
 
-.col-6 {
-    @media (min-width: 769px) {
-        width: 50%;
-    }
-}
+.col-t-12 { @media (max-width: $width-tablet) { width: 100.0%; }}
+.col-t-11 { @media (max-width: $width-tablet) { width: 91.66%; }}
+.col-t-10 { @media (max-width: $width-tablet) { width: 83.33%; }}
+.col-t-9  { @media (max-width: $width-tablet) { width: 75.00%; }}
+.col-t-8  { @media (max-width: $width-tablet) { width: 66.66%; }}
+.col-t-7  { @media (max-width: $width-tablet) { width: 58.33%; }}
+.col-t-6  { @media (max-width: $width-tablet) { width: 50.00%; }}
+.col-t-5  { @media (max-width: $width-tablet) { width: 41.66%; }}
+.col-t-4  { @media (max-width: $width-tablet) { width: 33.33%; }}
+.col-t-3  { @media (max-width: $width-tablet) { width: 25.00%; }}
+.col-t-2  { @media (max-width: $width-tablet) { width: 16.66%; }}
+.col-t-1  { @media (max-width: $width-tablet) { width: 08.33%; }}
 
-.col-4 {
-    @media (min-width: 769px) {
-        width: 33%;
-    }
-}
-
-.col-3 {
-    @media (min-width: 769px) {
-        width: 25%;
-    }
-}
+.col-d-12 { @media (min-width: $width-tablet) { width: 100.0%; }}
+.col-d-11 { @media (min-width: $width-tablet) { width: 91.66%; }}
+.col-d-10 { @media (min-width: $width-tablet) { width: 83.33%; }}
+.col-d-9  { @media (min-width: $width-tablet) { width: 75.00%; }}
+.col-d-8  { @media (min-width: $width-tablet) { width: 66.66%; }}
+.col-d-7  { @media (min-width: $width-tablet) { width: 58.33%; }}
+.col-d-6  { @media (min-width: $width-tablet) { width: 50.00%; }}
+.col-d-5  { @media (min-width: $width-tablet) { width: 41.66%; }}
+.col-d-4  { @media (min-width: $width-tablet) { width: 33.33%; }}
+.col-d-3  { @media (min-width: $width-tablet) { width: 25.00%; }}
+.col-d-2  { @media (min-width: $width-tablet) { width: 16.66%; }}
+.col-d-1  { @media (min-width: $width-tablet) { width: 08.33%; }}
 
 /*************/
 /* Component */
@@ -199,6 +222,7 @@ table.striped {
             background-color: rgb(192, 192, 192);
         }
     }
+    animation: 1s ease-out 0s 1 fadeStart;
 }
 
 .form-group {
@@ -208,14 +232,18 @@ table.striped {
 }
 
 .btn {
+    box-sizing: border-box;
     text-transform: uppercase;
     font-family:'Roboto Slab', serif;
     font-weight: bold;
     border-radius: 10px;
     border: 0.15em solid;
-    padding: 0.5em 1em;
+    padding: 0.8em 1em;
     margin: 0.5em;
     box-shadow: 0px;
+    @media (max-width: 768px) {
+        padding: 1em;
+    }
 }
 
 .btn-primary {
@@ -225,5 +253,4 @@ table.striped {
 .icon {
     max-width: 2em;
     max-height: 2em;
-    
 }
