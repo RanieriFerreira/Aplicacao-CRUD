@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RelogioDePonto.Models;
-using RelogioDePonto.ModelsInput;
+using RelogioDePonto.ViewsModels;
 using RelogioDePonto.Repositorios;
 using System.Linq;
+using AutoMapper;
 
 namespace RelogioDePonto.Applications
 {
@@ -11,14 +12,16 @@ namespace RelogioDePonto.Applications
     {
         private RepositoryProjeto _projetoRepositorio;
         private readonly ContextEmpresa _context;
+        private readonly IMapper _mapper;
 
         // Mensagens de retorno
         private string _msgProjetoNotFound = "Nenhum projeto encontrado";
 
-        public ApplicationProjeto(ContextEmpresa context)
+        public ApplicationProjeto(ContextEmpresa context, IMapper mapper)
         {
             _projetoRepositorio = new RepositoryProjeto(context);
             _context = context;
+            _mapper = mapper; ;
         }
 
         public ActionResult<Projeto> Get(int id)
@@ -42,11 +45,11 @@ namespace RelogioDePonto.Applications
             return _projetoRepositorio.Search(nome);
         }
 
-        public ActionResult<Projeto> Add(InputProjeto projeto)
+        public ActionResult<Projeto> Add(ViewModelProjeto inputProjeto)
         {
-            var newProjeto = ToProjeto(projeto);
+            var newProjeto = _mapper.Map<ViewModelProjeto, Projeto>(inputProjeto);
             _projetoRepositorio.Add(newProjeto);
-            return Ok(newProjeto.Id);
+            return Ok(newProjeto);
         }
 
         public ActionResult<Projeto> Remove(int id)
@@ -63,13 +66,13 @@ namespace RelogioDePonto.Applications
             }
         }
 
-        public ActionResult<Projeto> Put(int id, InputProjeto inputProjeto)
+        public ActionResult<Projeto> Put(int id, ViewModelProjeto inputProjeto)
         {
             if (Exists(id))
             {
-                var projeto = ToProjeto(inputProjeto);
-                _projetoRepositorio.Put(id, projeto);
-                return Ok(projeto.Id);
+                var projeto = _mapper.Map<ViewModelProjeto, Projeto>(inputProjeto);
+                projeto.Id = _projetoRepositorio.Put(id, projeto);
+                return Ok(projeto);
             }
             else
             {
@@ -87,16 +90,6 @@ namespace RelogioDePonto.Applications
             {
                 return false;
             }
-        }
-
-        public Projeto ToProjeto(InputProjeto inputProjeto)
-        {
-            return new Projeto
-            {
-                Nome = inputProjeto.Nome,
-                Detalhe = inputProjeto.Detalhe,
-                Status = inputProjeto.Status
-            };
         }
     }
 }

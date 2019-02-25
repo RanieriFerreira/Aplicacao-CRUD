@@ -1,0 +1,5 @@
+<nav class="menu">
+  <button (click)="this._sidebarService.open()" *ngIf="!this._sidebarService.isOpen" class="menu-btn"><img src="../../../assets/imgs/icons/icons8-menu-32.png" alt="Icone menu"></button>
+  <button (click)="this._sidebarService.open()" *ngIf="this._sidebarService.isOpen" class="menu-btn"><img src="../../../assets/imgs/icons/icons8-fechar-32.png" alt="Icone menu"></button>
+  <img class="menu-img-logo" src="../../assets/imgs/generic-company-logo.png" alt="Logo da empresa">
+</nav>

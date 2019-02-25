@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RelogioDePonto;
 
-namespace RelogioDePonto.Migrations
+namespace CRUD_Empresa.Migrations
 {
     [DbContext(typeof(ContextEmpresa))]
     partial class ContextEmpresaModelSnapshot : ModelSnapshot
@@ -74,12 +74,12 @@ namespace RelogioDePonto.Migrations
             modelBuilder.Entity("CRUD_Empresa.Models.FuncionarioProjeto", b =>
                 {
                     b.HasOne("RelogioDePonto.Models.Funcionario", "Funcionario")
-                        .WithMany("FuncionariosProjetos")
+                        .WithMany("ProjetosLink")
                         .HasForeignKey("FuncionarioId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("RelogioDePonto.Models.Projeto", "Projeto")
-                        .WithMany("FuncionariosProjetos")
+                        .WithMany("FuncionariosLink")
                         .HasForeignKey("ProjetoId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

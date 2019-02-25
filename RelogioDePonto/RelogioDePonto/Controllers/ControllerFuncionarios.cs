@@ -1,8 +1,9 @@
 ﻿using System.Linq;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using RelogioDePonto.Applications;
 using RelogioDePonto.Models;
-using RelogioDePonto.ModelsInput;
+using RelogioDePonto.ViewsModels;
 
 namespace RelogioDePonto.Controllers
 {
@@ -12,9 +13,10 @@ namespace RelogioDePonto.Controllers
     {
         private ApplicationFuncionario _applicationFuncionario;
 
-        public ControllerFuncionarios(ContextEmpresa context)
+
+        public ControllerFuncionarios(ContextEmpresa context, IMapper mapper)
         {
-            _applicationFuncionario = new ApplicationFuncionario(context);
+            _applicationFuncionario = new ApplicationFuncionario(context, mapper);
         }
 
         // POST: api/Funcionarios
@@ -36,7 +38,7 @@ namespace RelogioDePonto.Controllers
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(500)]
-        public ActionResult<Funcionario> Post([FromBody] InputFuncionario inputFuncionario)
+        public ActionResult<Funcionario> Post([FromBody] ViewModelFuncionario inputFuncionario)
         {
             return _applicationFuncionario.Add(inputFuncionario);
         }
@@ -94,7 +96,7 @@ namespace RelogioDePonto.Controllers
         /// <response code="200">Se a operação foi feita com sucesso</response>
         /// <response code="400">Parametros inválidos</response>
         /// <response code="500">Problema de acesso ao servidor</response>  
-        [HttpGet("/pag/{order}/{page}/{pageSize}")]
+        [HttpGet("pag/{order}/{page}/{pageSize}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(500)]
@@ -118,7 +120,7 @@ namespace RelogioDePonto.Controllers
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
         [ProducesResponseType(500)]
-        public ActionResult<Funcionario> Put([FromBody] InputFuncionario funcionario)
+        public ActionResult<Funcionario> Put([FromBody] ViewModelFuncionario funcionario)
         {
             return _applicationFuncionario.Put(funcionario);
         }

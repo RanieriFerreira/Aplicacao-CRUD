@@ -19,7 +19,7 @@ namespace RelogioDePonto.Repositorios
             return _context.Set<Projeto>().FromSql("GetProjetos @p0", nome);
         }
 
-        public void Put(int id, Projeto projeto)
+        public int Put(int id, Projeto projeto)
         {
             var target = Get(id);
 
@@ -29,6 +29,7 @@ namespace RelogioDePonto.Repositorios
 
             _context.Update(target);
             Save();
+            return target.Id;
         }
     }
 }
