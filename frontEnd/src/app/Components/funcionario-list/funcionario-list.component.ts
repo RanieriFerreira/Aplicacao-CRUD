@@ -49,6 +49,8 @@ export class FuncionarioListComponent implements OnInit {
   }
 
   deleteFuncionario(funcionario: Funcionario): void {
+    this._httpService.deleted = Object.assign({}, funcionario);
+    this._httpService.deleted.id = undefined;
     this._httpService.deleteFuncionario(funcionario).subscribe(data => {
       localStorage.setItem('LastDeleted', stringify(funcionario));
       if(data != -1) {

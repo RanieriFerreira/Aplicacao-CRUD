@@ -24,6 +24,7 @@ export class FuncionarioService {
   funcionarios: Funcionario[] = [];
   funcionarioInput: Funcionario = new Funcionario();
   editMode: boolean = false;
+  deleted: Funcionario = undefined;
   
   constructor(
     private http: HttpClient,
