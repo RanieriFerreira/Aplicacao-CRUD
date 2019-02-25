@@ -47,8 +47,11 @@ html {
     font-size: 1rem;
     font-family:'Roboto Slab', serif;
     background-color: $secondary-color;
-    max-width: 1858px;
-    margin: auto;
+    height: 100%;
+}
+
+body {
+    height: 100%;
 }
 
 h1 {
@@ -111,7 +114,7 @@ input:focus,
 input:hover,
 select:focus,
 select:hover {
-    box-shadow:inset 0em 0em 0em 0.2em $primary-color;
+    box-shadow:inset 0em 0em 0em 0.2em rgb(146, 146, 146);
     outline: none;
     transition: box-shadow 666ms ease-in-out;
 }
@@ -121,15 +124,29 @@ select:hover {
 /**********/
 //Container
 .container {
-    padding: 4.5em 1.5em 2em 1.5em;
+    display: flex;
+    height: calc(100% - 70px);
+    @media (max-width: 769px) {
+       // padding-top: 70px;
+    }
+}
+
+.sidebar-content {
+    box-sizing: border-box;
+    @media (min-width: 769px) {
+        width: 20%;
+    }
+}
+
+.main-content {
+    overflow-y: auto;
     box-sizing: border-box;
     width: 100%;
     height: 100%;
+    padding: 0.5em 1.5em;
     @media (min-width: 769px) {
-        padding: 1em;
-        float: right;
         width: 80%;
-        padding: 1em 2em 1.5em 2em;
+        padding: 0.5em 1.5em 2em 1.5em;
     }
 }
 
@@ -211,15 +228,13 @@ select:hover {
     cursor: pointer;
 }
 
-.message-list {
-    li {
-        padding: 1em;
-        border-radius: 15px;
-        width: auto;
-        max-width: 50%;
-        text-align: center;
-        margin-bottom: 0.5em;
-    }
+.message-alert {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+    border-radius: 15px;
+    width: auto;
+    margin-bottom: 1em;
 }
 
 table.striped {
@@ -247,6 +262,7 @@ table.striped {
     padding: 0.8em 1em;
     margin: 0.5em;
     box-shadow: 0px;
+    cursor: pointer; 
     @media (max-width: 768px) {
         padding: 1em;
     }
@@ -259,13 +275,23 @@ table.striped {
 .icon {
     max-width: 2em;
     max-height: 2em;
+    cursor: pointer; 
+}
+
+.pointer {
+    cursor: pointer; 
+}
+
+.simple-icon {
+    max-width: 2em;
+    max-height: 2em;
 }
 
 .icon-wiggle:hover {
-    animation: wiggle 1s ease 0s ;
+    animation: wiggle 666ms ease 0s ;
 }
 
 .icon-resizing:hover {
-    animation: resizing 1s ease 0s ;
+    animation: resizing 666ms ease 0s ;
 }
 

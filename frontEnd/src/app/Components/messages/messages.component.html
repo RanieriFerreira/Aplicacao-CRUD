@@ -1,8 +1,10 @@
 <div *ngIf="messageService.messages.length" class="message">
   <h3>Mensagens</h3>
-  <ul class="message-list">
-    <li *ngFor='let message of messageService.messages' [ngClass]="(message.status == 'Error')? 'error' : (message.status == 'Success')? 'success' : 'warning'">{{message.body}}</li>
-  </ul>
-  <button class="btn" (click)="messageService.clear()">Limpar</button>
+  <div class="">
+    <div *ngFor='let message of messageService.messages' [ngClass]="(message.status == 'Error')? 'error message-alert' : (message.status == 'Success')? 'success message-alert' : 'warning message-alert'">
+      {{message.body}}
+      <span class="pointer" (click)="messageService.clear()">&times;</span> 
+    </div>
+  </div>
   <hr>
 </div>

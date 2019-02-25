@@ -15,7 +15,6 @@ $menu-height: 70px;
 // Menu
 .menu {
     width: 100%;
-    position: fixed;
     display: flex;
     align-items: center;
     box-sizing: border-box;
@@ -29,6 +28,7 @@ $menu-height: 70px;
 }
 
 .menu-sidebar {
+    position: absolute;
     background-color: $primary-color;
     width: 90%;
     left: -90%;
@@ -37,15 +37,13 @@ $menu-height: 70px;
     border-right: 0.2em solid black;
     box-sizing: border-box;
 
-    position: fixed;
-    top: $menu-height;
     z-index: 1;
     transition: left 0.7s ease-in-out;
     @media (min-width: 769px) {
-        position: absolute;
-        width: 20%;
+        position: initial;
+        max-width: none;
         height: 100%;
-        left: 0;
+        width: 100%;
     }
 }
 
@@ -57,20 +55,19 @@ $menu-height: 70px;
     top: 0%;
     left: 50%;
     transform: translate(-50%);
-    max-width: 25%;
-
+    width: 150px;
 
     // TODO: Melhorar medidas do logo
     @media (min-width: 426px) {
-        width: 15%;
+        width: 150px;
     }
 
     @media (min-width: 769px) {
-        width: 10%;
+        width: 150px;
     }
 
     @media (min-width: 1025px) {
-        width: 8%;
+        width: 150px;
     }
 }
 

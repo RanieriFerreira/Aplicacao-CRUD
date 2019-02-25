@@ -15,6 +15,7 @@ import { ProjetoListComponent } from './Components/projeto-list/projeto-list.com
 import { FuncionarioListComponent } from './Components/funcionario-list/funcionario-list.component';
 import { FuncionarioFormComponent } from './Components/funcionario-form/funcionario-form.component';
 import { ListRelacoesComponent } from './Components/list-relacoes/list-relacoes.component';
+import { SidebarComponent } from './Components/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ListRelacoesComponent } from './Components/list-relacoes/list-relacoes.
     ProjetoListComponent,
     FuncionarioListComponent,
     FuncionarioFormComponent,
-    ListRelacoesComponent
+    ListRelacoesComponent,
+    SidebarComponent
   ],
   imports: [
     FormsModule,

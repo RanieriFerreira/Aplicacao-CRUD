@@ -1,24 +1,5 @@
 <nav class="menu">
-  <button (click)="this.isOpen = !this.isOpen" *ngIf="!this.isOpen" class="menu-btn"><img src="../../../assets/imgs/icons/icons8-menu-32.png" alt="Icone menu"></button>
-  <button (click)="this.isOpen = !this.isOpen" *ngIf="this.isOpen" class="menu-btn"><img src="../../../assets/imgs/icons/icons8-fechar-32.png" alt="Icone menu"></button>
+  <button (click)="this._sidebarService.open()" *ngIf="!this._sidebarService.isOpen" class="menu-btn"><img src="../../../assets/imgs/icons/icons8-menu-32.png" alt="Icone menu"></button>
+  <button (click)="this._sidebarService.open()" *ngIf="this._sidebarService.isOpen" class="menu-btn"><img src="../../../assets/imgs/icons/icons8-fechar-32.png" alt="Icone menu"></button>
   <img class="menu-img-logo" src="../../assets/imgs/generic-company-logo.png" alt="Logo da empresa">
 </nav>
-<div [ngClass]="isOpen ? 'menu-sidebar open' : 'menu-sidebar'">
-  <ul class="menu-list">
-    <li class="menu-list-item">
-      <div class="menu-list-item-title">
-        <span>Gerenciar</span>
-        <img class="menu-list-icon" src="../../../assets/imgs/icons/icons8-gerenciar-32.png" alt="Icone de gerenciamento">
-      </div>
-      <ul [class]="!status ? 'collapse' : 'menu-sublist' ">
-        <li class="menu-list-subitem" [ngClass]="{'menu-item-active': selectedItem == 1}">
-          <img src="../../../assets/imgs/icons/icons8-funcionarios-32.png" class="icon" alt="Icone funcionários">
-          <a routerLink="/funcionarios" (click)="selectedItem = 1">Funcionarios</a>
-        </li>
-        <li class="menu-list-subitem" [ngClass]="{'menu-item-active': selectedItem == 2}">
-          <img src="../../../assets/imgs/icons/icons8-trabalhos-32.png" class="icon" alt="Icone projetos">
-          <a routerLink="/projetos" (click)="selectedItem = 2">Projetos</a></li>
-      </ul>
-    </li>
-  </ul>
-</div>
