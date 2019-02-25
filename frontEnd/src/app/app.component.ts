@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SidebarService } from './Services/sidebar.service';
 
 
 @Component({
@@ -8,4 +9,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'frontEnd';
+
+  constructor(public _sidebarService: SidebarService){}
 }

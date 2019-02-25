@@ -1,7 +1,7 @@
 <div (click)="expanded = !expanded" class="section-subtitle">
   <h2>Busca avançada</h2>
-  <img *ngIf="!expanded" class="icon" src="../../../assets/imgs/icons/icons8-mais-32.png" alt="Icone mostrar mais">
-  <img *ngIf="expanded"class="icon" src="../../../assets/imgs/icons/icons8-menos-32.png" alt="Icone mostrar menos">
+  <img *ngIf="!expanded" class="icon" src="../../../assets/imgs/icons/icons8-mais-32.png" alt="Icone mostrar mais" title="Mostrar mais">
+  <img *ngIf="expanded"class="icon" src="../../../assets/imgs/icons/icons8-menos-32.png" alt="Icone mostrar menos" title="Mostrar menos">
 </div>
 <form [ngClass]="expanded? 'collapse-target' : 'collapse-target collapsed'">
   <div class="row">
@@ -19,8 +19,8 @@
   <thead>
     <tr>
       <th>Nome</th>
+      <th>Descrição</th>
       <th>Status</th>
-      <th>Detalhe</th>
       <th colspan="3">Ações</th>
     </tr>
   </thead>
@@ -29,9 +29,9 @@
       <td>{{projeto.nome}}</td>
       <td>{{projeto.detalhe}}</td>
       <td class="text-centered" >{{projeto.status}}</td>
-      <td class="text-right" (click)="listFuncionarios(projeto.id)"><img class="icon icon-wiggle" src="../../../assets/imgs/icons/icons8-informações-32.png" alt="Detalhes"></td>
-      <td class="text-centered" (click)="editProjeto(projeto)"><img class="icon icon-wiggle" src="../../../assets/imgs/icons/icons8-editar-32.png" alt="Editar"></td>
-      <td class="text-left" (click)="deleteProjeto(projeto)"><img class="icon icon-wiggle" src="../../../assets/imgs/icons/icons8-excluir-32.png" alt="Deletar"></td>
+      <td class="text-right" (click)="listFuncionarios(projeto.id)"><img class="icon icon-wiggle" src="../../../assets/imgs/icons/icons8-informações-32.png" alt="Detalhes" title="Detalhes"></td>
+      <td class="text-centered" (click)="editProjeto(projeto)"><img class="icon icon-wiggle" src="../../../assets/imgs/icons/icons8-editar-32.png" alt="Editar" title="Editar"></td>
+      <td class="text-left" (click)="deleteProjeto(projeto)"><img class="icon icon-wiggle" src="../../../assets/imgs/icons/icons8-excluir-32.png" alt="Deletar" title="Deletar"></td>
     </tr>
   </tbody>
 </table>
