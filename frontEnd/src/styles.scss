@@ -47,6 +47,8 @@ html {
     font-size: 1rem;
     font-family:'Roboto Slab', serif;
     background-color: $secondary-color;
+    max-width: 1858px;
+    margin: auto;
 }
 
 h1 {
@@ -119,7 +121,7 @@ select:hover {
 /**********/
 //Container
 .container {
-    padding: 3em 1.5em 2em 1.5em;
+    padding: 4.5em 1.5em 2em 1.5em;
     box-sizing: border-box;
     width: 100%;
     height: 100%;
@@ -127,7 +129,7 @@ select:hover {
         padding: 1em;
         float: right;
         width: 80%;
-        padding: 1em 2em 2em 2em;
+        padding: 1em 2em 1.5em 2em;
     }
 }
 

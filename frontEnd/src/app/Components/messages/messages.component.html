@@ -1,4 +1,4 @@
-<div *ngIf="messageService.messages.length">
+<div *ngIf="messageService.messages.length" class="message">
   <h3>Mensagens</h3>
   <ul class="message-list">
     <li *ngFor='let message of messageService.messages' [ngClass]="(message.status == 'Error')? 'error' : (message.status == 'Success')? 'success' : 'warning'">{{message.body}}</li>

@@ -6,7 +6,7 @@
 <form [ngClass]="expanded? 'collapse-target' : 'collapse-target collapsed'">
   <div class="row">
     <div class="form-group col-m-12 col-4">
-      <label class="form-label" for="ordem">Ordenar por</label>
+      <label class="form-label" for="ordem">Ordenar por*</label>
       <select name="ordem" #ordem>
         <option value="Status">Status</option>
         <option value="status_desc">Status decrescente</option>
@@ -15,11 +15,11 @@
       </select>
     </div>
     <div class="form-group col-m-6 col-4">
-      <label class="form-label" for="paginaNumero">Número da página</label>
+      <label class="form-label" for="paginaNumero">Número da página*</label>
       <input [(ngModel)]="paginaNumero" class="form-input" type="number" name="paginaNumero">
     </div>
     <div class="form-group col-m-6 col-4">
-      <label class="form-label" for="paginaQuantidade">Quantidade funcionários</label>
+      <label class="form-label" for="paginaQuantidade">Quantidade funcionários*</label>
       <input [(ngModel)]="paginaQuantidade" class="form-input" type="number" name="paginaQuantidade">
     </div>
   </div>
