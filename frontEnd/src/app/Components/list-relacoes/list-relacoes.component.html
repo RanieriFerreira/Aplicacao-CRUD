@@ -1,13 +1,16 @@
 <div *ngIf="this._httpServiceRelacao.listMode">
+  <br><hr>
   <h3>Adicionar funcionario ao projeto</h3>
-  <select name="selectFuncionario" #selectFuncionario>
-    <option *ngFor="let funcionario of _httpServiceRelacao.funcionarios" [value]="funcionario.id">{{funcionario.nome}}</option>
-  </select>
-  <button class="btn" (click)="add(selectFuncionario.value, _httpServiceRelacao.projetoId)">Adicionar</button>
-  <button class="btn btn-primary"  (click)="cancel()">Cancelar</button>
+  <div class="row">
+    <select name="selectFuncionario" class="col-5 col-m-12" #selectFuncionario>
+      <option *ngFor="let funcionario of _httpServiceRelacao.funcionarios" [value]="funcionario.id">{{funcionario.nome}}</option>
+    </select>
+    <button class="btn col-m-6" (click)="add(selectFuncionario.value, _httpServiceRelacao.projetoId)">Adicionar</button>
+    <button class="btn btn-primary col-m-5"  (click)="cancel()">Cancelar</button>
+  </div>
   <h3>Funcionários do projeto</h3>
   <p *ngIf="!_httpServiceRelacao.projetoFuncionarios.length">Nenhum funcionário nesse projeto</p>
-  <table *ngIf="_httpServiceRelacao.projetoFuncionarios.length">
+  <table *ngIf="_httpServiceRelacao.projetoFuncionarios.length" class="striped">
       <thead>
         <tr>
           <th>Nome</th>
@@ -17,7 +20,7 @@
       <tbody>
         <tr *ngFor="let projetoFuncionario of _httpServiceRelacao.projetoFuncionarios">
           <td>{{projetoFuncionario.funcionario.nome}}</td>
-          <td (click)="delete(projetoFuncionario.funcionario.id, projetoFuncionario.projetoId)">Deletar</td>
+          <td class="text-centered" (click)="delete(projetoFuncionario.funcionario.id, projetoFuncionario.projetoId)"><img class="icon icon-wiggle" src="../../../assets/imgs/icons/icons8-excluir-32.png" alt="Deletar" title="Deletar"></td>
         </tr>
       </tbody>
     </table>

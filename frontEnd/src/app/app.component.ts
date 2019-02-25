@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { SidebarService } from './Services/sidebar.service';
+
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'frontEnd';
+
+  constructor(public _sidebarService: SidebarService){}
 }

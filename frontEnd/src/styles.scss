@@ -1,4 +1,9 @@
+@import "./variables.scss";
+@import "./status.scss";
+
+/*********/
 /* Reset */
+/*********/
 html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,a, abbr, acronym, address, big, cite, code,del, dfn, em, img, ins, kbd, q, s, samp,small, strike, strong, sub, sup, tt, var,b, u, i, center,dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td,article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary,time, mark, audio, video {
 	margin: 0;
 	padding: 0;
@@ -24,28 +29,29 @@ blockquote:before, blockquote:after,q:before, q:after {
 	content: none;
 }
 table {
-	border-collapse: collapse;
+    border-collapse: collapse;
     border-spacing: 0;
 }
+input,
+select:focus,
+select:active {
+    border:none;
+    outline: none;
+}
 
-/* --> Variables */
-$primary-color: rgb(212, 80, 80);
-$secondary-color: rgb(218, 218, 218);
-$auxiliary-color: white;
-$warning-background-color: rgb(255, 167, 5);
-$warning-color: rgb(255, 186, 59);
-$success-background-color: rgb(109, 168, 109);
-$success-color: green;
-$error-background-color: rgb(255, 139, 139);
-$error-color:red;
-
-$menu-width: 15%;
-$main-size: 100px;
-
-/* --> Base */
+/********/
+/* Base */
+/********/
 html {
+    color: black;
     font-size: 1rem;
     font-family:'Roboto Slab', serif;
+    background-color: $secondary-color;
+    height: 100%;
+}
+
+body {
+    height: 100%;
 }
 
 h1 {
@@ -71,18 +77,23 @@ h3 {
 }
 
 table {
-    border-collapse: collapse;
+    background-color: rgb(243, 243, 243);
     width: 100%;
+    vertical-align: middle;
+    border-collapse: collapse;
+    border-radius: 0.5em;
+    overflow: hidden;
     thead {
         background-color: $primary-color;
     }
 }
 
-table, th, td {
-    border: 0.1em solid black;
+table {
+    box-shadow: 0em 0.1em 0.5em;
 }
 
 th, td {
+    vertical-align: middle;
     padding: 0.5em;
 }
 
@@ -93,119 +104,205 @@ form {
 
 input, select {
     border-radius: 10px;
-    padding: 0.5em 1em;
-    margin: 0.2em 1em;
-    font-family:'Roboto Slab', serif;
-    font-weight: bold;
-    box-shadow: 0px;
-}
-
-
-/* --> Layout */
-/* Menu */
-.menu-sidebar {
-    
-    height: 100vh;
-    min-width: $menu-width;
-    max-width: $menu-width;
-    background-color: $primary-color;
-    float: left;
-    border-right: 0.2em solid black;
-}
-
-.menu-logo {
-    padding-left: 0px;
-    img {
-        max-width: 100%;
-        padding-left: 0px
-    }
-    
-}
-
-.menu-list {
-    padding: 0.5em 1em;
-    color: $auxiliary-color;
-    border-top: 0.1em solid black;
-    border-bottom: 0.1em solid black;
-    ul {
-        li {
-            padding-left: 1em;
-            padding-top: 0.2em;
-            padding-bottom: 0.2em;
-            
-            a {
-                text-decoration: none;
-                color: $secondary-color;
-            }
-        }
-    }
-}
-
-.menu-list {
-    ul {
-        li:last-child {
-            padding-bottom: 0.2em;
-        }
-    }
-}
-
-.menu-item-active {
-    color: black !important;
-    font-weight: bold
-}
-
-/* Container */
-.container {
-    padding-left: 20em;
-    padding-right: 3em;
-    height: 100vh;
-    background-color: $secondary-color;
-}
-
-/* --> Component */
-.message-list {
-    li {
-        padding: 1em;
-        border-radius: 15px;
-        width: auto;
-        max-width: 50%;
-        text-align: center;
-        margin-bottom: 0.5em;
-    }
-}
-
-.form-group {
-    margin: 0.2rem 0.5rem;
-    display: inline-block;
-}
-
-.btn {
-    text-transform: uppercase;
-    border-radius: 10px;
-    padding: 0.5em 1em;
+    padding: 1em;
     margin: 0.5em;
     font-family:'Roboto Slab', serif;
     font-weight: bold;
+}
+
+input:focus,
+input:hover,
+select:focus,
+select:hover {
+    box-shadow:inset 0em 0em 0em 0.2em rgb(146, 146, 146);
+    outline: none;
+    transition: box-shadow 666ms ease-in-out;
+}
+
+/**********/
+/* Layout */
+/**********/
+//Container
+.container {
+    display: flex;
+    height: calc(100% - 70px);
+    @media (max-width: 769px) {
+       // padding-top: 70px;
+    }
+}
+
+.sidebar-content {
+    box-sizing: border-box;
+    @media (min-width: 769px) {
+        width: 20%;
+    }
+}
+
+.main-content {
+    overflow-y: auto;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    padding: 0.5em 1.5em;
+    @media (min-width: 769px) {
+        width: 80%;
+        padding: 0.5em 2.5em 2em 2.5em;
+    }
+}
+
+.shadow::after {
+    position: absolute;
+    content: "";
+    top: 70px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.377);
+    animation: fadeStart 666ms ease 0s ;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.col-12 { width: 100.0%; }
+.col-11 { width: 91.66%; }
+.col-10 { width: 83.33%; }
+.col-9  { width: 75.00%; }
+.col-8  { width: 66.66%; }
+.col-7  { width: 58.33%; }
+.col-6  { width: 50.00%; }
+.col-5  { width: 41.66%; }
+.col-4  { width: 33.33%; }
+.col-3  { width: 25.00%; }
+.col-2  { width: 16.66%; }
+.col-1  { width: 08.33%; }
+
+.col-m-12 { @media (max-width: $width-mobile) { width: 100.0%; }}
+.col-m-11 { @media (max-width: $width-mobile) { width: 91.66%; }}
+.col-m-10 { @media (max-width: $width-mobile) { width: 83.33%; }}
+.col-m-9  { @media (max-width: $width-mobile) { width: 75.00%; }}
+.col-m-8  { @media (max-width: $width-mobile) { width: 66.66%; }}
+.col-m-7  { @media (max-width: $width-mobile) { width: 58.33%; }}
+.col-m-6  { @media (max-width: $width-mobile) { width: 50.00%; }}
+.col-m-5  { @media (max-width: $width-mobile) { width: 41.66%; }}
+.col-m-4  { @media (max-width: $width-mobile) { width: 33.33%; }}
+.col-m-3  { @media (max-width: $width-mobile) { width: 25.00%; }}
+.col-m-2  { @media (max-width: $width-mobile) { width: 16.66%; }}
+.col-m-1  { @media (max-width: $width-mobile) { width: 08.33%; }}
+
+.col-t-12 { @media (max-width: $width-tablet) { width: 100.0%; }}
+.col-t-11 { @media (max-width: $width-tablet) { width: 91.66%; }}
+.col-t-10 { @media (max-width: $width-tablet) { width: 83.33%; }}
+.col-t-9  { @media (max-width: $width-tablet) { width: 75.00%; }}
+.col-t-8  { @media (max-width: $width-tablet) { width: 66.66%; }}
+.col-t-7  { @media (max-width: $width-tablet) { width: 58.33%; }}
+.col-t-6  { @media (max-width: $width-tablet) { width: 50.00%; }}
+.col-t-5  { @media (max-width: $width-tablet) { width: 41.66%; }}
+.col-t-4  { @media (max-width: $width-tablet) { width: 33.33%; }}
+.col-t-3  { @media (max-width: $width-tablet) { width: 25.00%; }}
+.col-t-2  { @media (max-width: $width-tablet) { width: 16.66%; }}
+.col-t-1  { @media (max-width: $width-tablet) { width: 08.33%; }}
+
+.col-d-12 { @media (min-width: $width-tablet) { width: 100.0%; }}
+.col-d-11 { @media (min-width: $width-tablet) { width: 91.66%; }}
+.col-d-10 { @media (min-width: $width-tablet) { width: 83.33%; }}
+.col-d-9  { @media (min-width: $width-tablet) { width: 75.00%; }}
+.col-d-8  { @media (min-width: $width-tablet) { width: 66.66%; }}
+.col-d-7  { @media (min-width: $width-tablet) { width: 58.33%; }}
+.col-d-6  { @media (min-width: $width-tablet) { width: 50.00%; }}
+.col-d-5  { @media (min-width: $width-tablet) { width: 41.66%; }}
+.col-d-4  { @media (min-width: $width-tablet) { width: 33.33%; }}
+.col-d-3  { @media (min-width: $width-tablet) { width: 25.00%; }}
+.col-d-2  { @media (min-width: $width-tablet) { width: 16.66%; }}
+.col-d-1  { @media (min-width: $width-tablet) { width: 08.33%; }}
+
+/*************/
+/* Component */
+/*************/
+.section-subtitle {
+    margin-top: 1.5rem; 
+    margin-right:0.5rem;   
+    margin-bottom: 1rem;  
+    margin-left:0.5rem;    
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    h2 {
+        margin: 0;
+    }
+}
+
+.section-subtitle:hover {
+    cursor: pointer;
+}
+
+.message-alert {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+    border-radius: 15px;
+    width: auto;
+    margin-bottom: 1em;
+}
+
+table.striped {
+    tbody {
+        >tr:nth-of-type(2n) {
+            background-color: rgb(192, 192, 192);
+        }
+    }
+    animation: 1s ease-out 0s 1 fadeStart;
+}
+
+.form-group {
+    padding-bottom: 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+.btn {
+    box-sizing: border-box;
+    text-transform: uppercase;
+    font-family:'Roboto Slab', serif;
+    font-weight: bold;
+    border-radius: 10px;
     border: 0.15em solid;
+    padding: 0.8em 1em;
+    margin: 0.5em;
     box-shadow: 0px;
+    cursor: pointer; 
+    @media (max-width: 768px) {
+        padding: 1em;
+    }
 }
 
 .btn-primary {
     background-color: $primary-color;
 }
 
-/* Status */
-.success {
-    background-color: $success-background-color;
-    color: $success-color;
+.icon {
+    max-width: 2em;
+    max-height: 2em;
+    cursor: pointer; 
 }
 
-.warning {
-    background-color: $warning-background-color;
-    color: $warning-color;
+.pointer {
+    cursor: pointer; 
 }
 
-.error {
-    background-color: $error-background-color;
-    color: $error-color;
+.simple-icon {
+    max-width: 2em;
+    max-height: 2em;
 }
+
+.icon-wiggle:hover {
+    animation: wiggle 666ms ease 0s ;
+}
+
+.icon-resizing:hover {
+    animation: resizing 666ms ease 0s ;
+}
+

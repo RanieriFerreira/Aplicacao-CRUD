@@ -1,25 +1,37 @@
-<label class="form-label" for="searchInput">Buscar projeto</label><input [(ngModel)]="searchInput" (keyup)="searchProjetos(searchInput)" class="form-input" type="text" name="searchInput">
-<button class="btn" (click)="clear()">Limpar</button>
+<div (click)="expanded = !expanded" class="section-subtitle">
+  <h2>Busca avançada</h2>
+  <img *ngIf="!expanded" class="icon" src="../../../assets/imgs/icons/icons8-mais-32.png" alt="Icone mostrar mais" title="Mostrar mais">
+  <img *ngIf="expanded"class="icon" src="../../../assets/imgs/icons/icons8-menos-32.png" alt="Icone mostrar menos" title="Mostrar menos">
+</div>
+<form [ngClass]="expanded? 'collapse-target' : 'collapse-target collapsed'">
+  <div class="row">
+    <div class="form-group col-m-8 col-7">
+      <label class="form-label" for="searchInput">Buscar projeto</label>
+      <input [(ngModel)]="searchInput" (keyup)="searchProjetos(searchInput)" class="form-input" type="text" name="searchInput">
+    </div>
+    <button class="btn col-m-3 col-2" (click)="clear()">Limpar</button>
+  </div>
+</form>
 <hr>
 <h2>Listagem dos projetos</h2>
 <h3 *ngIf="!this._httpService.projetos.length">Nenhum projeto foi encontrado</h3>
-<table *ngIf="this._httpService.projetos.length">
+<table *ngIf="this._httpService.projetos.length" class="striped">
   <thead>
     <tr>
       <th>Nome</th>
+      <th>Descrição</th>
       <th>Status</th>
-      <th>Detalhe</th>
       <th colspan="3">Ações</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let projeto of _httpService.projetos">
       <td>{{projeto.nome}}</td>
-      <td>{{projeto.status}}</td>
       <td>{{projeto.detalhe}}</td>
-      <td (click)="listFuncionarios(projeto.id)">Mais informações</td>
-      <td (click)="editProjeto(projeto)">Editar</td>
-      <td (click)="deleteProjeto(projeto)">Deletar</td>
+      <td class="text-centered" >{{projeto.status}}</td>
+      <td class="text-right" (click)="listFuncionarios(projeto.id)"><img class="icon icon-wiggle" src="../../../assets/imgs/icons/icons8-informações-32.png" alt="Detalhes" title="Detalhes"></td>
+      <td class="text-centered" (click)="editProjeto(projeto)"><img class="icon icon-wiggle" src="../../../assets/imgs/icons/icons8-editar-32.png" alt="Editar" title="Editar"></td>
+      <td class="text-left" (click)="deleteProjeto(projeto)"><img class="icon icon-wiggle" src="../../../assets/imgs/icons/icons8-excluir-32.png" alt="Deletar" title="Deletar"></td>
     </tr>
   </tbody>
 </table>

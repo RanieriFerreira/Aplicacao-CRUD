@@ -1,0 +1,78 @@
+/*************/
+/* Variables */
+/*************/
+$primary-color: rgb(212, 80, 80);
+$secondary-color: rgb(218, 218, 218);
+$auxiliary-color: white;
+$warning-background-color: rgb(255, 167, 5);
+$warning-color: rgb(255, 186, 59);
+$success-background-color: rgb(109, 168, 109);
+$success-color: green;
+$error-background-color: rgb(255, 139, 139);
+$error-color:red;
+
+$width-mobile: 425px;
+$width-tablet: 768px;
+$width-desk: 1024px;
+
+$menu-height: 70px;
+
+/*************/
+/* Keyframes */
+/*************/
+@keyframes fadeStart {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+}
+
+@keyframes resizing {
+    0% {
+      transform: scale(1);
+    }
+    25% {
+        transform: scale(1.1);
+    }
+    50% {
+        transform: scale(1);
+    }
+    75% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes wiggle {
+    0%{
+      transform: rotate(0);
+    }
+    20%{
+        transform: rotate(5deg);
+    }
+    30%{
+        transform: rotate(0);
+    }
+    40%{
+        transform: rotate(-5deg);
+    }
+    50%{
+        transform: rotate(0);
+    }
+    60%{
+        transform: rotate(5deg);
+    }
+    70%{
+        transform: rotate(0);
+    }
+    80%{
+        transform: rotate(-5deg);
+    }
+    100%{
+        transform: rotate(0);
+    }
+}

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule }      from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +15,7 @@ import { ProjetoListComponent } from './Components/projeto-list/projeto-list.com
 import { FuncionarioListComponent } from './Components/funcionario-list/funcionario-list.component';
 import { FuncionarioFormComponent } from './Components/funcionario-form/funcionario-form.component';
 import { ListRelacoesComponent } from './Components/list-relacoes/list-relacoes.component';
+import { SidebarComponent } from './Components/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -26,13 +28,15 @@ import { ListRelacoesComponent } from './Components/list-relacoes/list-relacoes.
     ProjetoListComponent,
     FuncionarioListComponent,
     FuncionarioFormComponent,
-    ListRelacoesComponent
+    ListRelacoesComponent,
+    SidebarComponent
   ],
   imports: [
     FormsModule,
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

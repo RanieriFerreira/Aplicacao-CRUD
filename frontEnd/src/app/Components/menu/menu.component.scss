@@ -1,2 +1,143 @@
+@import "../../../variables.scss";
+@import "../../../status.scss";
+/*************/
+/* Variables */
+/*************/
+$menu-height: 70px;
 
+/********/
+/* Base */
+/********/
+
+/**********/
+/* Layout */
+/**********/
+// Menu
+.menu {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0.5em;
+    background-color: $primary-color;
+    height: $menu-height;
+    border-bottom: 0.2em solid black;
+    box-shadow: 0em 0.1em 1em;
+    @media (min-width: 769px) {
+        position: relative;
+    }
+}
+
+.menu-sidebar {
+    position: absolute;
+    background-color: $primary-color;
+    width: 90%;
+    left: -90%;
+    max-width: 300px;
+    height: 100%;
+    border-right: 0.2em solid black;
+    box-sizing: border-box;
+    box-shadow: 0em 0.1em 1em;
+    z-index: 1;
+    transition: left 0.7s ease-in-out;
+    @media (min-width: 769px) {
+        position: absolute;
+        left: 0;
+        max-width: none;
+        height: 100%;
+        width: 20%;
+    }
+}
+
+/*************/
+/* Component */
+/*************/
+.menu-img-logo {
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%);
+    width: 150px;
+
+    // TODO: Melhorar medidas do logo
+    @media (min-width: 426px) {
+        width: 150px;
+    }
+
+    @media (min-width: 769px) {
+        width: 150px;
+    }
+
+    @media (min-width: 1025px) {
+        width: 150px;
+    }
+}
+
+.menu-list {
+    background-color: white;  
+}
+
+.menu-list-item-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu-list-item {
+    img {
+        padding-right: 0.5em;
+    }
+}
+
+.menu-sublist {
+    position: relative;
+    >li {
+        position: absolute;
+        left: -10%;
+        display: none;
+    }
+}
+
+.menu-list-subitem {
+    height: auto;
+    background-color: $secondary-color;
+    padding: 1em 0.5em;
+    display: flex;
+    align-items: center;
+    a {
+        font-size: 0.9em;
+        width: 100%;
+        text-decoration: none;
+        color: black;
+    }
+}
+
+.menu-list-subitem:hover {
+    font-weight: bold; 
+}
+
+.menu-btn {
+    background-color: transparent;
+    border: none;
+    @media (min-width: 769px) {
+        display: none;
+    }
+}
+
+/**********/
+/* Status */
+/**********/
+.menu-item-active {
+    font-weight: 900;
+    font-size: 1em;
+    border-left: 0.4em solid black;
+}
+
+.open {
+    left: 0;
+    transition: left 666ms ease-in-out 0s;
+}
 

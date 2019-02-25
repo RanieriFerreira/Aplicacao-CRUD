@@ -1,12 +1,5 @@
-<nav class="menu-sidebar">
-  <div class="menu-logo">
-    <img src="../../assets/imgs/generic-company-logo.png" alt="Logo da empresa">
-  </div>
-  <ul class="menu-list">
-    <li class="menu-item">Gerenciar</li>
-    <ul>
-      <li class="menu-subitem"><a routerLink="/funcionarios">Funcionarios</a></li>
-      <li class="menu-subitem"><a routerLink="/projetos" class="menu-list-item-active">Projetos</a></li>
-    </ul>
-  </ul>
+<nav class="menu">
+  <button (click)="this._sidebarService.open()" *ngIf="!this._sidebarService.isOpen" class="menu-btn"><img src="../../../assets/imgs/icons/icons8-menu-32.png" alt="Icone menu"></button>
+  <button (click)="this._sidebarService.open()" *ngIf="this._sidebarService.isOpen" class="menu-btn"><img src="../../../assets/imgs/icons/icons8-fechar-32.png" alt="Icone menu"></button>
+  <img class="menu-img-logo" src="../../assets/imgs/generic-company-logo.png" alt="Logo da empresa">
 </nav>
