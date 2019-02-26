@@ -2,17 +2,22 @@
 <h2 *ngIf="this._httpService.editMode">Editar funcionário</h2>
 <form>
   <div class="row">
-    <div class="form-group col-5 col-m-12">
+    <div class="form-group col-12 col-m-12">
       <label class="form-label" for="nome">Nome*</label>
       <input class="form-input" type="text" [(ngModel)]="this._httpService.funcionarioInput.nome" name="nome">
     </div>
-    <div class="form-group col-5 col-m-8">
+    <div class="form-group col-6 col-m-12">
       <label class="form-label" for="cpf">CPF*</label>
       <input [disabled]="this._httpService.editMode? true: false" class="form-input" type="number" [(ngModel)]="this._httpService.funcionarioInput.cpf" name="cpf">
     </div>
-    <div class="form-group col-2 col-m-4">
+    <div class="form-group col-6 col-m-12">
       <label class="form-label" for="status">Status*</label>
-      <input class="form-input" type="number" [(ngModel)]="this._httpService.funcionarioInput.status" name="status">
+      <select class="form-input" type="number" [(ngModel)]="this._httpService.funcionarioInput.status" name="status">
+        <option value="0">Inativo</option>
+        <option value="1">Ativo</option>
+        <option value="2">Férias</option>
+        <option value="3">Desligado</option>
+      </select>
     </div>
   </div>
   <button *ngIf="!this._httpService.editMode" type="button" class="btn" (click)="addFuncionario(this._httpService.funcionarioInput)">Criar</button>

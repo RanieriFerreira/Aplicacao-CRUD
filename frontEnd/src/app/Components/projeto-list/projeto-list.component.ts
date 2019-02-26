@@ -60,7 +60,20 @@ export class ProjetoListComponent implements OnInit {
 
   getProjetos(): void {
     this._httpService.getProjetos()
-    .subscribe(projetos => this._httpService.projetos = projetos);
+    .subscribe(projetos => {
+      projetos.forEach(projeto => {
+        if (projeto.status == '0'){
+          projeto.status = 'Inativo';
+        } else if (projeto.status == '1'){
+          projeto.status = 'Ativo';
+        } else if (projeto.status == '2'){
+          projeto.status = 'Em espera';
+        } else if (projeto.status == '3'){
+          projeto.status = 'Finalizado';          
+        }
+      });
+      this._httpService.projetos = projetos
+    });
   }
 
   searchProjetos(search: string) {

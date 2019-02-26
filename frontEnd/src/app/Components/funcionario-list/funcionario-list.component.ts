@@ -29,7 +29,20 @@ export class FuncionarioListComponent implements OnInit {
 
   getFuncionarios(): void {
     this._httpService.getFuncionarios()
-    .subscribe(funcionarios => this._httpService.funcionarios = funcionarios);
+    .subscribe(funcionarios => {
+      funcionarios.forEach(funcionario => {
+        if (funcionario.status == '0'){
+          funcionario.status = 'Inativo';
+        } else if (funcionario.status == '1'){
+          funcionario.status = 'Ativo';
+        } else if (funcionario.status == '2'){
+          funcionario.status = 'Férias';
+        } else if (funcionario.status == '3'){
+          funcionario.status = 'Desligado';          
+        }
+      });
+      this._httpService.funcionarios = funcionarios
+    });
   }
 
   paginacaoFuncionarios(order: number, page: number, size: number) {
