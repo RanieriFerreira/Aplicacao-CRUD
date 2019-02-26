@@ -13764,9 +13764,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ranieri.ferreira\\Documents\\Aplicacao-CRUD\\RelogioDePonto\\RelogioDePonto\\CRUD_Empresa.csproj",
-      "projectName": "CRUD_Empresa",
-      "projectPath": "C:\\Users\\ranieri.ferreira\\Documents\\Aplicacao-CRUD\\RelogioDePonto\\RelogioDePonto\\CRUD_Empresa.csproj",
+      "projectUniqueName": "C:\\Users\\ranieri.ferreira\\Documents\\Aplicacao-CRUD\\RelogioDePonto\\RelogioDePonto\\CRUDEmpresa.csproj",
+      "projectName": "CRUDEmpresa",
+      "projectPath": "C:\\Users\\ranieri.ferreira\\Documents\\Aplicacao-CRUD\\RelogioDePonto\\RelogioDePonto\\CRUDEmpresa.csproj",
       "packagesPath": "C:\\Users\\ranieri.ferreira\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\ranieri.ferreira\\Documents\\Aplicacao-CRUD\\RelogioDePonto\\RelogioDePonto\\obj\\",
       "projectStyle": "PackageReference",

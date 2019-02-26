@@ -14,6 +14,7 @@ $menu-height: 70px;
 /**********/
 // Menu
 .menu {
+    position: fixed;
     width: 100%;
     display: flex;
     align-items: center;
@@ -29,7 +30,8 @@ $menu-height: 70px;
 }
 
 .menu-sidebar {
-    position: absolute;
+    position: fixed;
+    top: 70px;
     background-color: $primary-color;
     width: 90%;
     left: -90%;

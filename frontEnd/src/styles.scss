@@ -51,6 +51,7 @@ html {
 }
 
 body {
+    height: 100%;
 }
 
 h1 {
@@ -142,7 +143,7 @@ select:hover {
     box-sizing: border-box;
     width: 100%;
     height: calc(100vh - 70px);
-    padding: 0.5em 1.5em;
+    padding: 5em 1.5em;
     @media (min-width: 769px) {
         overflow-y: auto;
         width: 80%;
@@ -151,7 +152,7 @@ select:hover {
 }
 
 .shadow::after {
-    position: absolute;
+    position:fixed;
     content: "";
     top: 70px;
     left: 0;
@@ -159,6 +160,7 @@ select:hover {
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.377);
     animation: fadeStart 666ms ease 0s ;
+    height: 100%;
 }
 
 .row {
@@ -303,6 +305,10 @@ table.striped {
 }
 
 .icon-resizing:hover {
+    animation: resizing 666ms ease 0s ;
+}
+
+.resizing {
     animation: resizing 666ms ease 0s ;
 }
 

@@ -18,6 +18,6 @@
   <button *ngIf="!this._httpService.editMode" type="button" class="btn" (click)="addFuncionario(this._httpService.funcionarioInput)">Criar</button>
   <button *ngIf="this._httpService.editMode" type="button" class="btn" (click)="editFuncionario(this._httpService.funcionarioInput)">Editar</button>
   <button type="button" class="btn btn-primary" (click)="clean()">Cancelar</button>
-  <button *ngIf="this._httpService.deleted" class="btn btn-primary right" (click)="undo()">Desfazer</button>
+  <button *ngIf="this._httpService.deleted" class="btn btn-primary resizing right" (click)="undo()">Desfazer</button>
   </form>
 <hr>

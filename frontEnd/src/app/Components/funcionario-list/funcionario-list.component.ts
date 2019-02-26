@@ -54,7 +54,7 @@ export class FuncionarioListComponent implements OnInit {
       localStorage.setItem('LastDeleted', stringify(funcionario));
       if(data != -1) {
         this._httpService.funcionarios = this._httpService.funcionarios.filter(funcionarioList => funcionarioList.id !== funcionario.id);
-        this.messageService.add("Funcionário deletado com sucesso.", "Success");
+        this.messageService.add("Funcionário deletado com sucesso. Caso queira desfazer a ação pressione o botão 'DESFAZER'", "Success");
       } else {
         this.messageService.add("Não foi possível deletar o funcionario.", "Error");
       }

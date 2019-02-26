@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.271
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CRUD_Empresa", "RelogioDePonto\CRUD_Empresa.csproj", "{7AD8ACBD-6A12-40B1-9906-8637D95BB561}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CRUDEmpresa", "RelogioDePonto\CRUDEmpresa.csproj", "{7AD8ACBD-6A12-40B1-9906-8637D95BB561}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CRUD_Empresa.Tests", "Tests\CRUD_Empresa.Tests.csproj", "{EC5A97D2-27D7-4275-B155-189AA6F8536F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CRUDEmpresa.Tests", "Tests\CRUDEmpresa.Tests.csproj", "{EC5A97D2-27D7-4275-B155-189AA6F8536F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

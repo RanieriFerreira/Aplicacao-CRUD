@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RelogioDePonto\CRUD_Empresa.csproj" />
+    <ProjectReference Include="..\RelogioDePonto\CRUDEmpresa.csproj" />
   </ItemGroup>
 
   <ItemGroup>
