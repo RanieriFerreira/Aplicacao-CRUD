@@ -1,0 +1,19 @@
+<div [ngClass]="this._sidebarService.isOpen ? 'menu-sidebar open' : 'menu-sidebar'">
+    <ul class="menu-list">
+      <li class="menu-list-item">
+        <div class="menu-list-item-title">
+          <span>Gerenciar</span>
+          <img class="menu-list-icon" src="../../../assets/imgs/icons/icons8-gerenciar-32.png" alt="Icone de gerenciamento">
+        </div>
+        <ul [class]="!status ? 'collapse' : 'menu-sublist' ">
+          <li class="menu-list-subitem" [ngClass]="{'menu-item-active': selectedItem == 1}">
+            <img src="../../../assets/imgs/icons/icons8-funcionarios-32.png" class="simple-icon" alt="Icone funcionários" title="Funcionários">
+            <a routerLink="/funcionarios" (click)="selectedItem = 1">Funcionarios</a>
+          </li>
+          <li class="menu-list-subitem" [ngClass]="{'menu-item-active': selectedItem == 2}">
+            <img src="../../../assets/imgs/icons/icons8-trabalhos-32.png" class="simple-icon" alt="Icone projetos" title="Projetos">
+            <a routerLink="/projetos" (click)="selectedItem = 2">Projetos</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
