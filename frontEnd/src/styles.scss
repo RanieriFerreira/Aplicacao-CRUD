@@ -51,7 +51,6 @@ html {
 }
 
 body {
-    height: 100%;
 }
 
 h1 {
@@ -125,7 +124,7 @@ select:hover {
 //Container
 .container {
     display: flex;
-    height: calc(100% - 70px);
+    height: 50%;
     @media (max-width: 769px) {
        // padding-top: 70px;
     }
@@ -134,17 +133,18 @@ select:hover {
 .sidebar-content {
     box-sizing: border-box;
     @media (min-width: 769px) {
+        height: calc(100vh - 70px);
         width: 20%;
     }
 }
 
 .main-content {
-    overflow-y: auto;
     box-sizing: border-box;
     width: 100%;
-    height: 100%;
+    height: calc(100vh - 70px);
     padding: 0.5em 1.5em;
     @media (min-width: 769px) {
+        overflow-y: auto;
         width: 80%;
         padding: 0.5em 2.5em 2em 2.5em;
     }

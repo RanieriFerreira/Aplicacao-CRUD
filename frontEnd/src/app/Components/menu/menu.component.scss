@@ -41,11 +41,10 @@ $menu-height: 70px;
     z-index: 1;
     transition: left 0.7s ease-in-out;
     @media (min-width: 769px) {
-        position: absolute;
+        position: initial;
         left: 0;
+        width: 100%;
         max-width: none;
-        height: 100%;
-        width: 20%;
     }
 }
 
