@@ -42,7 +42,6 @@ export class FuncionarioListComponent implements OnInit {
   }
 
   editFuncionario(funcionario: Funcionario) {
-    alert("Simple alert");
     this._httpService.getFuncionario(funcionario)
     .subscribe(funcionario => this._httpService.funcionarioInput = funcionario);
     this._httpService.editMode = true;

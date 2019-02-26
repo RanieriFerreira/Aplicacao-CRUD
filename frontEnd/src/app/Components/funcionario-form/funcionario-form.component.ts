@@ -38,6 +38,7 @@ export class FuncionarioFormComponent implements OnInit {
 
   addFuncionario(funcionario: Funcionario) {
     this.validation(funcionario);
+    this._httpService.deleted = undefined;
   }
 
   editFuncionario(funcionario: Funcionario) {

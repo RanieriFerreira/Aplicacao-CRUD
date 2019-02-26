@@ -36,7 +36,6 @@ export class ProjetoFormComponent implements OnInit {
     if (projeto.id && projeto.status && projeto.nome && projeto.detalhe) { 
       this._httpService.updateProjeto(projeto)
       .subscribe(projeto => {
-        console.log(projeto);
         if (projeto.id) { 
           const ix = projeto ? this._httpService.projetos.findIndex(p => p.id === projeto.id) : -1;
           if (ix > -1) { this._httpService.projetos[ix] = projeto;};
@@ -49,8 +48,6 @@ export class ProjetoFormComponent implements OnInit {
     } else if (projeto.status && projeto.nome && projeto.detalhe) { 
       this._httpService.addProjeto(projeto)
       .subscribe(projeto => {
-        
-        console.log(projeto);
           if (projeto.id) { 
             this._httpService.projetos.push(projeto);
             this.messageService.add("Projeto adicionado com sucesso", "Success");
