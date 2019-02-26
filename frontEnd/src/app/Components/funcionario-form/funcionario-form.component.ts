@@ -23,8 +23,22 @@ export class FuncionarioFormComponent implements OnInit {
     this._httpService.funcionarioInput = new Funcionario();
   }
 
+  undo(){
+    this._httpService.addFuncionario(this._httpService.deleted)
+      .subscribe(funcionario => {
+          if (funcionario.id) { 
+            this._httpService.funcionarios.push(funcionario);
+            this.messageService.add("Deleção desfeita com sucesso", "Success");
+            this._httpService.deleted = undefined;
+          } else {
+            this.messageService.add("Erro ao desfazer deleção", "Error");
+          }
+      });
+  }
+
   addFuncionario(funcionario: Funcionario) {
     this.validation(funcionario);
+    this._httpService.deleted = undefined;
   }
 
   editFuncionario(funcionario: Funcionario) {
