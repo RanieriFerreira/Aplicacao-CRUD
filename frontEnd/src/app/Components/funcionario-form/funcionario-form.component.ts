@@ -41,7 +41,6 @@ export class FuncionarioFormComponent implements OnInit {
 
   addFuncionario(funcionario: Funcionario) {
     this.validation(funcionario);
-    this._httpService.deleted = undefined;
   }
 
   editFuncionario(funcionario: Funcionario) {
@@ -83,7 +82,7 @@ export class FuncionarioFormComponent implements OnInit {
         } else if (funcionario.status == '3'){
           funcionario.status = 'Desligado';          
         }
-
+        
         if (funcionario.id) { 
           this._httpService.funcionarios.push(funcionario);
           this.messageService.add("Funcionario adicionado com sucesso", "Success");

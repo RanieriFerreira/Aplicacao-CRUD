@@ -61,12 +61,21 @@ export class FuncionarioListComponent implements OnInit {
   }
 
   deleteFuncionario(funcionario: Funcionario): void {
-    this._httpService.deleted = Object.assign({}, funcionario);
-    this._httpService.deleted.id = undefined;
     this._httpService.deleteFuncionario(funcionario).subscribe(data => {
-      localStorage.setItem('LastDeleted', stringify(funcionario));
       if(data != -1) {
         this._httpService.funcionarios = this._httpService.funcionarios.filter(funcionarioList => funcionarioList.id !== funcionario.id);
+        this._httpService.deleted = Object.assign({}, funcionario);
+        this._httpService.deleted.id = undefined;
+        if (funcionario.status == 'Inativo'){
+          this._httpService.deleted.status = Number('0');
+        } else if (funcionario.status == 'Ativo'){
+          this._httpService.deleted.status = Number('1');
+        } else if (funcionario.status == 'Férias'){
+          this._httpService.deleted.status = Number('2');
+        } else if (funcionario.status == 'Desligado'){
+          this._httpService.deleted.status = Number('3');          
+        }
+        console.log(funcionario)
         this.messageService.add("Funcionário deletado com sucesso. Caso queira desfazer a ação pressione o botão 'DESFAZER'", "Success");
       } else {
         this.messageService.add("Não foi possível deletar o funcionario.", "Error");

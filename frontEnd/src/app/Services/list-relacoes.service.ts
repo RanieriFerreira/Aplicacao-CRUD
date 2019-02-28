@@ -48,7 +48,7 @@ export class ListRelacoesService {
   }
 
   delete(idFuncionario: number, idProjeto: number): Observable<ProjetoFuncionario[]> {
-    return this.http.delete(`${this.apiUrl}/${idFuncionario}/${idProjeto}`)
+    return this.http.delete(`${this.apiUrl}/funcionario/${idFuncionario}/projeto/${idProjeto}`)
     .pipe(
       catchError(this.handleError('deleteFuncionarios', undefined))
     );
